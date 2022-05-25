@@ -14,13 +14,12 @@ class MapLayer extends Component {
 
     /**
      * CONSTRUCTEUR
-     * @param {String}          id          Identifiant
-     * @param {MapComposition}  parent      Object MapComposition parent
-     * @param {Boolean}         autofit     Si true, recadre la carte sur le calque
+     * @param {String} id   Identifiant
+     * @param {MapComposition} parent   Conteneur oarent (instance de MapComposition)
      */
-    constructor(id,parent, autofit= true){
+    constructor(id,parent){
         super(id);
-        this._dispatch = d3.dispatch('user');
+        this._dispatch = d3.dispatch('click');
         this._container = d3.create('svg:g')
                                 .attr('id',this.id)
                                 .classed(this.type,true);
@@ -57,9 +56,7 @@ class MapLayer extends Component {
 
 
 
-    test(){
-        this._dispatch.call('user',this, {layer: this.id, msg: 'Click'});
-    }
+
 
 
 

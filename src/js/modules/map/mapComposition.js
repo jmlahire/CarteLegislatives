@@ -1,5 +1,8 @@
 import {Svg} from '../common/svg.js'
-import {MapPaths} from './mapPaths.js'
+import {MapPath} from './mapPath.js'
+import {MapCustom} from './mapCustom.js'
+
+import './../../../style/map.scss'
 
 import * as d3Selection from 'd3-selection'
 import * as d3Transition from 'd3-transition'
@@ -22,22 +25,22 @@ class MapComposition extends Svg{
     /**
      * CONSTRUCTEUR
      * Objet SVG servant de contenur aux calques
-     * @param {String}      id                   Identifiant
-     * @param {Object}      size                 Dimensions du svg
-     * @param {Number}      size.width           Largeur
-     * @param {Number}      size.height          Hauteur
-     * @param {Object}      size.margins         Marges
-     * @param {Object}      options              Marges
-     * @param {Number}      options.duration     Durée des animations (zoom)
-     * @param {Number}      options.delay        Délai des animations (zoom)
-     * @param {Function}    options.projection   Methode de projection
-     * @param {Boolean}     options.freezoom     Zoom manuel autorisé ou non
+     * @param {String}          id                   Identifiant
+     * @param {Object}          size                 Dimensions du svg
+     * @param {Number}          size.width           Largeur
+     * @param {Number}          size.height          Hauteur
+     * @param {Number|Object}   size.margins         Marges
+     * @param {Object}          options              Marges
+     * @param {Number}          options.duration     Durée des animations (zoom)
+     * @param {Number}          options.delay        Délai des animations (zoom)
+     * @param {Function}        options.projection   Methode de projection
+     * @param {Boolean}         options.freezoom     Zoom libre autorisé ou non
      */
     constructor(id, size={}, options={}){
         super(id, size.width, size.height, size.margins);
-        this.options = {...MapComposition.defaultOptions,...options};
-        this.layers = new Map();
-        //this.defs = this.outerContainer.append('defs').lower();
+        this._options = {...MapComposition.defaultOptions,...options};
+        this._layers = new Map();
+        this._defs = this.outerContainer.append('defs').lower();
         this._dispatch = d3.dispatch('zoom');
         this._zoomEvent={e:null,level:1,source:null};
         this._zoom = d3.zoom()
@@ -45,21 +48,43 @@ class MapComposition extends Svg{
                         .translateExtent([[0, 0], [this.size.width, this.size.height]])
                         .on('zoom', (e) => this._handleZoom.call(this,e) );
         this.outerContainer.call(this._zoom);
-        this.freezoom(this.options.freezoom);
+        this.freezoom(this._options.freezoom);
 
-        this.projection = this.options.projection;
+        this.projection = this._options.projection;
         this.path = d3.geoPath();
     }
 
 
-    addLayer(id){
-        let newLayer=new MapPaths(id,this);
-        this.layers.set(id,newLayer);
+    /**
+     * Crée ou renvoie (si aucun paramètre optionnel) un calque de la carte
+     * @param {String} id - Identifiant
+     * @param {Object} [options] - Options
+     * @param {String} [options.type] - Type de calque: path, point, custom, voronoi
+     * @param {String} [options.source] - Fichier à charger (path,point,voronoi)
+     * @param {String} [options.primary] - Clé primaire (path,point,voronoi)
+     * @param {Boolean} [options.autofit] - Indique s'il faut centrer la carte sur le calque courant (path,point,voronoi)
+     * @param {Boolean} [options.clickable] - Indique si les entites sont cliquables (path,point,voronoi)
+     * @returns {MapPath|*}
+     */
+    layer(id,options){
+        if (arguments.length===1) {
+            return this._getLayer(id);
+        }
+        else if (arguments.length>1) {
+            return this._addLayer(id,options);
+        }
+    }
+
+    _addLayer(id,options){
+        let newLayer;
+        if (options.type==='path') newLayer = new MapPath(id,this,options);
+        else if (options.type==='custom')  newLayer = new MapCustom(id,this,options);
+        this._layers.set( id, newLayer);
         return newLayer;
     }
 
-    getLayer(id){
-        return this.layers.get(id);
+    _getLayer(id){
+        return this._layers.get(id);
     }
 
 
@@ -151,8 +176,8 @@ class MapComposition extends Svg{
                 .scale(scale);
             this.outerContainer
                 .transition()
-                .delay(this.options.delay)
-                .duration(this.options.duration)
+                .delay(this._options.delay)
+                .duration(this._options.duration)
                 .call(this._zoom.transform, finalTransform)
                 .on('start', ()=> {
                     this.container.selectAll('g#departements path.area').style('pointer-events','none'); //Hack degueu
@@ -163,7 +188,7 @@ class MapComposition extends Svg{
                     this._zoom.scaleExtent([1, finalTransform.k * 4]);
                     this.container.selectAll('g#departements path.area').style('pointer-events','visible'); //Hack degueu
                     this.outerContainer.call(this._zoom, finalTransform);
-                    this.freezoom (this.options.freezoom);
+                    this.freezoom (this._options.freezoom);
                     resolve(this);
                 })
         })
@@ -182,8 +207,8 @@ class MapComposition extends Svg{
                 .scale(1);
             this.outerContainer
                 .transition()
-                .delay(this.options.delay)
-                .duration(this.options.duration)
+                .delay(this._options.delay)
+                .duration(this._options.duration)
                 .call(this._zoom.transform, finalTransform)
                 .on('start', ()=> {
                     this.container.selectAll('g#departements path.area').style('pointer-events','none'); //Hack degueu
@@ -205,7 +230,7 @@ class MapComposition extends Svg{
         //  this.enqueue( () => new Promise((resolve, reject) => {
         this.container.selectAll(`g${selector}`)
             .transition()
-            .duration(this.options.duration / 2)
+            .duration(this._options.duration / 2)
             .style('opacity', 0)
             .on('end', (d, i, n) => {
                 d3.select(n[i]).style('display', 'none');
@@ -220,7 +245,7 @@ class MapComposition extends Svg{
         this.container.selectAll(`g${selector}`)
             .style('display', 'auto')
             .transition()
-            .duration(this.options.duration / 2)
+            .duration(this._options.duration / 2)
             .style('opacity', 1);
         //        .on('end', ()=>resolve(this));
         //  }));

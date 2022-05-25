@@ -10,7 +10,7 @@ class SvgSize {
     constructor( {width ,height, margins} ){
         this.width = width;
         this.height = height;
-        this.margins = margins;
+        this.margins = (isNaN(margins))? margins : { top:margins, right:margins, bottom: margins, left:margins };
         this._update();
         //Proxy
         const handler={

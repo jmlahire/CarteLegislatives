@@ -1,0 +1,28 @@
+@use 'common' as *;
+
+
+g.MapPath {
+  path {
+    pointer-events:none;
+    fill:$blank;
+    stroke: #FFF;
+    &.clickable{
+      pointer-events: painted;
+      cursor: pointer;
+      &:hover{
+        fill:#ccc;
+      }
+    }
+  }
+}
+
+g.MapCustom{
+  text {
+    font-family: $roboto-condensed;
+    font-weight: bold;
+    user-select:none;
+    vector-effect: non-scaling-stroke;
+  }
+}
+
+

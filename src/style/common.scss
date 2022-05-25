@@ -5,3 +5,19 @@ $roboto-condensed: 'Roboto Condensed', sans-serif;
 $textNormal: #888;
 $textLight: #BBB;
 $textDark: #333;
+$blank: #EFEFEF;
+
+
+@mixin titre {
+  margin: 0;
+  padding: 0;
+  font-size:200%;
+  color:$textDark;
+  font-family: $roboto-condensed;
+  user-select:none;
+}
+
+body>h1 {
+  font-weight: bold;
+  @include titre;
+}

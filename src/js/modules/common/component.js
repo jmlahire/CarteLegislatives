@@ -30,7 +30,7 @@ class Component extends Queue {
         super();
         this.id = id || idGenerator(this);
         this._style = { };
-        this._dispatch = d3.dispatch("user");
+        this._dispatch = d3.dispatch('user');
         this._container = undefined;
         this._transition = d3.transition().duration(750);
         Registry.add(this);
