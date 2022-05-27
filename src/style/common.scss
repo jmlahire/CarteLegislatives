@@ -17,7 +17,7 @@ $blank: #EFEFEF;
   user-select:none;
 }
 
-body>h1 {
+header h1 {
   font-weight: bold;
   @include titre;
 }

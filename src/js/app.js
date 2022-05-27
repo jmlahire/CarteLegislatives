@@ -15,51 +15,76 @@ import * as d3Slider from 'd3-simple-slider'
 import * as d3Geo from 'd3-geo'
 const d3 = Object.assign({},d3Selection,d3Scale,d3Dispatch,d3Transition,d3Dsv,d3Array,d3Fetch,d3Slider,d3Color,d3Geo);
 
-import {Component} from './modules/common/component';
 import {MapComposition} from './modules/map/mapComposition';
 import {DataCollection} from "./modules/common/dataCollection";
+import {NavSelect} from "./modules/navigation/navSelect";
 
 
-d3.select('body').append('h1').text('Résultats du premier tour');
+d3.select('header').append('h1').text('Résultats du premier tour');
 
-const   nuances=new DataCollection("nuances");
-        nuances.load("./assets/data/nuances.csv", { primary:"id" });
+const   nuances = new DataCollection("nuances")
+                        .load("./assets/data/nuances.csv", { primary:"id" });
 
-const   resultats=new DataCollection("resultats");
-        resultats.load("./assets/data/sample.csv",
+const   resultats=new DataCollection("resultats")
+                        .load("./assets/data/sample.csv",
                         {   primary:"id",
                                     dtype: { circo:"int", pano:"int", nuanceId:"int", pct_exprimes:"float", pct_inscrits:"float", voix:"int"},
                                     mapper: d => { d.idcirco=`${d.id.substring(0,3)}-${d.id.substring(3,5)}`; return d; }}
                                 );
 
+let listeCircos = new DataCollection('listeCircos')
+    .load( "./assets/data/listecircos.csv", { delimiter:';',primary:'CIRCO_ID', dtype: { CIRCO_ID:"string"}} );
+
+
+
+
+
+
+
 function styleFunction (properties) {
-    let fill=d3.hsl("#CCC"),
-        stroke=d3.color('#fff'),
-        strokeWidth=1;
-
-
+    const blank='#ccc';
+    let fill=blank;
     try{
-        const data=properties.joined.sort((a,b) => d3.descending(a.voix,b.voix)),
-            first = data[0];
-        fill=nuances.map.get(first.nuanceId)[0].couleur;
-        fill=d3.hsl(fill);
+        const   data=properties.JDATA.sort((a,b) => d3.descending(a.voix,b.voix)),
+                first = data[0],
+                color = nuances.map.get(first.nuanceId)[0].couleur;
         //Election au premier tour
-        if ( (first.pct_exprimes>50 && first.pct_inscrits>25) || true ){
-            strokeWidth=1;
-            stroke=fill.copy();
-            stroke.l=.9;
+        if ( (first.pct_exprimes>50 && first.pct_inscrits>25)  ){
+            let colorA=d3.hsl(color),
+                colorB=colorA.copy();
+            colorA.l*=.5;
+            colorB.l*=1.2;
+            fill=d3.create('svg:pattern')
+                .attr('id',`pat${first.nuanceId}`)
+                .attr('patternUnits','userSpaceOnUse')
+                .attr('width',10)
+                .attr('height',10)
+                .attr('patternTransform','rotate(45)');
+            fill.append('rect')
+                .attr('x',0)
+                .attr('y',0)
+                .attr('width',10)
+                .attr('height',10)
+                .attr('fill',colorB.formatHex());
+            fill.append('line')
+                .attr('x1',0)
+                .attr('y1',0)
+                .attr('x2',0)
+                .attr('y2',10)
+                .attr('stroke',color)
+                .attr('stroke-width',5);
+
         }
         //Ballottage
         else{
-            fill.s*=.5;
-            fill.l*=1.5;
+            fill=color;
         }
 
     }
     catch(error){
         console.warn(error);
     }
-    return { fill: fill.formatHex(), stroke: stroke.formatHex(), strokeWidth:strokeWidth } ;
+    return { fill: fill } ;
 }
 
 function renderDomLabels ()  {
@@ -79,7 +104,7 @@ function renderDomLabels ()  {
                         .style('font-size',`${fontSize}px`)
                         .style('text-anchor','end');
     })
-    const etranger=  { x0: 510, y0: 2050, gap: 117.5 };
+    const etranger  =  { x0: 510, y0: 2050, gap: 117.5 };
     const label=this._container.append('text')
         .attr('x',doms.x0+20 )
         .attr('y', etranger.y0+fontSize )
@@ -103,11 +128,11 @@ function renderDomLabels ()  {
 const myMap=new MapComposition( 'CarteFrance', { width:2000, height:2200, margins:10 } )
                 .appendTo(null);
 
-Promise.all([nuances.ready, resultats.ready]).then(()=>{
+Promise.all([nuances.ready, resultats.ready, listeCircos.ready]).then(()=>{
 
     myMap.layer('circos', {  type:'path', source:'./../assets/geodata/circonscriptions-simplifie.topojson', primary:'ID', autofit:true, clickable:true })
         .load()
-        .fit( )  //
+        .fit( )
         .render()
         .on('click', d=>console.log(d))
         .join(resultats,"idcirco")
@@ -124,6 +149,27 @@ Promise.all([nuances.ready, resultats.ready]).then(()=>{
 
 
 
+
+
+
+
+    listeCircos = listeCircos.toGroups(['REG_ID','DEP_ID']);
+    let menu=new NavSelect('region').appendTo('header');
+    let nestedCircos=[new Map(),new Map(),new Map()];
+    listeCircos.forEach(r=> {
+        nestedCircos[0].set(r[0], { label:r[1][0][1][0]['REG_NOM'] });
+        r[1].forEach( d=> {
+            console.log(d);
+            nestedCircos[1].set(d[0], { label: d[1][0]['DEP_NOM']})
+        });
+    } );
+
+
+    console.warn(nestedCircos);
+
+
+
+
 })
 
 
@@ -131,7 +177,3 @@ Promise.all([nuances.ready, resultats.ready]).then(()=>{
 
 
 
-setTimeout(()=>{
-    console.log('FIT');
-    myMap.layer('circos').fit(d=>d.properties.REG==='84').render();
-},2000)

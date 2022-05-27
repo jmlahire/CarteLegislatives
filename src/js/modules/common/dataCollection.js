@@ -199,6 +199,11 @@ class DataCollection {
         else return null;
     }
 
+    /**
+     * Renvoie une Map contenant les données sous forme hiérarchique
+     * @param {Array} keys
+     * @returns {*}
+     */
     toGroups(keys) {
         if (typeof keys === 'string') keys = [keys];
         let fns = keys.map((k) => (d) => d[k]),

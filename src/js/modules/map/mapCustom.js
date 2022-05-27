@@ -8,8 +8,6 @@ import * as d3Ease from 'd3-ease'
 import * as d3Geo from 'd3-geo'
 import * as d3Zoom from 'd3-zoom'
 import * as d3Dispatch from 'd3-dispatch'
-
-
 const d3=Object.assign({},d3Selection,d3Fetch,d3Array,d3Geo,d3Zoom,d3Transition,d3Ease,d3Dispatch);
 
 class MapCustom extends MapLayer {
@@ -32,8 +30,9 @@ class MapCustom extends MapLayer {
      * @returns {MapPaths}
      */
     render(){
+        this._render.call(this);
         this.parent.enqueue( () => new Promise((resolve, reject) => {
-            this._render.call(this);
+
             resolve(this);
         }))
         return this;

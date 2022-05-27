@@ -31,14 +31,14 @@ class MapPath extends MapLayer {
     }
 
     /**
-     * Limite le zoom et le déplacement au contenu du calque
+     * Limite le zoom et le déplacement au contenu du calque. Nécessite un appel à render pour redessiner la carte.
      * @returns {MapPath}
      */
     fit(filterFn=(d)=>true){
         this.parent.enqueue( () => new Promise((resolve, reject) => {
             const focused = this.geodata.filter( filterFn );
             this.projection.fitExtent( [[0,0], [this.parent.size.effectiveWidth, this.parent.size.effectiveHeight]], {type:"FeatureCollection", features: focused }  );
-            resolve(this)
+            resolve(this);
         }));
         return this;
     }
@@ -67,17 +67,21 @@ class MapPath extends MapLayer {
      */
     render(){
         //if (this._options.autofit===true) this.fit();
+       // console.log('render');
         this.parent.enqueue( () => new Promise((resolve, reject) => {
             this.path.projection(this.projection);
             this._container
                     .selectAll("path")
-                    .data(this.geodata)
-                    .enter()
-                    .append('path')
-                    .attr('class', d => `path _${d.properties[this._options.primary]}` )
-                    .classed('clickable',this._options.clickable)
-                    .attr('d', this.path)
-                    .on('click', (e,d) => (this._options.clickable ) ? this._dispatch.call('click', this, { event:e, values: d.properties, id :d.properties[this._options.primary]} ) : null );
+                    .data(this.geodata, d=>d.properties[this._options.primary] )
+                    .join(
+                        enter => enter.append('path')
+                                        .attr('class', d => `path _${d.properties[this._options.primary]}` )
+                                        .classed('clickable',this._options.clickable)
+                                        .attr('d', this.path)
+                                        .on('click', (e,d) => (this._options.clickable ) ? this._dispatch.call('click', this, { event:e, values: d.properties, id :d.properties[this._options.primary]} ) : null ),
+                        update => update.call( update=>update.transition().duration(0).attr('d', this.path)),
+                        exit => exit.remove()
+                    )
             resolve(this);
         }))
         return this;
@@ -98,10 +102,10 @@ class MapPath extends MapLayer {
                 data=data.exportToMap(dataKey);
                 this._container.selectAll("path")
                     .each( (d) => {
-                        d.properties.joined =  d.properties.joined || [];
+                        d.properties.JDATA =  d.properties.JDATA || [];
                         const   id = d.properties[geoKey],
                                 datum = data.get(id);
-                        if (datum) d.properties.joined.push(...datum);
+                        if (datum) d.properties.JDATA.push(...datum);
                     });
                 resolve(this);
             });
@@ -147,11 +151,30 @@ class MapPath extends MapLayer {
             this._container.selectAll("path")
                 .each( (d,i,n) => {
                     let style=styleFunction(d.properties);
-                    if (style.fill) d3.select(n[i]).style('fill',style.fill);
-                    if (style.stroke) d3.select(n[i]).style('stroke',style.stroke);
-                    if (style.strokeWidth) d3.select(n[i]).style('stroke-width',style.strokeWidth);
+                    let transition=d3.select(n[i]).transition().duration(this.parent._options.duration/2).on('end',()=> resolve(this) );
+                    //Couleur simple
+                    if (typeof style.fill==='string') {
+                        transition.style('fill',style.fill);
+                    }
+                    //Pattern
+                    else if (typeof style.fill==='object' && style.fill.constructor.name==='Selection$4') {
+                        const   id = style.fill.attr('id'),
+                                color = style.fill.select("line").attr('stroke');
+                        let pattern=this.parent._defs.select(`pattern#${id}`);
+                        if (pattern.empty()) {
+                            pattern =  this.parent._defs.append( () => style.fill.node()) ;
+                        }
+                        //console.log(pattern);
+                        //u.style('fill',`url(#${id})`);
+                        transition.style('fill',color).on('end',function(d) {
+                            let elt=d3.select(this);
+                            //console.log(d,this)
+                             elt.style('fill',`url(#${id})`);
+                        });
+                    }
+                    if (style.stroke) u.style('stroke',style.stroke);
+                    if (style.strokeWidth) u.style('stroke-width',style.strokeWidth);
                 });
-            resolve(this);
         }));
         return this;
     }

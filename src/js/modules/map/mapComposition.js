@@ -10,9 +10,6 @@ import * as d3Ease from 'd3-ease'
 import * as d3Geo from 'd3-geo'
 import * as d3Zoom from 'd3-zoom'
 import * as d3Dispatch from 'd3-dispatch'
-
-
-
 const d3=Object.assign({},d3Selection,d3Geo,d3Zoom,d3Transition,d3Ease,d3Dispatch);
 
 
@@ -88,6 +85,14 @@ class MapComposition extends Svg{
     }
 
 
+    /**
+     * Redessine tous les calques (utile par exemple en cas de modificaiton de la projection)
+     * @returns {MapComposition}
+     */
+    render(){
+        this._layers.forEach( (layer,key)=> {console.log(layer); layer.render();} );
+        return this;
+    }
 
     freezoom(bool=true){
         //  this.enqueue( () => new Promise((resolve, reject) => {

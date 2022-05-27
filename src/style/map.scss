@@ -6,6 +6,7 @@ g.MapPath {
     pointer-events:none;
     fill:$blank;
     stroke: #FFF;
+    stroke-width:.2;
     &.clickable{
       pointer-events: painted;
       cursor: pointer;
