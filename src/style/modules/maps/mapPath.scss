@@ -1,10 +1,13 @@
-@use 'common' as *;
+@use 'src/style/common' as *;
 
 
 g.MapPath {
+  text {
+    font-family: $roboto-condensed;
+  }
   path {
     pointer-events:none;
-    fill:$blank;
+    fill:#FFF;
     stroke: #FFF;
     stroke-width:.2;
     &.clickable{
@@ -16,14 +19,4 @@ g.MapPath {
     }
   }
 }
-
-g.MapCustom{
-  text {
-    font-family: $roboto-condensed;
-    font-weight: bold;
-    user-select:none;
-    vector-effect: non-scaling-stroke;
-  }
-}
-
 

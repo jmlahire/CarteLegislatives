@@ -1,0 +1,41 @@
+@use 'src/style/common' as *;
+
+._mapLegend{
+  ul {
+    display:flex;
+    flex-wrap: wrap;
+    margin:.5rem 0 .5rem;
+
+    &.categories {
+
+
+      justify-content: flex-start;
+      li {
+        flex: 0 1 5rem;
+        span {
+          display:inline-block;
+          font-family:$roboto-condensed;
+
+          &.color {
+            width:2rem;
+            height:1.2rem;
+            margin-right:.2rem;
+            border-radius:2px;
+          }
+          &+span {
+            position:relative;
+            top:-.3rem;
+            margin-right:.5rem;
+            user-select:none;
+          }
+      }
+
+      }
+    }
+  }
+  li {
+    list-style:none;
+
+  }
+
+}

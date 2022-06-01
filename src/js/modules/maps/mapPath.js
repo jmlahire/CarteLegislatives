@@ -1,5 +1,7 @@
 import {MapLayer} from './mapLayer.js'
 
+import '../../../style/modules/maps/mapPath.scss'
+
 import * as d3Selection from 'd3-selection'
 import * as d3Transition from 'd3-transition'
 import * as d3Fetch from 'd3-fetch'
@@ -146,12 +148,14 @@ class MapPath extends MapLayer {
 
     }
 
-    fill(styleFunction){
+    fill(stylingFunction){
         this.parent.enqueue( () => new Promise((resolve, reject) => {
             this._container.selectAll("path")
                 .each( (d,i,n) => {
-                    let style=styleFunction(d.properties);
-                    let transition=d3.select(n[i]).transition().duration(this.parent._options.duration/2).on('end',()=> resolve(this) );
+                    const   style=stylingFunction(d.properties),
+                            transition=d3.select(n[i])
+                                            .transition()
+                                            .duration(this.parent._options.duration/2);
                     //Couleur simple
                     if (typeof style.fill==='string') {
                         transition.style('fill',style.fill);
@@ -164,21 +168,34 @@ class MapPath extends MapLayer {
                         if (pattern.empty()) {
                             pattern =  this.parent._defs.append( () => style.fill.node()) ;
                         }
-                        //console.log(pattern);
-                        //u.style('fill',`url(#${id})`);
-                        transition.style('fill',color).on('end',function(d) {
-                            let elt=d3.select(this);
-                            //console.log(d,this)
-                             elt.style('fill',`url(#${id})`);
+                        transition.style('fill',color)
+                            .on('end',function(d) {
+                                        d3.select(this).style('fill',`url(#${id})`);
                         });
                     }
+                    //Styles additionnels
                     if (style.stroke) u.style('stroke',style.stroke);
                     if (style.strokeWidth) u.style('stroke-width',style.strokeWidth);
                 });
+            //Résolution
+            setTimeout(()=>resolve(this), this.parent._options.duration/2);
         }));
         return this;
     }
 
+    get colors(){
+        return this.parent.enqueue( () => new Promise((resolve, reject) => {
+           let colors=new Set();
+           this._container
+               .selectAll('path')
+               .each( function(d) {
+                   let c= d3.select(this).style('fill');
+                   console.log()
+               });
+           resolve(colors);
+
+        }));
+    }
 
 
 

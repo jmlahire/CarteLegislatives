@@ -1,0 +1,25 @@
+@use 'src/style/common' as *;
+@use 'src/style/text' as *;
+
+div#Synthese {
+  margin-top:3rem;
+  h3{
+    @include titre;
+    text-align:left;
+  }
+
+  ul {
+    display:flex;
+    li {
+      list-style:none;
+      display:block;
+      flex: 0 1 1rem;
+      height:3rem;
+      svg {
+        width:100%;
+        cursor:pointer;
+      }
+    }
+  }
+
+}

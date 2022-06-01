@@ -1,0 +1,11 @@
+@use 'src/style/common' as *;
+
+
+g.MapCustom{
+  text {
+    font-family: $roboto-condensed;
+    font-weight: bold;
+    user-select:none;
+    vector-effect: non-scaling-stroke;
+  }
+}

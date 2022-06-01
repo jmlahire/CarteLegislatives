@@ -2,8 +2,6 @@ import {Svg} from '../common/svg.js'
 import {MapPath} from './mapPath.js'
 import {MapCustom} from './mapCustom.js'
 
-import './../../../style/map.scss'
-
 import * as d3Selection from 'd3-selection'
 import * as d3Transition from 'd3-transition'
 import * as d3Ease from 'd3-ease'
@@ -16,7 +14,6 @@ const d3=Object.assign({},d3Selection,d3Geo,d3Zoom,d3Transition,d3Ease,d3Dispatc
 
 class MapComposition extends Svg{
 
-    static type='MapComposition';
     static defaultOptions= { duration: 2000, delay:0, projection: d3.geoMercator(), freezoom: false};
 
     /**

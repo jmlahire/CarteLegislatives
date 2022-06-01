@@ -201,15 +201,19 @@ class DataCollection {
 
     /**
      * Renvoie une Map contenant les données sous forme hiérarchique
-     * @param {Array} keys
+     * @param {Array} keys : clés
+     * @param {String} output : si vaut array, renvoie un array multiniveau (d3.groups), sinon renvoie une Map multiniveau (d3.group)
      * @returns {*}
      */
-    toGroups(keys) {
+    toGroups(keys, output='array') {
+        const groupFn = (output==='array') ? d3.groups: d3.group;
         if (typeof keys === 'string') keys = [keys];
         let fns = keys.map((k) => (d) => d[k]),
-            nested = d3.groups(this.dataset, ...fns);      //A vérifier que ça marche avec plusieurs clés...
+            nested = groupFn(this.dataset, ...fns);      //A vérifier que ça marche avec plusieurs clés...
         return nested;
     }
+
+
 
     /**
      * Applique une fonction à chaque ligne de données

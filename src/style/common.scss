@@ -1,23 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto+Serif:ital,wght@0,400;0,500;1,400&family=Roboto:ital,wght@0,300;0,400;0,500;0,900;1,300;1,400&display=swap');
-$roboto-serif: 'Roboto Serif', serif;
-$roboto-sans: 'Roboto', sans-serif;
+@import url('https://fonts.googleapis.com/css2family=Nunito:wght@300;400;700&family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,300;0,400;0,500;0,900;1,300;1,400display=swap');
+$fontB: 'Nunito', sans-serif;
+$roboto: 'Roboto', sans-serif;
 $roboto-condensed: 'Roboto Condensed', sans-serif;
+$bckColor: #FFF;
 $textNormal: #888;
 $textLight: #BBB;
 $textDark: #333;
 $blank: #EFEFEF;
 
-
-@mixin titre {
-  margin: 0;
-  padding: 0;
-  font-size:200%;
-  color:$textDark;
-  font-family: $roboto-condensed;
-  user-select:none;
+path{
+  fill:$bckColor;
 }
 
-header h1 {
-  font-weight: bold;
-  @include titre;
-}

@@ -1,0 +1,42 @@
+@use 'src/style/common' as *;
+
+@mixin disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+
+._nestedSelection{
+  ul {
+    display:flex;
+    flex-direction: row-reverse;
+    width:100%;
+    margin:1rem auto;
+    justify-content: flex-end;
+    li {
+      list-style: none;
+      text-align:center;
+      font-family: $fontB;
+      font-size:90%;
+      &.disabled {
+        @include disabled;
+      }
+      option {
+        padding:.2rem;
+        &:disabled{
+          opacity:.6;
+          font-weight:bold;
+        }
+      }
+
+    }
+    select {
+      min-width:90%;
+      padding:.1rem .2rem;
+      border-radius:.2rem;
+
+    }
+  }
+
+}
+

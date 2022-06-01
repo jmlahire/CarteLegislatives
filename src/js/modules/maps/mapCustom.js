@@ -1,5 +1,7 @@
 import {MapLayer} from './mapLayer.js'
 
+import '../../../style/modules/maps/mapCustom.scss'
+
 import * as d3Selection from 'd3-selection'
 import * as d3Transition from 'd3-transition'
 import * as d3Fetch from 'd3-fetch'
