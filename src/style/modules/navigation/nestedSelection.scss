@@ -1,4 +1,4 @@
-@use 'src/style/common' as *;
+@use 'src/style/variables' as *;
 
 @mixin disabled {
   opacity: 0.6;
@@ -6,13 +6,14 @@
 }
 
 
-._nestedSelection{
+._nNestSel{
   ul {
     display:flex;
     flex-direction: row-reverse;
     width:100%;
     margin:1rem auto;
     justify-content: flex-end;
+    padding-inline-start:0;
     li {
       list-style: none;
       text-align:center;
@@ -33,7 +34,7 @@
     select {
       min-width:90%;
       padding:.1rem .2rem;
-      border-radius:.2rem;
+      border-radius:2px;
 
     }
   }

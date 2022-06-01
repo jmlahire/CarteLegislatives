@@ -12,17 +12,19 @@ const d3=Object.assign({},d3Selection,d3Geo,d3Zoom,d3Transition,d3Ease,d3Dispatc
 
 class MapLayer extends Component {
 
+
     /**
      * CONSTRUCTEUR
      * @param {String} id   Identifiant
+     * @param {String} [className]   Classe optionnelle
      * @param {MapComposition} parent   Conteneur oarent (instance de MapComposition)
      */
-    constructor(id,parent){
+    constructor(id,className='', parent){
         super(id);
         this._dispatch = d3.dispatch('click');
         this._container = d3.create('svg:g')
                                 .attr('id',this.id)
-                                .classed(this.type,true);
+                                .classed(className,className);
         this.appendTo(parent);
     }
 

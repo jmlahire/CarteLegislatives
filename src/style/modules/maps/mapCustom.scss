@@ -1,11 +1,9 @@
-@use 'src/style/common' as *;
+@use 'src/style/variables' as *;
 
-
-g.MapCustom{
+g._mCust{
   text {
-    font-family: $roboto-condensed;
-    font-weight: bold;
-    user-select:none;
-    vector-effect: non-scaling-stroke;
+    font-family: $fontA2;
+    font-weight: bolder;
+
   }
 }

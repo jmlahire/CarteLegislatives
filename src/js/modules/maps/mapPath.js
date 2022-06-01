@@ -1,6 +1,6 @@
 import {MapLayer} from './mapLayer.js'
 
-import '../../../style/modules/maps/mapPath.scss'
+//import '../../../style/modules/maps/mapPath.scss'
 
 import * as d3Selection from 'd3-selection'
 import * as d3Transition from 'd3-transition'
@@ -16,6 +16,7 @@ const d3=Object.assign({},d3Selection,d3Fetch,d3Array,d3Geo,d3Zoom,d3Transition,
 
 class MapPath extends MapLayer {
 
+    static _type='_mPth';
     static defaultOptions= { primary:'ID', autofit:"auto", clickable:true };
 
     /**
@@ -28,7 +29,7 @@ class MapPath extends MapLayer {
      * @param {Boolean} options.clickable=true - si vrai, les polygones sont clickables
      */
     constructor(id,parent, options = {} ){
-        super(id, parent);
+        super(id, MapPath._type, parent );
         this._options = {...MapPath.defaultOptions, ...options };
     }
 
@@ -80,7 +81,10 @@ class MapPath extends MapLayer {
                                         .attr('class', d => `path _${d.properties[this._options.primary]}` )
                                         .classed('clickable',this._options.clickable)
                                         .attr('d', this.path)
-                                        .on('click', (e,d) => (this._options.clickable ) ? this._dispatch.call('click', this, { event:e, values: d.properties, id :d.properties[this._options.primary]} ) : null ),
+                                        .on('click', (e,d) => {
+                                            if (this._options.clickable ) this._dispatch.call('click', this, { event:e, values: d.properties, id :d.properties[this._options.primary]} ) ;
+                                            this.highlight(d.properties[this._options.primary]);
+                                        } ),
                         update => update.call( update=>update.transition().duration(0).attr('d', this.path)),
                         exit => exit.remove()
                     )
@@ -161,7 +165,7 @@ class MapPath extends MapLayer {
                         transition.style('fill',style.fill);
                     }
                     //Pattern
-                    else if (typeof style.fill==='object' && style.fill.constructor.name==='Selection$4') {
+                    else if (typeof style.fill==='object' ) {           //&& style.fill.constructor.name==='Selection$4'
                         const   id = style.fill.attr('id'),
                                 color = style.fill.select("line").attr('stroke');
                         let pattern=this.parent._defs.select(`pattern#${id}`);
@@ -183,21 +187,13 @@ class MapPath extends MapLayer {
         return this;
     }
 
-    get colors(){
-        return this.parent.enqueue( () => new Promise((resolve, reject) => {
-           let colors=new Set();
-           this._container
-               .selectAll('path')
-               .each( function(d) {
-                   let c= d3.select(this).style('fill');
-                   console.log()
-               });
-           resolve(colors);
-
-        }));
+    highlight(id){
+        this._container
+            .selectAll('path.clickable')
+            .classed('highlight', (d)=> d.properties[this._options.primary]===id )
+            .filter( (d)=> d.properties[this._options.primary]===id )
+            .raise();
     }
-
-
 
 
 }

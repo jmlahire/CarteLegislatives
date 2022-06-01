@@ -1,4 +1,4 @@
-g.MapCustom{
+g._mCust {
   text {
     alignment-baseline: middle;
   }
@@ -18,3 +18,6 @@ g#depts{
   }
 }
 
+#mapContainer{
+  padding-right:2rem;
+}

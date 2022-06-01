@@ -1,6 +1,6 @@
 import {Component} from "./../common/component.js";
 
-import '../../../style/modules/navigation/nestedSelection.scss'
+//import '../../../style/modules/navigation/nestedSelection.scss'
 
 import * as d3Selection from 'd3-selection'
 import * as d3Array from 'd3-array'
@@ -133,12 +133,14 @@ class DropdownList {
 
 class NestedSelection extends Component{
 
+    static _type='_nNestSel';
+
     constructor(id){
         super(id);
         this._dispatch=d3.dispatch('select');
         this._outerContainer=d3.create('div')
             .attr('id',this.id)
-            .classed('_nestedSelection',true);
+            .classed(NestedSelection._type,true);
         this._innerContainer = this._outerContainer
             .append('ul');
     }

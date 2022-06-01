@@ -1,14 +1,18 @@
-@use 'src/style/common' as *;
+@use 'src/style/variables' as *;
 
 
-g.MapPath {
-  text {
-    font-family: $roboto-condensed;
-  }
+@keyframes blinkingPath{
+  0% { fill-opacity:1; stroke-width:4; }
+  50% { fill-opacity:.7; stroke-width:0;}
+  100% { fill-opacity:1; stroke-width:4; }
+}
+
+
+g._mPth {
   path {
     pointer-events:none;
-    fill:#FFF;
-    stroke: #FFF;
+    fill:none;
+    stroke: none;
     stroke-width:.2;
     &.clickable{
       pointer-events: painted;
@@ -16,6 +20,10 @@ g.MapPath {
       &:hover{
         fill:#ccc;
       }
+    }
+    &.highlight{
+      stroke:$back1;
+      animation:blinkingPath 1s infinite;
     }
   }
 }

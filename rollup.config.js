@@ -2,8 +2,13 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import babel from '@rollup/plugin-babel';
-import sass from 'rollup-plugin-sass';
 import copy from 'rollup-plugin-copy';
+import scss from 'rollup-plugin-scss'
+import postcss from 'postcss';
+import autoprefixer from 'autoprefixer';
+import simpleVars from "postcss-simple-vars";
+
+
 
 // `npm run build` -> `production` is true
 // `npm run dev` -> `production` is false
@@ -31,17 +36,19 @@ const conf = {
         babel({
             babelHelpers: 'bundled',
             plugins: ['@babel/plugin-proposal-class-properties'],
-            presets: ['@babel/preset-flow']
+            presets: ['@babel/preset-flow'],
+            exclude: 'node_modules/**',     //Ajouté
         }), // transpilation
-        sass({
+        scss({
+            output: 'public/style/screen.css',
             include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
-            output: "public/style/screen.css",
-            failOnError: true,
+            processor: () => postcss([simpleVars,autoprefixer])
         }),
         copy({
             targets: [
                 { src: 'src/index.html', dest: 'public' },
                 { src: ['src/assets/**/*'], dest: 'public/assets' },
+                { src: ['style/img/**/*'], dest: 'public/style/img' },
             ]
         })
     ]

@@ -1,6 +1,6 @@
 import {MapLayer} from './mapLayer.js'
 
-import '../../../style/modules/maps/mapCustom.scss'
+//import '../../../style/modules/maps/mapCustom.scss'
 
 import * as d3Selection from 'd3-selection'
 import * as d3Transition from 'd3-transition'
@@ -14,6 +14,8 @@ const d3=Object.assign({},d3Selection,d3Fetch,d3Array,d3Geo,d3Zoom,d3Transition,
 
 class MapCustom extends MapLayer {
 
+    static _type='_mCust';
+
     /**
      * CONSTRUCTEUR
      * @param {String} id - Identifiant
@@ -22,7 +24,7 @@ class MapCustom extends MapLayer {
      * @param {Function} options.render - clé primaire des données géographiques
      */
     constructor(id,parent, options = {} ){
-        super(id, parent);
+        super(id, MapCustom._type, parent);
         this._render=options.render;
     }
 

@@ -47,12 +47,11 @@ class Svg extends Component {
         this.size = new SvgSize({width,height,margins} );
         this._outerContainer=d3.create('svg:svg')
                                     .attr('id',this.id)
-                                    .attr('class',this.constructor.name)
                                     .attr(`preserveAspectRatio`, 'xMaxYMin meet')
                                     .attr('viewBox', `0 0 ${this.size.width} ${this.size.height}`)
                                     .attr('width', `100%`);
         this._innerContainer=this._outerContainer.append('svg:g')
-                                    .attr('class','svgContent')
+                                    .attr('class','_svgContent')
                                     .attr('transform',`translate(${this.size.margins.left} ${this.size.margins.top})`);
     }
 

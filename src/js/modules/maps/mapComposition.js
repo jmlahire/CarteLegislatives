@@ -14,6 +14,7 @@ const d3=Object.assign({},d3Selection,d3Geo,d3Zoom,d3Transition,d3Ease,d3Dispatc
 
 class MapComposition extends Svg{
 
+    static _type='_mComp';
     static defaultOptions= { duration: 2000, delay:0, projection: d3.geoMercator(), freezoom: false};
 
     /**
@@ -33,16 +34,18 @@ class MapComposition extends Svg{
     constructor(id, size={}, options={}){
         super(id, size.width, size.height, size.margins);
         this._options = {...MapComposition.defaultOptions,...options};
+       // this.outerContainer.classed(MapComposition._type,true);
+        console.log(this);
         this._layers = new Map();
         this._defs = this.outerContainer.append('defs').lower();
         this._dispatch = d3.dispatch('zoom');
-        this._zoomEvent={e:null,level:1,source:null};
+        //this._zoomEvent={e:null,level:1,source:null};
         this._zoom = d3.zoom()
                         .scaleExtent([1, 15])
                         .translateExtent([[0, 0], [this.size.width, this.size.height]])
                         .on('zoom', (e) => this._handleZoom.call(this,e) );
-        this.outerContainer.call(this._zoom);
-        this.freezoom(this._options.freezoom);
+       // this.outerContainer.call(this._zoom);
+       // this.freezoom(this._options.freezoom);
 
         this.projection = this._options.projection;
         this.path = d3.geoPath();

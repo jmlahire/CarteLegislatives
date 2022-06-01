@@ -1,0 +1,46 @@
+@use '../../variables' as *;
+
+header{
+  h1,h2,h3,h4,h5,h6  {
+    text-align:center;
+    &>span{
+      font-family: $fontA2;
+      background: $tone1;
+      color: $back1;
+      padding:.2rem .5rem;
+      border-radius:4px;
+      font-weight: normal;
+      font-size:80%;
+    }
+  }
+}
+h1,h2,h3,h4,h5,h6  {
+  @include titraille;
+}
+h1{
+  font-size:200%;
+}
+h2{
+  font-size:150%;
+}
+h3{
+  font-size:120%;
+}
+p{
+  font-family: $fontB;
+}
+option,input,textarea{
+  font-family: $fontB;
+}
+svg text {
+  font-family: $fontA1;
+  user-select:none;
+  vector-effect: non-scaling-stroke;
+}
+ul{
+  padding-inline-start: 0;
+  padding:0;
+}
+div{
+  position:relative;
+}

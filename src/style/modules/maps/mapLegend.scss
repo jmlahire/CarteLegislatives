@@ -1,41 +1,71 @@
-@use 'src/style/common' as *;
+@use 'src/style/variables' as *;
 
-._mapLegend{
-  ul {
+$barWidth:2rem;
+$barHeight:1.2rem;
+
+._mLeg{
+  margin:1rem;
+
+  h4 {
+    margin-bottom:1rem;
+  }
+
+  div.categories {
     display:flex;
-    flex-wrap: wrap;
-    margin:.5rem 0 .5rem;
-
-    &.categories {
-
-
+    &.horizontal{
+      flex-wrap: nowrap;
       justify-content: flex-start;
-      li {
+      margin:.5rem 0 .5rem;
+      figure{
         flex: 0 1 5rem;
+        margin:0;
+      }
+    }
+    &.vertical{
+      flex-wrap: wrap;
+      flex-direction:column;
+      align-content:space-around;
+      figure{
+        flex: 0 1 auto;
+      }
+
+    }
+
+
+
+      figure {
+        flex: 0 1 5rem;
+        position:relative;
+        width:90%;
+        margin:.1rem;
+
         span {
           display:inline-block;
-          font-family:$roboto-condensed;
-
+          font-family:$fontA2;
+          font-weight:bold;
           &.color {
-            width:2rem;
-            height:1.2rem;
+            width:$barWidth;
+            height:$barHeight;
             margin-right:.2rem;
             border-radius:2px;
           }
-          &+span {
+
+      }
+        figcaption {
+          display:inline-block;
+          &>span {
             position:relative;
             top:-.3rem;
             margin-right:.5rem;
             user-select:none;
           }
-      }
+        }
 
       }
     }
-  }
-  li {
-    list-style:none;
 
-  }
+
+
+
 
 }

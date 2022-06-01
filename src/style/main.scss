@@ -1,0 +1,9 @@
+@use 'normalize';
+@use 'custom';
+@use 'modules/common/common' as *;
+@use 'modules/maps/mapPath';
+@use 'modules/maps/mapCustom';
+@use 'modules/maps/mapLegend';
+@use 'modules/navigation/nestedSelection';
+@use 'modules/navigation/panel';
+@use 'modules/custom/synthese';

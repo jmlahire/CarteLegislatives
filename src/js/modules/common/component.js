@@ -36,16 +36,6 @@ class Component extends Queue {
         Registry.add(this);
     }
 
-
-    /**
-     * Renvoie le nom du constructeur
-     * @returns {String}
-     */
-    get type(){
-        return this.constructor.name;
-    }
-
-
     /**
      * Renvoie le conteneur extérieur du composant (par défaut, renvoie vers le conteneur unique)
      * @returns {d3.selection}

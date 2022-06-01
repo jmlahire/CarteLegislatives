@@ -1,6 +1,6 @@
 import {Component} from "./../common/component.js";
 
-import '../../../style/modules/custom/synthese.scss'
+//import '../../../style/modules/custom/synthese.scss'
 
 import * as d3Selection from 'd3-selection'
 import * as d3Dispatch from 'd3-dispatch'
@@ -22,12 +22,18 @@ class FigureFactory{
         let code= '',
             size = { width :300, height : 300 };
         switch (type){
-            case 'man': size.width=200;
-                        code = this._man(colors);
-                        break;
-            case 'woman': size.width=200;
-                        code = this._woman(colors);
-                        break;
+            case 'man':             size.width=200;
+                                    code = this._man(colors);
+                                    break;
+            case 'woman':           size.width=200;
+                                    code = this._woman(colors);
+                                    break;
+            case 'triangulaire':    size.width=300;
+                                    code = this._triangulaire(colors);
+                                    break;
+            case 'quadrangulaire':  size.width=300;
+                                    code = this._quadrangulaire(colors);
+                                    break;
 
 
         }
@@ -43,6 +49,12 @@ class FigureFactory{
     _woman(c){
         return `<circle fill="${c[0]}" cx="90" cy="31.6" r="24"/><path fill="${c[0]}" d="M112.2,59.4c17.1,0,29.4,13.2,31.8,20.5l20.9,64.9c4.3,13.9-14.8,19.7-19.3,6.1l-19-59.6h-10.5L147.6,197h-30v79.2c0,14.1-22.5,14.1-22.5,0v-79.9H83.7V276c0,14.4-22.5,14.4-22.5,0v-78.8H31L62.3,91.5H51.9l-18.7,59.7c-4.5,13-23.4,7.6-19.3-6.3L34.8,80C37,72.6,47,59.5,64.2,59.5C64.2,59.4,112.2,59.4,112.2,59.4z"/>`;
     }
+    _triangulaire(c){
+        return `<polyline fill="${c[0]}" points="39.7,243.6 266.8,243.6 153.2,173.9 "/><polyline fill="${c[1]}" points="149.8,166.1 149.8,46.8 39.8,236.2 "/><polyline fill="${c[2]}" points="157.4,166.1 156.5,46.8 266.8,236.2 "/>`;
+    }
+    _quadrangulaire(c){
+        return `<polyline fill="${c[0]}" points="50.6,52.5 50.6,247.4 148.3,149.9 "/><polyline fill="${c[1]}" points="253.4,52.5 253.4,247.4 154.7,149.9 "/><polyline fill="${c[2]}" points="53.9,48.7 249.9,48.7 151.9,144.6 "/><polyline fill="${c[3]}" points="53.9,251.3 249.9,251.3 151.9,154.4 "/>`;
+    }
 
 }
 
@@ -50,7 +62,7 @@ class FigureFactory{
 
 class Synthese extends Component {
 
-
+    static _type='_cSynth';
 
     /**
      * CONSTRUCTEUR
@@ -62,11 +74,14 @@ class Synthese extends Component {
         this._sectionElus = this._container.append('section').attr('class','elus');
         this._sectionElus.append('h3').text('Députés élus au premier tour');
         this._sectionElus.append('ul');
+        this._sectionTriang = this._container.append('section').attr('class','triang');
+        this._sectionTriang.append('h3').text('Triangulaires & quadrangulaires');
+        this._sectionTriang.append('ul');
     }
 
     update(data){
-        console.log(data);
         this._renderElus(data.synthese.elus);
+        this._renderTriangulaires(new Map([...data.synthese.triang, ...data.synthese.quadrang]));
         return this;
     }
     _renderElus(data){
@@ -81,6 +96,26 @@ class Synthese extends Component {
                     color=d[1].nuanceCol,
                     figure=(d[1].civ==='M')?'man':'woman';
                 let svg=new FigureFactory().render(figure, color);
+                d3.select(this)
+                    .attr('class',`_${circo}`)
+                    .append(()=> svg.node())
+                    .on('click',d=>console.log(circo));
+            });
+
+    }
+
+    _renderTriangulaires(data){
+        let li = this._sectionTriang
+            .select('ul')
+            .selectAll('li')
+            .data(data)
+            .enter()
+            .append('li')
+            .each( function(d) {
+                let circo=d[0],
+                    colors=d[1].map(d=>d.nuanceCol);
+                let figure=(d[1].length===3)?'triangulaire':'quadrangulaire';
+                let svg=new FigureFactory().render(figure, colors);
                 d3.select(this)
                     .attr('class',`_${circo}`)
                     .append(()=> svg.node())

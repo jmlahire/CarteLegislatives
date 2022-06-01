@@ -1,19 +1,21 @@
-@use 'src/style/common' as *;
-@use 'src/style/text' as *;
+@use 'src/style/variables' as *;
 
 div#Synthese {
-  margin-top:3rem;
+  margin-top:1.5rem;
+  padding-top:.5rem;
+  border-top:2px solid $tone4;
   h3{
-    @include titre;
     text-align:left;
   }
-
   ul {
     display:flex;
+    flex-wrap: nowrap;
+    justify-content:flex-start;
+    margin:.2rem 0 .5rem;
     li {
       list-style:none;
       display:block;
-      flex: 0 1 1rem;
+
       height:3rem;
       svg {
         width:100%;
@@ -21,5 +23,16 @@ div#Synthese {
       }
     }
   }
+  section.elus{
+    li{
+      flex: 0 1 1rem;
+    }
+  }
+  section.triang{
+    li{
+      flex: 0 1 2rem;
+    }
+  }
 
 }
+

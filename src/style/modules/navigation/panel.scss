@@ -1,0 +1,68 @@
+@use 'src/style/variables' as *;
+
+$panelBorder: 1px solid $tone3;
+
+._Panel {
+
+  position: absolute;
+  z-index:100;
+  opacity:.5;
+
+  & > div {
+    position:absolute;
+    left:0;
+    top:0;
+  }
+
+  div.handle{
+    border: $panelBorder;
+    border-right:none;
+    box-shadow: -2px 0 8px rgba(0,0,0,.2);
+    background:rgba(255,255,255,.7);
+    cursor:pointer;
+
+    span {
+      display: inline-block;
+      transition: all 500ms ease-in-out;
+      margin-left:20%;
+      @include noHighlight;
+    }
+
+    &:hover {
+      span {
+        color:$tone1;
+      }
+    }
+  }
+
+
+
+  div.content {
+    position:relative;
+    border-top: $panelBorder;
+    border-bottom: $panelBorder;
+    border-right: $panelBorder;
+    background:$back0;
+    box-shadow: -2px 0 8px rgba(0,0,0,.2);
+  }
+
+
+
+}
+
+._Panel.right {
+
+  right:0;
+
+  div.handle {
+    border-radius: 5px 0 0 5px;
+  }
+
+  &.folded div.handle span {
+    transform: rotate(0deg);
+  }
+  &.unfolded div.handle span {
+    transform: rotate(180deg);
+  }
+
+}

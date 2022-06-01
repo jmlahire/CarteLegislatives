@@ -1,8 +1,5 @@
-import '../style/normalize.scss'
-import '../style/minireset.scss'
-import '../style/custom.scss'
-import '../style/dev.scss'
-import '../style/text.scss'
+import '../style/main.scss'
+
 
 import * as d3Selection from 'd3-selection'
 import * as d3Scale from 'd3-scale'
@@ -21,6 +18,7 @@ import {MapLegend} from './modules/maps/mapLegend';
 import {DataCollection} from "./modules/common/dataCollection";
 import {NestedSelection} from "./modules/navigation/nestedSelection";
 import {Synthese} from './modules/custom/synthese';
+import {Panel} from './modules/navigation/panel';
 
 
 
@@ -194,9 +192,9 @@ function renderDomLabels ()  {
     }
 }
 
-const   myLegend=new MapLegend().appendTo(null);
 
-const   myMap=new MapComposition( 'CarteFrance', { width:2000, height:2200, margins:10 } ).appendTo(null);
+
+const   myMap=new MapComposition( 'CarteFrance', { width:2000, height:2200, margins:10 } ).appendTo('#mapContainer');
         myMap.layer ('circos',  { type:'path', source:'assets/geodata/circonscriptions-simplifie.topojson', primary:'ID', autofit:true, clickable:true });
         myMap.layer ('depts',   { type:'path', source:'assets/geodata/departements-simplifie.topojson', primary:'DEP', autofit:"auto", clickable:false });
         myMap.layer ('labels',  { type:'custom', render: renderDomLabels});
@@ -204,8 +202,11 @@ const   myMap=new MapComposition( 'CarteFrance', { width:2000, height:2200, marg
 const   mySelector = new NestedSelection('choixCirco').appendTo('#header');
 
 
-const   myFooter = new Synthese('Synthese').appendTo(null);
+const   myFooter = new Synthese('Synthese').appendTo('#innerContainer');
 
+const   myPanel = new Panel('sidePanel').appendTo('#mapContainer');
+
+const   myLegend=new MapLegend().appendTo(myPanel);
 
 /**********************************************************************
  ******************************* MAIN *********************************
