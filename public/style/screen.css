@@ -348,8 +348,10 @@ g._mCust text {
 
 g#depts path {
   stroke: #fff;
+  stroke-opacity: 0.5;
   stroke-width: 1;
   fill: none;
+  vector-effect: non-scaling-stroke;
 }
 
 #choixCirco li {
@@ -455,10 +457,13 @@ div {
   }
 }
 g._mPth path {
+  -webkit-transition: opacity 3s ease-in-out 0.5s;
+  transition: opacity 3s ease-in-out 0.5s;
   pointer-events: none;
   fill: none;
   stroke: none;
   stroke-width: 0.2;
+  vector-effect: non-scaling-stroke;
 }
 g._mPth path.clickable {
   pointer-events: painted;
@@ -471,6 +476,9 @@ g._mPth path.highlight {
   stroke: #EFEFEF;
   -webkit-animation: blinkingPath 1s infinite;
           animation: blinkingPath 1s infinite;
+}
+g._mPth path.hidden {
+  opacity: 0;
 }
 
 g._mCust text {

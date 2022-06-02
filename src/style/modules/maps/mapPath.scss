@@ -10,10 +10,12 @@
 
 g._mPth {
   path {
+    transition: opacity 3s ease-in-out .5s;
     pointer-events:none;
     fill:none;
     stroke: none;
     stroke-width:.2;
+    vector-effect: non-scaling-stroke;
     &.clickable{
       pointer-events: painted;
       cursor: pointer;
@@ -24,6 +26,10 @@ g._mPth {
     &.highlight{
       stroke:$back1;
       animation:blinkingPath 1s infinite;
+
+    }
+    &.hidden{
+      opacity:0;
     }
   }
 }

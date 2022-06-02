@@ -1,562 +1,547 @@
 REG_ID;REG_NOM;DEP_ID;DEP_NOM;CIRCO_NOM;CIRCO_ID
-11;Île-de-France;075;Paris;1;075-01
-11;Île-de-France;075;Paris;2;075-02
-11;Île-de-France;075;Paris;3;075-03
-11;Île-de-France;075;Paris;4;075-04
-11;Île-de-France;075;Paris;5;075-05
-11;Île-de-France;075;Paris;6;075-06
-11;Île-de-France;075;Paris;7;075-07
-11;Île-de-France;075;Paris;8;075-08
-11;Île-de-France;075;Paris;9;075-09
-11;Île-de-France;075;Paris;10;075-10
-11;Île-de-France;075;Paris;11;075-11
-11;Île-de-France;075;Paris;12;075-12
-11;Île-de-France;075;Paris;13;075-13
-11;Île-de-France;075;Paris;14;075-14
-11;Île-de-France;075;Paris;15;075-15
-11;Île-de-France;075;Paris;16;075-16
-11;Île-de-France;075;Paris;17;075-17
-11;Île-de-France;075;Paris;18;075-18
-11;Île-de-France;077;Seine-et-Marne;1;077-01
-11;Île-de-France;077;Seine-et-Marne;2;077-02
-11;Île-de-France;077;Seine-et-Marne;3;077-03
-11;Île-de-France;077;Seine-et-Marne;4;077-04
-11;Île-de-France;077;Seine-et-Marne;5;077-05
-11;Île-de-France;077;Seine-et-Marne;6;077-06
-11;Île-de-France;077;Seine-et-Marne;7;077-07
-11;Île-de-France;077;Seine-et-Marne;8;077-08
-11;Île-de-France;077;Seine-et-Marne;9;077-09
-11;Île-de-France;077;Seine-et-Marne;10;077-10
-11;Île-de-France;077;Seine-et-Marne;11;077-11
-11;Île-de-France;078;Yvelines;1;078-01
-11;Île-de-France;078;Yvelines;2;078-02
-11;Île-de-France;078;Yvelines;3;078-03
-11;Île-de-France;078;Yvelines;4;078-04
-11;Île-de-France;078;Yvelines;5;078-05
-11;Île-de-France;078;Yvelines;6;078-06
-11;Île-de-France;078;Yvelines;7;078-07
-11;Île-de-France;078;Yvelines;8;078-08
-11;Île-de-France;078;Yvelines;9;078-09
-11;Île-de-France;078;Yvelines;10;078-10
-11;Île-de-France;078;Yvelines;11;078-11
-11;Île-de-France;078;Yvelines;12;078-12
-11;Île-de-France;091;Essonne;1;091-01
-11;Île-de-France;091;Essonne;2;091-02
-11;Île-de-France;091;Essonne;3;091-03
-11;Île-de-France;091;Essonne;4;091-04
-11;Île-de-France;091;Essonne;5;091-05
-11;Île-de-France;091;Essonne;6;091-06
-11;Île-de-France;091;Essonne;7;091-07
-11;Île-de-France;091;Essonne;8;091-08
-11;Île-de-France;091;Essonne;9;091-09
-11;Île-de-France;091;Essonne;10;091-10
-11;Île-de-France;092;Hauts-de-Seine;1;092-01
-11;Île-de-France;092;Hauts-de-Seine;2;092-02
-11;Île-de-France;092;Hauts-de-Seine;3;092-03
-11;Île-de-France;092;Hauts-de-Seine;4;092-04
-11;Île-de-France;092;Hauts-de-Seine;5;092-05
-11;Île-de-France;092;Hauts-de-Seine;6;092-06
-11;Île-de-France;092;Hauts-de-Seine;7;092-07
-11;Île-de-France;092;Hauts-de-Seine;8;092-08
-11;Île-de-France;092;Hauts-de-Seine;9;092-09
-11;Île-de-France;092;Hauts-de-Seine;10;092-10
-11;Île-de-France;092;Hauts-de-Seine;11;092-11
-11;Île-de-France;092;Hauts-de-Seine;12;092-12
-11;Île-de-France;092;Hauts-de-Seine;13;092-13
-11;Île-de-France;093;Seine-Saint-Denis;1;093-01
-11;Île-de-France;093;Seine-Saint-Denis;2;093-02
-11;Île-de-France;093;Seine-Saint-Denis;3;093-03
-11;Île-de-France;093;Seine-Saint-Denis;4;093-04
-11;Île-de-France;093;Seine-Saint-Denis;5;093-05
-11;Île-de-France;093;Seine-Saint-Denis;6;093-06
-11;Île-de-France;093;Seine-Saint-Denis;7;093-07
-11;Île-de-France;093;Seine-Saint-Denis;8;093-08
-11;Île-de-France;093;Seine-Saint-Denis;9;093-09
-11;Île-de-France;093;Seine-Saint-Denis;10;093-10
-11;Île-de-France;093;Seine-Saint-Denis;11;093-11
-11;Île-de-France;093;Seine-Saint-Denis;12;093-12
-11;Île-de-France;094;Val-de-Marne;1;094-01
-11;Île-de-France;094;Val-de-Marne;2;094-02
-11;Île-de-France;094;Val-de-Marne;3;094-03
-11;Île-de-France;094;Val-de-Marne;4;094-04
-11;Île-de-France;094;Val-de-Marne;5;094-05
-11;Île-de-France;094;Val-de-Marne;6;094-06
-11;Île-de-France;094;Val-de-Marne;7;094-07
-11;Île-de-France;094;Val-de-Marne;8;094-08
-11;Île-de-France;094;Val-de-Marne;9;094-09
-11;Île-de-France;094;Val-de-Marne;10;094-10
-11;Île-de-France;094;Val-de-Marne;11;094-11
-11;Île-de-France;095;Val-d'Oise;1;095-01
-11;Île-de-France;095;Val-d'Oise;2;095-02
-11;Île-de-France;095;Val-d'Oise;3;095-03
-11;Île-de-France;095;Val-d'Oise;4;095-04
-11;Île-de-France;095;Val-d'Oise;5;095-05
-11;Île-de-France;095;Val-d'Oise;6;095-06
-11;Île-de-France;095;Val-d'Oise;7;095-07
-11;Île-de-France;095;Val-d'Oise;8;095-08
-11;Île-de-France;095;Val-d'Oise;9;095-09
-11;Île-de-France;095;Val-d'Oise;10;095-10
-24;Centre-Val de Loire;018;Cher;1;018-01
-24;Centre-Val de Loire;018;Cher;2;018-02
-24;Centre-Val de Loire;018;Cher;3;018-03
-24;Centre-Val de Loire;028;Eure-et-Loir;1;028-01
-24;Centre-Val de Loire;028;Eure-et-Loir;2;028-02
-24;Centre-Val de Loire;028;Eure-et-Loir;3;028-03
-24;Centre-Val de Loire;028;Eure-et-Loir;4;028-04
-24;Centre-Val de Loire;036;Indre;1;036-01
-24;Centre-Val de Loire;036;Indre;2;036-02
-24;Centre-Val de Loire;037;Indre-et-Loire;1;037-01
-24;Centre-Val de Loire;037;Indre-et-Loire;2;037-02
-24;Centre-Val de Loire;037;Indre-et-Loire;3;037-03
-24;Centre-Val de Loire;037;Indre-et-Loire;4;037-04
-24;Centre-Val de Loire;037;Indre-et-Loire;5;037-05
-24;Centre-Val de Loire;041;Loir-et-Cher;1;041-01
-24;Centre-Val de Loire;041;Loir-et-Cher;2;041-02
-24;Centre-Val de Loire;041;Loir-et-Cher;3;041-03
-24;Centre-Val de Loire;045;Loiret;1;045-01
-24;Centre-Val de Loire;045;Loiret;2;045-02
-24;Centre-Val de Loire;045;Loiret;3;045-03
-24;Centre-Val de Loire;045;Loiret;4;045-04
-24;Centre-Val de Loire;045;Loiret;5;045-05
-24;Centre-Val de Loire;045;Loiret;6;045-06
-27;Bourgogne-Franche-Comté;021;Côte-d'Or;1;021-01
-27;Bourgogne-Franche-Comté;021;Côte-d'Or;2;021-02
-27;Bourgogne-Franche-Comté;021;Côte-d'Or;3;021-03
-27;Bourgogne-Franche-Comté;021;Côte-d'Or;4;021-04
-27;Bourgogne-Franche-Comté;021;Côte-d'Or;5;021-05
-27;Bourgogne-Franche-Comté;025;Doubs;1;025-01
-27;Bourgogne-Franche-Comté;025;Doubs;2;025-02
-27;Bourgogne-Franche-Comté;025;Doubs;3;025-03
-27;Bourgogne-Franche-Comté;025;Doubs;4;025-04
-27;Bourgogne-Franche-Comté;025;Doubs;5;025-05
-27;Bourgogne-Franche-Comté;039;Jura;1;039-01
-27;Bourgogne-Franche-Comté;039;Jura;2;039-02
-27;Bourgogne-Franche-Comté;039;Jura;3;039-03
-27;Bourgogne-Franche-Comté;058;Nièvre;1;058-01
-27;Bourgogne-Franche-Comté;058;Nièvre;2;058-02
-27;Bourgogne-Franche-Comté;070;Haute-Saône;1;070-01
-27;Bourgogne-Franche-Comté;070;Haute-Saône;2;070-02
-27;Bourgogne-Franche-Comté;071;Saône-et-Loire;1;071-01
-27;Bourgogne-Franche-Comté;071;Saône-et-Loire;2;071-02
-27;Bourgogne-Franche-Comté;071;Saône-et-Loire;3;071-03
-27;Bourgogne-Franche-Comté;071;Saône-et-Loire;4;071-04
-27;Bourgogne-Franche-Comté;071;Saône-et-Loire;5;071-05
-27;Bourgogne-Franche-Comté;089;Yonne;1;089-01
-27;Bourgogne-Franche-Comté;089;Yonne;2;089-02
-27;Bourgogne-Franche-Comté;089;Yonne;3;089-03
-27;Bourgogne-Franche-Comté;090;Territoire de Belfort;1;090-01
-27;Bourgogne-Franche-Comté;090;Territoire de Belfort;2;090-02
-28;Normandie;014;Calvados;1;014-01
-28;Normandie;014;Calvados;2;014-02
-28;Normandie;014;Calvados;3;014-03
-28;Normandie;014;Calvados;4;014-04
-28;Normandie;014;Calvados;5;014-05
-28;Normandie;014;Calvados;6;014-06
-28;Normandie;027;Eure;1;027-01
-28;Normandie;027;Eure;2;027-02
-28;Normandie;027;Eure;3;027-03
-28;Normandie;027;Eure;4;027-04
-28;Normandie;027;Eure;5;027-05
-28;Normandie;050;Manche;1;050-01
-28;Normandie;050;Manche;2;050-02
-28;Normandie;050;Manche;3;050-03
-28;Normandie;050;Manche;4;050-04
-28;Normandie;061;Orne;1;061-01
-28;Normandie;061;Orne;2;061-02
-28;Normandie;061;Orne;3;061-03
-28;Normandie;076;Seine-Maritime;1;076-01
-28;Normandie;076;Seine-Maritime;2;076-02
-28;Normandie;076;Seine-Maritime;3;076-03
-28;Normandie;076;Seine-Maritime;4;076-04
-28;Normandie;076;Seine-Maritime;5;076-05
-28;Normandie;076;Seine-Maritime;6;076-06
-28;Normandie;076;Seine-Maritime;7;076-07
-28;Normandie;076;Seine-Maritime;8;076-08
-28;Normandie;076;Seine-Maritime;9;076-09
-28;Normandie;076;Seine-Maritime;10;076-10
-32;Hauts-de-France;002;Aisne;1;002-01
-32;Hauts-de-France;002;Aisne;2;002-02
-32;Hauts-de-France;002;Aisne;3;002-03
-32;Hauts-de-France;002;Aisne;4;002-04
-32;Hauts-de-France;002;Aisne;5;002-05
-32;Hauts-de-France;059;Nord;1;059-01
-32;Hauts-de-France;059;Nord;2;059-02
-32;Hauts-de-France;059;Nord;3;059-03
-32;Hauts-de-France;059;Nord;4;059-04
-32;Hauts-de-France;059;Nord;5;059-05
-32;Hauts-de-France;059;Nord;6;059-06
-32;Hauts-de-France;059;Nord;7;059-07
-32;Hauts-de-France;059;Nord;8;059-08
-32;Hauts-de-France;059;Nord;9;059-09
-32;Hauts-de-France;059;Nord;10;059-10
-32;Hauts-de-France;059;Nord;11;059-11
-32;Hauts-de-France;059;Nord;12;059-12
-32;Hauts-de-France;059;Nord;13;059-13
-32;Hauts-de-France;059;Nord;14;059-14
-32;Hauts-de-France;059;Nord;15;059-15
-32;Hauts-de-France;059;Nord;16;059-16
-32;Hauts-de-France;059;Nord;17;059-17
-32;Hauts-de-France;059;Nord;18;059-18
-32;Hauts-de-France;059;Nord;19;059-19
-32;Hauts-de-France;059;Nord;20;059-20
-32;Hauts-de-France;059;Nord;21;059-21
-32;Hauts-de-France;060;Oise;1;060-01
-32;Hauts-de-France;060;Oise;2;060-02
-32;Hauts-de-France;060;Oise;3;060-03
-32;Hauts-de-France;060;Oise;4;060-04
-32;Hauts-de-France;060;Oise;5;060-05
-32;Hauts-de-France;060;Oise;6;060-06
-32;Hauts-de-France;060;Oise;7;060-07
-32;Hauts-de-France;062;Pas-de-Calais;1;062-01
-32;Hauts-de-France;062;Pas-de-Calais;2;062-02
-32;Hauts-de-France;062;Pas-de-Calais;3;062-03
-32;Hauts-de-France;062;Pas-de-Calais;4;062-04
-32;Hauts-de-France;062;Pas-de-Calais;5;062-05
-32;Hauts-de-France;062;Pas-de-Calais;6;062-06
-32;Hauts-de-France;062;Pas-de-Calais;7;062-07
-32;Hauts-de-France;062;Pas-de-Calais;8;062-08
-32;Hauts-de-France;062;Pas-de-Calais;9;062-09
-32;Hauts-de-France;062;Pas-de-Calais;10;062-10
-32;Hauts-de-France;062;Pas-de-Calais;11;062-11
-32;Hauts-de-France;062;Pas-de-Calais;12;062-12
-32;Hauts-de-France;080;Somme;1;080-01
-32;Hauts-de-France;080;Somme;2;080-02
-32;Hauts-de-France;080;Somme;3;080-03
-32;Hauts-de-France;080;Somme;4;080-04
-32;Hauts-de-France;080;Somme;5;080-05
-44;Grand Est;008;Ardennes;1;008-01
-44;Grand Est;008;Ardennes;2;008-02
-44;Grand Est;008;Ardennes;3;008-03
-44;Grand Est;010;Aube;1;010-01
-44;Grand Est;010;Aube;2;010-02
-44;Grand Est;010;Aube;3;010-03
-44;Grand Est;051;Marne;1;051-01
-44;Grand Est;051;Marne;2;051-02
-44;Grand Est;051;Marne;3;051-03
-44;Grand Est;051;Marne;4;051-04
-44;Grand Est;051;Marne;5;051-05
-44;Grand Est;052;Haute-Marne;1;052-01
-44;Grand Est;052;Haute-Marne;2;052-02
-44;Grand Est;054;Meurthe-et-Moselle;1;054-01
-44;Grand Est;054;Meurthe-et-Moselle;2;054-02
-44;Grand Est;054;Meurthe-et-Moselle;3;054-03
-44;Grand Est;054;Meurthe-et-Moselle;4;054-04
-44;Grand Est;054;Meurthe-et-Moselle;5;054-05
-44;Grand Est;054;Meurthe-et-Moselle;6;054-06
-44;Grand Est;055;Meuse;1;055-01
-44;Grand Est;055;Meuse;2;055-02
-44;Grand Est;057;Moselle;1;057-01
-44;Grand Est;057;Moselle;2;057-02
-44;Grand Est;057;Moselle;3;057-03
-44;Grand Est;057;Moselle;4;057-04
-44;Grand Est;057;Moselle;5;057-05
-44;Grand Est;057;Moselle;6;057-06
-44;Grand Est;057;Moselle;7;057-07
-44;Grand Est;057;Moselle;8;057-08
-44;Grand Est;057;Moselle;9;057-09
-44;Grand Est;067;Bas-Rhin;1;067-01
-44;Grand Est;067;Bas-Rhin;2;067-02
-44;Grand Est;067;Bas-Rhin;3;067-03
-44;Grand Est;067;Bas-Rhin;4;067-04
-44;Grand Est;067;Bas-Rhin;5;067-05
-44;Grand Est;067;Bas-Rhin;6;067-06
-44;Grand Est;067;Bas-Rhin;7;067-07
-44;Grand Est;067;Bas-Rhin;8;067-08
-44;Grand Est;067;Bas-Rhin;9;067-09
-44;Grand Est;068;Haut-Rhin;1;068-01
-44;Grand Est;068;Haut-Rhin;2;068-02
-44;Grand Est;068;Haut-Rhin;3;068-03
-44;Grand Est;068;Haut-Rhin;4;068-04
-44;Grand Est;068;Haut-Rhin;5;068-05
-44;Grand Est;068;Haut-Rhin;6;068-06
-44;Grand Est;088;Vosges;1;088-01
-44;Grand Est;088;Vosges;2;088-02
-44;Grand Est;088;Vosges;3;088-03
-44;Grand Est;088;Vosges;4;088-04
-52;Pays de la Loire;044;Loire-Atlantique;1;044-01
-52;Pays de la Loire;044;Loire-Atlantique;2;044-02
-52;Pays de la Loire;044;Loire-Atlantique;3;044-03
-52;Pays de la Loire;044;Loire-Atlantique;4;044-04
-52;Pays de la Loire;044;Loire-Atlantique;5;044-05
-52;Pays de la Loire;044;Loire-Atlantique;6;044-06
-52;Pays de la Loire;044;Loire-Atlantique;7;044-07
-52;Pays de la Loire;044;Loire-Atlantique;8;044-08
-52;Pays de la Loire;044;Loire-Atlantique;9;044-09
-52;Pays de la Loire;044;Loire-Atlantique;10;044-10
-52;Pays de la Loire;049;Maine-et-Loire;1;049-01
-52;Pays de la Loire;049;Maine-et-Loire;2;049-02
-52;Pays de la Loire;049;Maine-et-Loire;3;049-03
-52;Pays de la Loire;049;Maine-et-Loire;4;049-04
-52;Pays de la Loire;049;Maine-et-Loire;5;049-05
-52;Pays de la Loire;049;Maine-et-Loire;6;049-06
-52;Pays de la Loire;049;Maine-et-Loire;7;049-07
-52;Pays de la Loire;053;Mayenne;1;053-01
-52;Pays de la Loire;053;Mayenne;2;053-02
-52;Pays de la Loire;053;Mayenne;3;053-03
-52;Pays de la Loire;072;Sarthe;1;072-01
-52;Pays de la Loire;072;Sarthe;2;072-02
-52;Pays de la Loire;072;Sarthe;3;072-03
-52;Pays de la Loire;072;Sarthe;4;072-04
-52;Pays de la Loire;072;Sarthe;5;072-05
-52;Pays de la Loire;085;Vendée;1;085-01
-52;Pays de la Loire;085;Vendée;2;085-02
-52;Pays de la Loire;085;Vendée;3;085-03
-52;Pays de la Loire;085;Vendée;4;085-04
-52;Pays de la Loire;085;Vendée;5;085-05
-53;Bretagne;022;Côtes-d'Armor;1;022-01
-53;Bretagne;022;Côtes-d'Armor;2;022-02
-53;Bretagne;022;Côtes-d'Armor;3;022-03
-53;Bretagne;022;Côtes-d'Armor;4;022-04
-53;Bretagne;022;Côtes-d'Armor;5;022-05
-53;Bretagne;029;Finistère;1;029-01
-53;Bretagne;029;Finistère;2;029-02
-53;Bretagne;029;Finistère;3;029-03
-53;Bretagne;029;Finistère;4;029-04
-53;Bretagne;029;Finistère;5;029-05
-53;Bretagne;029;Finistère;6;029-06
-53;Bretagne;029;Finistère;7;029-07
-53;Bretagne;029;Finistère;8;029-08
-53;Bretagne;035;Ille-et-Vilaine;1;035-01
-53;Bretagne;035;Ille-et-Vilaine;2;035-02
-53;Bretagne;035;Ille-et-Vilaine;3;035-03
-53;Bretagne;035;Ille-et-Vilaine;4;035-04
-53;Bretagne;035;Ille-et-Vilaine;5;035-05
-53;Bretagne;035;Ille-et-Vilaine;6;035-06
-53;Bretagne;035;Ille-et-Vilaine;7;035-07
-53;Bretagne;035;Ille-et-Vilaine;8;035-08
-53;Bretagne;056;Morbihan;1;056-01
-53;Bretagne;056;Morbihan;2;056-02
-53;Bretagne;056;Morbihan;3;056-03
-53;Bretagne;056;Morbihan;4;056-04
-53;Bretagne;056;Morbihan;5;056-05
-53;Bretagne;056;Morbihan;6;056-06
-75;Nouvelle-Aquitaine;016;Charente;1;016-01
-75;Nouvelle-Aquitaine;016;Charente;2;016-02
-75;Nouvelle-Aquitaine;016;Charente;3;016-03
-75;Nouvelle-Aquitaine;017;Charente-Maritime;1;017-01
-75;Nouvelle-Aquitaine;017;Charente-Maritime;2;017-02
-75;Nouvelle-Aquitaine;017;Charente-Maritime;3;017-03
-75;Nouvelle-Aquitaine;017;Charente-Maritime;4;017-04
-75;Nouvelle-Aquitaine;017;Charente-Maritime;5;017-05
-75;Nouvelle-Aquitaine;019;Corrèze;1;019-01
-75;Nouvelle-Aquitaine;019;Corrèze;2;019-02
-75;Nouvelle-Aquitaine;023;Creuse;1;023-01
-75;Nouvelle-Aquitaine;024;Dordogne;1;024-01
-75;Nouvelle-Aquitaine;024;Dordogne;2;024-02
-75;Nouvelle-Aquitaine;024;Dordogne;3;024-03
-75;Nouvelle-Aquitaine;024;Dordogne;4;024-04
-75;Nouvelle-Aquitaine;033;Gironde;1;033-01
-75;Nouvelle-Aquitaine;033;Gironde;2;033-02
-75;Nouvelle-Aquitaine;033;Gironde;3;033-03
-75;Nouvelle-Aquitaine;033;Gironde;4;033-04
-75;Nouvelle-Aquitaine;033;Gironde;5;033-05
-75;Nouvelle-Aquitaine;033;Gironde;6;033-06
-75;Nouvelle-Aquitaine;033;Gironde;7;033-07
-75;Nouvelle-Aquitaine;033;Gironde;8;033-08
-75;Nouvelle-Aquitaine;033;Gironde;9;033-09
-75;Nouvelle-Aquitaine;033;Gironde;10;033-10
-75;Nouvelle-Aquitaine;033;Gironde;11;033-11
-75;Nouvelle-Aquitaine;033;Gironde;12;033-12
-75;Nouvelle-Aquitaine;040;Landes;1;040-01
-75;Nouvelle-Aquitaine;040;Landes;2;040-02
-75;Nouvelle-Aquitaine;040;Landes;3;040-03
-75;Nouvelle-Aquitaine;047;Lot-et-Garonne;1;047-01
-75;Nouvelle-Aquitaine;047;Lot-et-Garonne;2;047-02
-75;Nouvelle-Aquitaine;047;Lot-et-Garonne;3;047-03
-75;Nouvelle-Aquitaine;064;Pyrénées-Atlantiques;1;064-01
-75;Nouvelle-Aquitaine;064;Pyrénées-Atlantiques;2;064-02
-75;Nouvelle-Aquitaine;064;Pyrénées-Atlantiques;3;064-03
-75;Nouvelle-Aquitaine;064;Pyrénées-Atlantiques;4;064-04
-75;Nouvelle-Aquitaine;064;Pyrénées-Atlantiques;5;064-05
-75;Nouvelle-Aquitaine;064;Pyrénées-Atlantiques;6;064-06
-75;Nouvelle-Aquitaine;079;Deux-Sèvres;1;079-01
-75;Nouvelle-Aquitaine;079;Deux-Sèvres;2;079-02
-75;Nouvelle-Aquitaine;079;Deux-Sèvres;3;079-03
-75;Nouvelle-Aquitaine;086;Vienne;1;086-01
-75;Nouvelle-Aquitaine;086;Vienne;2;086-02
-75;Nouvelle-Aquitaine;086;Vienne;3;086-03
-75;Nouvelle-Aquitaine;086;Vienne;4;086-04
-75;Nouvelle-Aquitaine;087;Haute-Vienne;1;087-01
-75;Nouvelle-Aquitaine;087;Haute-Vienne;2;087-02
-75;Nouvelle-Aquitaine;087;Haute-Vienne;3;087-03
-76;Occitanie;009;Ariège;1;009-01
-76;Occitanie;009;Ariège;2;009-02
-76;Occitanie;011;Aude;1;011-01
-76;Occitanie;011;Aude;2;011-02
-76;Occitanie;011;Aude;3;011-03
-76;Occitanie;012;Aveyron;1;012-01
-76;Occitanie;012;Aveyron;2;012-02
-76;Occitanie;012;Aveyron;3;012-03
-76;Occitanie;030;Gard;1;030-01
-76;Occitanie;030;Gard;2;030-02
-76;Occitanie;030;Gard;3;030-03
-76;Occitanie;030;Gard;4;030-04
-76;Occitanie;030;Gard;5;030-05
-76;Occitanie;030;Gard;6;030-06
-76;Occitanie;031;Haute-Garonne;1;031-01
-76;Occitanie;031;Haute-Garonne;2;031-02
-76;Occitanie;031;Haute-Garonne;3;031-03
-76;Occitanie;031;Haute-Garonne;4;031-04
-76;Occitanie;031;Haute-Garonne;5;031-05
-76;Occitanie;031;Haute-Garonne;6;031-06
-76;Occitanie;031;Haute-Garonne;7;031-07
-76;Occitanie;031;Haute-Garonne;8;031-08
-76;Occitanie;031;Haute-Garonne;9;031-09
-76;Occitanie;031;Haute-Garonne;10;031-10
-76;Occitanie;032;Gers;1;032-01
-76;Occitanie;032;Gers;2;032-02
-76;Occitanie;034;Hérault;1;034-01
-76;Occitanie;034;Hérault;2;034-02
-76;Occitanie;034;Hérault;3;034-03
-76;Occitanie;034;Hérault;4;034-04
-76;Occitanie;034;Hérault;5;034-05
-76;Occitanie;034;Hérault;6;034-06
-76;Occitanie;034;Hérault;7;034-07
-76;Occitanie;034;Hérault;8;034-08
-76;Occitanie;034;Hérault;9;034-09
-76;Occitanie;046;Lot;1;046-01
-76;Occitanie;046;Lot;2;046-02
-76;Occitanie;048;Lozère;1;048-01
-76;Occitanie;065;Hautes-Pyrénées;1;065-01
-76;Occitanie;065;Hautes-Pyrénées;2;065-02
-76;Occitanie;066;Pyrénées-Orientales;1;066-01
-76;Occitanie;066;Pyrénées-Orientales;2;066-02
-76;Occitanie;066;Pyrénées-Orientales;3;066-03
-76;Occitanie;066;Pyrénées-Orientales;4;066-04
-76;Occitanie;081;Tarn;1;081-01
-76;Occitanie;081;Tarn;2;081-02
-76;Occitanie;081;Tarn;3;081-03
-76;Occitanie;082;Tarn-et-Garonne;1;082-01
-76;Occitanie;082;Tarn-et-Garonne;2;082-02
-84;Auvergne-Rhône-Alpes;001;Ain;1;001-01
-84;Auvergne-Rhône-Alpes;001;Ain;2;001-02
-84;Auvergne-Rhône-Alpes;001;Ain;3;001-03
-84;Auvergne-Rhône-Alpes;001;Ain;4;001-04
-84;Auvergne-Rhône-Alpes;001;Ain;5;001-05
-84;Auvergne-Rhône-Alpes;003;Allier;1;003-01
-84;Auvergne-Rhône-Alpes;003;Allier;2;003-02
-84;Auvergne-Rhône-Alpes;003;Allier;3;003-03
-84;Auvergne-Rhône-Alpes;007;Ardèche;1;007-01
-84;Auvergne-Rhône-Alpes;007;Ardèche;2;007-02
-84;Auvergne-Rhône-Alpes;007;Ardèche;3;007-03
-84;Auvergne-Rhône-Alpes;015;Cantal;1;015-01
-84;Auvergne-Rhône-Alpes;015;Cantal;2;015-02
-84;Auvergne-Rhône-Alpes;026;Drôme;1;026-01
-84;Auvergne-Rhône-Alpes;026;Drôme;2;026-02
-84;Auvergne-Rhône-Alpes;026;Drôme;3;026-03
-84;Auvergne-Rhône-Alpes;026;Drôme;4;026-04
-84;Auvergne-Rhône-Alpes;038;Isère;1;038-01
-84;Auvergne-Rhône-Alpes;038;Isère;2;038-02
-84;Auvergne-Rhône-Alpes;038;Isère;3;038-03
-84;Auvergne-Rhône-Alpes;038;Isère;4;038-04
-84;Auvergne-Rhône-Alpes;038;Isère;5;038-05
-84;Auvergne-Rhône-Alpes;038;Isère;6;038-06
-84;Auvergne-Rhône-Alpes;038;Isère;7;038-07
-84;Auvergne-Rhône-Alpes;038;Isère;8;038-08
-84;Auvergne-Rhône-Alpes;038;Isère;9;038-09
-84;Auvergne-Rhône-Alpes;038;Isère;10;038-10
-84;Auvergne-Rhône-Alpes;042;Loire;1;042-01
-84;Auvergne-Rhône-Alpes;042;Loire;2;042-02
-84;Auvergne-Rhône-Alpes;042;Loire;3;042-03
-84;Auvergne-Rhône-Alpes;042;Loire;4;042-04
-84;Auvergne-Rhône-Alpes;042;Loire;5;042-05
-84;Auvergne-Rhône-Alpes;042;Loire;6;042-06
-84;Auvergne-Rhône-Alpes;043;Haute-Loire;1;043-01
-84;Auvergne-Rhône-Alpes;043;Haute-Loire;2;043-02
-84;Auvergne-Rhône-Alpes;063;Puy-de-Dôme;1;063-01
-84;Auvergne-Rhône-Alpes;063;Puy-de-Dôme;2;063-02
-84;Auvergne-Rhône-Alpes;063;Puy-de-Dôme;3;063-03
-84;Auvergne-Rhône-Alpes;063;Puy-de-Dôme;4;063-04
-84;Auvergne-Rhône-Alpes;063;Puy-de-Dôme;5;063-05
-84;Auvergne-Rhône-Alpes;069;Rhône;1;069-01
-84;Auvergne-Rhône-Alpes;069;Rhône;2;069-02
-84;Auvergne-Rhône-Alpes;069;Rhône;3;069-03
-84;Auvergne-Rhône-Alpes;069;Rhône;4;069-04
-84;Auvergne-Rhône-Alpes;069;Rhône;5;069-05
-84;Auvergne-Rhône-Alpes;069;Rhône;6;069-06
-84;Auvergne-Rhône-Alpes;069;Rhône;7;069-07
-84;Auvergne-Rhône-Alpes;069;Rhône;8;069-08
-84;Auvergne-Rhône-Alpes;069;Rhône;9;069-09
-84;Auvergne-Rhône-Alpes;069;Rhône;10;069-10
-84;Auvergne-Rhône-Alpes;069;Rhône;11;069-11
-84;Auvergne-Rhône-Alpes;069;Rhône;12;069-12
-84;Auvergne-Rhône-Alpes;069;Rhône;13;069-13
-84;Auvergne-Rhône-Alpes;069;Rhône;14;069-14
-84;Auvergne-Rhône-Alpes;073;Savoie;1;073-01
-84;Auvergne-Rhône-Alpes;073;Savoie;2;073-02
-84;Auvergne-Rhône-Alpes;073;Savoie;3;073-03
-84;Auvergne-Rhône-Alpes;073;Savoie;4;073-04
-84;Auvergne-Rhône-Alpes;074;Haute-Savoie;1;074-01
-84;Auvergne-Rhône-Alpes;074;Haute-Savoie;2;074-02
-84;Auvergne-Rhône-Alpes;074;Haute-Savoie;3;074-03
-84;Auvergne-Rhône-Alpes;074;Haute-Savoie;4;074-04
-84;Auvergne-Rhône-Alpes;074;Haute-Savoie;5;074-05
-84;Auvergne-Rhône-Alpes;074;Haute-Savoie;6;074-06
-93;Provence-Alpes-Côte d'Azur;004;Alpes-de-Haute-Provence;1;004-01
-93;Provence-Alpes-Côte d'Azur;004;Alpes-de-Haute-Provence;2;004-02
-93;Provence-Alpes-Côte d'Azur;005;Hautes-Alpes;1;005-01
-93;Provence-Alpes-Côte d'Azur;005;Hautes-Alpes;2;005-02
-93;Provence-Alpes-Côte d'Azur;006;Alpes-Maritimes;1;006-01
-93;Provence-Alpes-Côte d'Azur;006;Alpes-Maritimes;2;006-02
-93;Provence-Alpes-Côte d'Azur;006;Alpes-Maritimes;3;006-03
-93;Provence-Alpes-Côte d'Azur;006;Alpes-Maritimes;4;006-04
-93;Provence-Alpes-Côte d'Azur;006;Alpes-Maritimes;5;006-05
-93;Provence-Alpes-Côte d'Azur;006;Alpes-Maritimes;6;006-06
-93;Provence-Alpes-Côte d'Azur;006;Alpes-Maritimes;7;006-07
-93;Provence-Alpes-Côte d'Azur;006;Alpes-Maritimes;8;006-08
-93;Provence-Alpes-Côte d'Azur;006;Alpes-Maritimes;9;006-09
-93;Provence-Alpes-Côte d'Azur;013;Bouches-du-Rhône;1;013-01
-93;Provence-Alpes-Côte d'Azur;013;Bouches-du-Rhône;2;013-02
-93;Provence-Alpes-Côte d'Azur;013;Bouches-du-Rhône;3;013-03
-93;Provence-Alpes-Côte d'Azur;013;Bouches-du-Rhône;4;013-04
-93;Provence-Alpes-Côte d'Azur;013;Bouches-du-Rhône;5;013-05
-93;Provence-Alpes-Côte d'Azur;013;Bouches-du-Rhône;6;013-06
-93;Provence-Alpes-Côte d'Azur;013;Bouches-du-Rhône;7;013-07
-93;Provence-Alpes-Côte d'Azur;013;Bouches-du-Rhône;8;013-08
-93;Provence-Alpes-Côte d'Azur;013;Bouches-du-Rhône;9;013-09
-93;Provence-Alpes-Côte d'Azur;013;Bouches-du-Rhône;10;013-10
-93;Provence-Alpes-Côte d'Azur;013;Bouches-du-Rhône;11;013-11
-93;Provence-Alpes-Côte d'Azur;013;Bouches-du-Rhône;12;013-12
-93;Provence-Alpes-Côte d'Azur;013;Bouches-du-Rhône;13;013-13
-93;Provence-Alpes-Côte d'Azur;013;Bouches-du-Rhône;14;013-14
-93;Provence-Alpes-Côte d'Azur;013;Bouches-du-Rhône;15;013-15
-93;Provence-Alpes-Côte d'Azur;013;Bouches-du-Rhône;16;013-16
-93;Provence-Alpes-Côte d'Azur;083;Var;1;083-01
-93;Provence-Alpes-Côte d'Azur;083;Var;2;083-02
-93;Provence-Alpes-Côte d'Azur;083;Var;3;083-03
-93;Provence-Alpes-Côte d'Azur;083;Var;4;083-04
-93;Provence-Alpes-Côte d'Azur;083;Var;5;083-05
-93;Provence-Alpes-Côte d'Azur;083;Var;6;083-06
-93;Provence-Alpes-Côte d'Azur;083;Var;7;083-07
-93;Provence-Alpes-Côte d'Azur;083;Var;8;083-08
-93;Provence-Alpes-Côte d'Azur;084;Vaucluse;1;084-01
-93;Provence-Alpes-Côte d'Azur;084;Vaucluse;2;084-02
-93;Provence-Alpes-Côte d'Azur;084;Vaucluse;3;084-03
-93;Provence-Alpes-Côte d'Azur;084;Vaucluse;4;084-04
-93;Provence-Alpes-Côte d'Azur;084;Vaucluse;5;084-05
+84;Auvergne-Rhône-Alpes;01;Ain;1;001-01
+84;Auvergne-Rhône-Alpes;01;Ain;2;001-02
+84;Auvergne-Rhône-Alpes;01;Ain;3;001-03
+84;Auvergne-Rhône-Alpes;01;Ain;4;001-04
+84;Auvergne-Rhône-Alpes;01;Ain;5;001-05
+84;Auvergne-Rhône-Alpes;03;Allier;1;003-01
+84;Auvergne-Rhône-Alpes;03;Allier;2;003-02
+84;Auvergne-Rhône-Alpes;03;Allier;3;003-03
+84;Auvergne-Rhône-Alpes;07;Ardèche;1;007-01
+84;Auvergne-Rhône-Alpes;07;Ardèche;2;007-02
+84;Auvergne-Rhône-Alpes;07;Ardèche;3;007-03
+84;Auvergne-Rhône-Alpes;15;Cantal;1;015-01
+84;Auvergne-Rhône-Alpes;15;Cantal;2;015-02
+84;Auvergne-Rhône-Alpes;26;Drôme;1;026-01
+84;Auvergne-Rhône-Alpes;26;Drôme;2;026-02
+84;Auvergne-Rhône-Alpes;26;Drôme;3;026-03
+84;Auvergne-Rhône-Alpes;26;Drôme;4;026-04
+84;Auvergne-Rhône-Alpes;43;Haute-Loire;1;043-01
+84;Auvergne-Rhône-Alpes;43;Haute-Loire;2;043-02
+84;Auvergne-Rhône-Alpes;74;Haute-Savoie;1;074-01
+84;Auvergne-Rhône-Alpes;74;Haute-Savoie;2;074-02
+84;Auvergne-Rhône-Alpes;74;Haute-Savoie;3;074-03
+84;Auvergne-Rhône-Alpes;74;Haute-Savoie;4;074-04
+84;Auvergne-Rhône-Alpes;74;Haute-Savoie;5;074-05
+84;Auvergne-Rhône-Alpes;74;Haute-Savoie;6;074-06
+84;Auvergne-Rhône-Alpes;38;Isère;1;038-01
+84;Auvergne-Rhône-Alpes;38;Isère;2;038-02
+84;Auvergne-Rhône-Alpes;38;Isère;3;038-03
+84;Auvergne-Rhône-Alpes;38;Isère;4;038-04
+84;Auvergne-Rhône-Alpes;38;Isère;5;038-05
+84;Auvergne-Rhône-Alpes;38;Isère;6;038-06
+84;Auvergne-Rhône-Alpes;38;Isère;7;038-07
+84;Auvergne-Rhône-Alpes;38;Isère;8;038-08
+84;Auvergne-Rhône-Alpes;38;Isère;9;038-09
+84;Auvergne-Rhône-Alpes;38;Isère;10;038-10
+84;Auvergne-Rhône-Alpes;42;Loire;1;042-01
+84;Auvergne-Rhône-Alpes;42;Loire;2;042-02
+84;Auvergne-Rhône-Alpes;42;Loire;3;042-03
+84;Auvergne-Rhône-Alpes;42;Loire;4;042-04
+84;Auvergne-Rhône-Alpes;42;Loire;5;042-05
+84;Auvergne-Rhône-Alpes;42;Loire;6;042-06
+84;Auvergne-Rhône-Alpes;63;Puy-de-Dôme;1;063-01
+84;Auvergne-Rhône-Alpes;63;Puy-de-Dôme;2;063-02
+84;Auvergne-Rhône-Alpes;63;Puy-de-Dôme;3;063-03
+84;Auvergne-Rhône-Alpes;63;Puy-de-Dôme;4;063-04
+84;Auvergne-Rhône-Alpes;63;Puy-de-Dôme;5;063-05
+84;Auvergne-Rhône-Alpes;69;Rhône;1;069-01
+84;Auvergne-Rhône-Alpes;69;Rhône;2;069-02
+84;Auvergne-Rhône-Alpes;69;Rhône;3;069-03
+84;Auvergne-Rhône-Alpes;69;Rhône;4;069-04
+84;Auvergne-Rhône-Alpes;69;Rhône;5;069-05
+84;Auvergne-Rhône-Alpes;69;Rhône;6;069-06
+84;Auvergne-Rhône-Alpes;69;Rhône;7;069-07
+84;Auvergne-Rhône-Alpes;69;Rhône;8;069-08
+84;Auvergne-Rhône-Alpes;69;Rhône;9;069-09
+84;Auvergne-Rhône-Alpes;69;Rhône;10;069-10
+84;Auvergne-Rhône-Alpes;69;Rhône;11;069-11
+84;Auvergne-Rhône-Alpes;69;Rhône;12;069-12
+84;Auvergne-Rhône-Alpes;69;Rhône;13;069-13
+84;Auvergne-Rhône-Alpes;69;Rhône;14;069-14
+84;Auvergne-Rhône-Alpes;73;Savoie;1;073-01
+84;Auvergne-Rhône-Alpes;73;Savoie;2;073-02
+84;Auvergne-Rhône-Alpes;73;Savoie;3;073-03
+84;Auvergne-Rhône-Alpes;73;Savoie;4;073-04
+27;Bourgogne-Franche-Comté;21;Côte-d'Or;1;021-01
+27;Bourgogne-Franche-Comté;21;Côte-d'Or;2;021-02
+27;Bourgogne-Franche-Comté;21;Côte-d'Or;3;021-03
+27;Bourgogne-Franche-Comté;21;Côte-d'Or;4;021-04
+27;Bourgogne-Franche-Comté;21;Côte-d'Or;5;021-05
+27;Bourgogne-Franche-Comté;25;Doubs;1;025-01
+27;Bourgogne-Franche-Comté;25;Doubs;2;025-02
+27;Bourgogne-Franche-Comté;25;Doubs;3;025-03
+27;Bourgogne-Franche-Comté;25;Doubs;4;025-04
+27;Bourgogne-Franche-Comté;25;Doubs;5;025-05
+27;Bourgogne-Franche-Comté;70;Haute-Saône;1;070-01
+27;Bourgogne-Franche-Comté;70;Haute-Saône;2;070-02
+27;Bourgogne-Franche-Comté;39;Jura;1;039-01
+27;Bourgogne-Franche-Comté;39;Jura;2;039-02
+27;Bourgogne-Franche-Comté;39;Jura;3;039-03
+27;Bourgogne-Franche-Comté;58;Nièvre;1;058-01
+27;Bourgogne-Franche-Comté;58;Nièvre;2;058-02
+27;Bourgogne-Franche-Comté;71;Saône-et-Loire;1;071-01
+27;Bourgogne-Franche-Comté;71;Saône-et-Loire;2;071-02
+27;Bourgogne-Franche-Comté;71;Saône-et-Loire;3;071-03
+27;Bourgogne-Franche-Comté;71;Saône-et-Loire;4;071-04
+27;Bourgogne-Franche-Comté;71;Saône-et-Loire;5;071-05
+27;Bourgogne-Franche-Comté;90;Territoire de Belfort;1;090-01
+27;Bourgogne-Franche-Comté;90;Territoire de Belfort;2;090-02
+27;Bourgogne-Franche-Comté;89;Yonne;1;089-01
+27;Bourgogne-Franche-Comté;89;Yonne;2;089-02
+27;Bourgogne-Franche-Comté;89;Yonne;3;089-03
+53;Bretagne;22;Côtes-d'Armor;1;022-01
+53;Bretagne;22;Côtes-d'Armor;2;022-02
+53;Bretagne;22;Côtes-d'Armor;3;022-03
+53;Bretagne;22;Côtes-d'Armor;4;022-04
+53;Bretagne;22;Côtes-d'Armor;5;022-05
+53;Bretagne;29;Finistère;1;029-01
+53;Bretagne;29;Finistère;2;029-02
+53;Bretagne;29;Finistère;3;029-03
+53;Bretagne;29;Finistère;4;029-04
+53;Bretagne;29;Finistère;5;029-05
+53;Bretagne;29;Finistère;6;029-06
+53;Bretagne;29;Finistère;7;029-07
+53;Bretagne;29;Finistère;8;029-08
+53;Bretagne;35;Ille-et-Vilaine;1;035-01
+53;Bretagne;35;Ille-et-Vilaine;2;035-02
+53;Bretagne;35;Ille-et-Vilaine;3;035-03
+53;Bretagne;35;Ille-et-Vilaine;4;035-04
+53;Bretagne;35;Ille-et-Vilaine;5;035-05
+53;Bretagne;35;Ille-et-Vilaine;6;035-06
+53;Bretagne;35;Ille-et-Vilaine;7;035-07
+53;Bretagne;35;Ille-et-Vilaine;8;035-08
+53;Bretagne;56;Morbihan;1;056-01
+53;Bretagne;56;Morbihan;2;056-02
+53;Bretagne;56;Morbihan;3;056-03
+53;Bretagne;56;Morbihan;4;056-04
+53;Bretagne;56;Morbihan;5;056-05
+53;Bretagne;56;Morbihan;6;056-06
+24;Centre-Val de Loire;18;Cher;1;018-01
+24;Centre-Val de Loire;18;Cher;2;018-02
+24;Centre-Val de Loire;18;Cher;3;018-03
+24;Centre-Val de Loire;28;Eure-et-Loir;1;028-01
+24;Centre-Val de Loire;28;Eure-et-Loir;2;028-02
+24;Centre-Val de Loire;28;Eure-et-Loir;3;028-03
+24;Centre-Val de Loire;28;Eure-et-Loir;4;028-04
+24;Centre-Val de Loire;36;Indre;1;036-01
+24;Centre-Val de Loire;36;Indre;2;036-02
+24;Centre-Val de Loire;37;Indre-et-Loire;1;037-01
+24;Centre-Val de Loire;37;Indre-et-Loire;2;037-02
+24;Centre-Val de Loire;37;Indre-et-Loire;3;037-03
+24;Centre-Val de Loire;37;Indre-et-Loire;4;037-04
+24;Centre-Val de Loire;37;Indre-et-Loire;5;037-05
+24;Centre-Val de Loire;45;Loiret;1;045-01
+24;Centre-Val de Loire;45;Loiret;2;045-02
+24;Centre-Val de Loire;45;Loiret;3;045-03
+24;Centre-Val de Loire;45;Loiret;4;045-04
+24;Centre-Val de Loire;45;Loiret;5;045-05
+24;Centre-Val de Loire;45;Loiret;6;045-06
+24;Centre-Val de Loire;41;Loir-et-Cher;1;041-01
+24;Centre-Val de Loire;41;Loir-et-Cher;2;041-02
+24;Centre-Val de Loire;41;Loir-et-Cher;3;041-03
 94;Corse;02A;Corse-du-Sud;1;02A-01
 94;Corse;02A;Corse-du-Sud;2;02A-02
 94;Corse;02B;Haute-Corse;1;02B-01
 94;Corse;02B;Haute-Corse;2;02B-02
-99;Français de l'étranger;099;;1;099-01
-99;Français de l'étranger;099;;2;099-02
-99;Français de l'étranger;099;;3;099-03
-99;Français de l'étranger;099;;4;099-04
-99;Français de l'étranger;099;;5;099-05
-99;Français de l'étranger;099;;6;099-06
-99;Français de l'étranger;099;;7;099-07
-99;Français de l'étranger;099;;8;099-08
-99;Français de l'étranger;099;;9;099-09
-99;Français de l'étranger;099;;10;099-10
-99;Français de l'étranger;099;;11;099-11
+44;Grand Est;08;Ardennes;1;008-01
+44;Grand Est;08;Ardennes;2;008-02
+44;Grand Est;08;Ardennes;3;008-03
+44;Grand Est;10;Aube;1;010-01
+44;Grand Est;10;Aube;2;010-02
+44;Grand Est;10;Aube;3;010-03
+44;Grand Est;67;Bas-Rhin;1;067-01
+44;Grand Est;67;Bas-Rhin;2;067-02
+44;Grand Est;67;Bas-Rhin;3;067-03
+44;Grand Est;67;Bas-Rhin;4;067-04
+44;Grand Est;67;Bas-Rhin;5;067-05
+44;Grand Est;67;Bas-Rhin;6;067-06
+44;Grand Est;67;Bas-Rhin;7;067-07
+44;Grand Est;67;Bas-Rhin;8;067-08
+44;Grand Est;67;Bas-Rhin;9;067-09
+44;Grand Est;52;Haute-Marne;1;052-01
+44;Grand Est;52;Haute-Marne;2;052-02
+44;Grand Est;68;Haut-Rhin;1;068-01
+44;Grand Est;68;Haut-Rhin;2;068-02
+44;Grand Est;68;Haut-Rhin;3;068-03
+44;Grand Est;68;Haut-Rhin;4;068-04
+44;Grand Est;68;Haut-Rhin;5;068-05
+44;Grand Est;68;Haut-Rhin;6;068-06
+44;Grand Est;51;Marne;1;051-01
+44;Grand Est;51;Marne;2;051-02
+44;Grand Est;51;Marne;3;051-03
+44;Grand Est;51;Marne;4;051-04
+44;Grand Est;51;Marne;5;051-05
+44;Grand Est;54;Meurthe-et-Moselle;1;054-01
+44;Grand Est;54;Meurthe-et-Moselle;2;054-02
+44;Grand Est;54;Meurthe-et-Moselle;3;054-03
+44;Grand Est;54;Meurthe-et-Moselle;4;054-04
+44;Grand Est;54;Meurthe-et-Moselle;5;054-05
+44;Grand Est;54;Meurthe-et-Moselle;6;054-06
+44;Grand Est;55;Meuse;1;055-01
+44;Grand Est;55;Meuse;2;055-02
+44;Grand Est;57;Moselle;1;057-01
+44;Grand Est;57;Moselle;2;057-02
+44;Grand Est;57;Moselle;3;057-03
+44;Grand Est;57;Moselle;4;057-04
+44;Grand Est;57;Moselle;5;057-05
+44;Grand Est;57;Moselle;6;057-06
+44;Grand Est;57;Moselle;7;057-07
+44;Grand Est;57;Moselle;8;057-08
+44;Grand Est;57;Moselle;9;057-09
+44;Grand Est;88;Vosges;1;088-01
+44;Grand Est;88;Vosges;2;088-02
+44;Grand Est;88;Vosges;3;088-03
+44;Grand Est;88;Vosges;4;088-04
+32;Hauts-de-France;02;Aisne;1;002-01
+32;Hauts-de-France;02;Aisne;2;002-02
+32;Hauts-de-France;02;Aisne;3;002-03
+32;Hauts-de-France;02;Aisne;4;002-04
+32;Hauts-de-France;02;Aisne;5;002-05
+32;Hauts-de-France;59;Nord;1;059-01
+32;Hauts-de-France;59;Nord;2;059-02
+32;Hauts-de-France;59;Nord;3;059-03
+32;Hauts-de-France;59;Nord;4;059-04
+32;Hauts-de-France;59;Nord;5;059-05
+32;Hauts-de-France;59;Nord;6;059-06
+32;Hauts-de-France;59;Nord;7;059-07
+32;Hauts-de-France;59;Nord;8;059-08
+32;Hauts-de-France;59;Nord;9;059-09
+32;Hauts-de-France;59;Nord;10;059-10
+32;Hauts-de-France;59;Nord;11;059-11
+32;Hauts-de-France;59;Nord;12;059-12
+32;Hauts-de-France;59;Nord;13;059-13
+32;Hauts-de-France;59;Nord;14;059-14
+32;Hauts-de-France;59;Nord;15;059-15
+32;Hauts-de-France;59;Nord;16;059-16
+32;Hauts-de-France;59;Nord;17;059-17
+32;Hauts-de-France;59;Nord;18;059-18
+32;Hauts-de-France;59;Nord;19;059-19
+32;Hauts-de-France;59;Nord;20;059-20
+32;Hauts-de-France;59;Nord;21;059-21
+32;Hauts-de-France;60;Oise;1;060-01
+32;Hauts-de-France;60;Oise;2;060-02
+32;Hauts-de-France;60;Oise;3;060-03
+32;Hauts-de-France;60;Oise;4;060-04
+32;Hauts-de-France;60;Oise;5;060-05
+32;Hauts-de-France;60;Oise;6;060-06
+32;Hauts-de-France;60;Oise;7;060-07
+32;Hauts-de-France;62;Pas-de-Calais;1;062-01
+32;Hauts-de-France;62;Pas-de-Calais;2;062-02
+32;Hauts-de-France;62;Pas-de-Calais;3;062-03
+32;Hauts-de-France;62;Pas-de-Calais;4;062-04
+32;Hauts-de-France;62;Pas-de-Calais;5;062-05
+32;Hauts-de-France;62;Pas-de-Calais;6;062-06
+32;Hauts-de-France;62;Pas-de-Calais;7;062-07
+32;Hauts-de-France;62;Pas-de-Calais;8;062-08
+32;Hauts-de-France;62;Pas-de-Calais;9;062-09
+32;Hauts-de-France;62;Pas-de-Calais;10;062-10
+32;Hauts-de-France;62;Pas-de-Calais;11;062-11
+32;Hauts-de-France;62;Pas-de-Calais;12;062-12
+32;Hauts-de-France;80;Somme;1;080-01
+32;Hauts-de-France;80;Somme;2;080-02
+32;Hauts-de-France;80;Somme;3;080-03
+32;Hauts-de-France;80;Somme;4;080-04
+32;Hauts-de-France;80;Somme;5;080-05
+11;Île-de-France;91;Essonne;1;091-01
+11;Île-de-France;91;Essonne;2;091-02
+11;Île-de-France;91;Essonne;3;091-03
+11;Île-de-France;91;Essonne;4;091-04
+11;Île-de-France;91;Essonne;5;091-05
+11;Île-de-France;91;Essonne;6;091-06
+11;Île-de-France;91;Essonne;7;091-07
+11;Île-de-France;91;Essonne;8;091-08
+11;Île-de-France;91;Essonne;9;091-09
+11;Île-de-France;91;Essonne;10;091-10
+11;Île-de-France;92;Hauts-de-Seine;1;092-01
+11;Île-de-France;92;Hauts-de-Seine;2;092-02
+11;Île-de-France;92;Hauts-de-Seine;3;092-03
+11;Île-de-France;92;Hauts-de-Seine;4;092-04
+11;Île-de-France;92;Hauts-de-Seine;5;092-05
+11;Île-de-France;92;Hauts-de-Seine;6;092-06
+11;Île-de-France;92;Hauts-de-Seine;7;092-07
+11;Île-de-France;92;Hauts-de-Seine;8;092-08
+11;Île-de-France;92;Hauts-de-Seine;9;092-09
+11;Île-de-France;92;Hauts-de-Seine;10;092-10
+11;Île-de-France;92;Hauts-de-Seine;11;092-11
+11;Île-de-France;92;Hauts-de-Seine;12;092-12
+11;Île-de-France;92;Hauts-de-Seine;13;092-13
+11;Île-de-France;75;Paris;1;075-01
+11;Île-de-France;75;Paris;2;075-02
+11;Île-de-France;75;Paris;3;075-03
+11;Île-de-France;75;Paris;4;075-04
+11;Île-de-France;75;Paris;5;075-05
+11;Île-de-France;75;Paris;6;075-06
+11;Île-de-France;75;Paris;7;075-07
+11;Île-de-France;75;Paris;8;075-08
+11;Île-de-France;75;Paris;9;075-09
+11;Île-de-France;75;Paris;10;075-10
+11;Île-de-France;75;Paris;11;075-11
+11;Île-de-France;75;Paris;12;075-12
+11;Île-de-France;75;Paris;13;075-13
+11;Île-de-France;75;Paris;14;075-14
+11;Île-de-France;75;Paris;15;075-15
+11;Île-de-France;75;Paris;16;075-16
+11;Île-de-France;75;Paris;17;075-17
+11;Île-de-France;75;Paris;18;075-18
+11;Île-de-France;77;Seine-et-Marne;1;077-01
+11;Île-de-France;77;Seine-et-Marne;2;077-02
+11;Île-de-France;77;Seine-et-Marne;3;077-03
+11;Île-de-France;77;Seine-et-Marne;4;077-04
+11;Île-de-France;77;Seine-et-Marne;5;077-05
+11;Île-de-France;77;Seine-et-Marne;6;077-06
+11;Île-de-France;77;Seine-et-Marne;7;077-07
+11;Île-de-France;77;Seine-et-Marne;8;077-08
+11;Île-de-France;77;Seine-et-Marne;9;077-09
+11;Île-de-France;77;Seine-et-Marne;10;077-10
+11;Île-de-France;77;Seine-et-Marne;11;077-11
+11;Île-de-France;93;Seine-Saint-Denis;1;093-01
+11;Île-de-France;93;Seine-Saint-Denis;2;093-02
+11;Île-de-France;93;Seine-Saint-Denis;3;093-03
+11;Île-de-France;93;Seine-Saint-Denis;4;093-04
+11;Île-de-France;93;Seine-Saint-Denis;5;093-05
+11;Île-de-France;93;Seine-Saint-Denis;6;093-06
+11;Île-de-France;93;Seine-Saint-Denis;7;093-07
+11;Île-de-France;93;Seine-Saint-Denis;8;093-08
+11;Île-de-France;93;Seine-Saint-Denis;9;093-09
+11;Île-de-France;93;Seine-Saint-Denis;10;093-10
+11;Île-de-France;93;Seine-Saint-Denis;11;093-11
+11;Île-de-France;93;Seine-Saint-Denis;12;093-12
+11;Île-de-France;94;Val-de-Marne;1;094-01
+11;Île-de-France;94;Val-de-Marne;2;094-02
+11;Île-de-France;94;Val-de-Marne;3;094-03
+11;Île-de-France;94;Val-de-Marne;4;094-04
+11;Île-de-France;94;Val-de-Marne;5;094-05
+11;Île-de-France;94;Val-de-Marne;6;094-06
+11;Île-de-France;94;Val-de-Marne;7;094-07
+11;Île-de-France;94;Val-de-Marne;8;094-08
+11;Île-de-France;94;Val-de-Marne;9;094-09
+11;Île-de-France;94;Val-de-Marne;10;094-10
+11;Île-de-France;94;Val-de-Marne;11;094-11
+11;Île-de-France;95;Val-d'Oise;1;095-01
+11;Île-de-France;95;Val-d'Oise;2;095-02
+11;Île-de-France;95;Val-d'Oise;3;095-03
+11;Île-de-France;95;Val-d'Oise;4;095-04
+11;Île-de-France;95;Val-d'Oise;5;095-05
+11;Île-de-France;95;Val-d'Oise;6;095-06
+11;Île-de-France;95;Val-d'Oise;7;095-07
+11;Île-de-France;95;Val-d'Oise;8;095-08
+11;Île-de-France;95;Val-d'Oise;9;095-09
+11;Île-de-France;95;Val-d'Oise;10;095-10
+11;Île-de-France;78;Yvelines;1;078-01
+11;Île-de-France;78;Yvelines;2;078-02
+11;Île-de-France;78;Yvelines;3;078-03
+11;Île-de-France;78;Yvelines;4;078-04
+11;Île-de-France;78;Yvelines;5;078-05
+11;Île-de-France;78;Yvelines;6;078-06
+11;Île-de-France;78;Yvelines;7;078-07
+11;Île-de-France;78;Yvelines;8;078-08
+11;Île-de-France;78;Yvelines;9;078-09
+11;Île-de-France;78;Yvelines;10;078-10
+11;Île-de-France;78;Yvelines;11;078-11
+11;Île-de-France;78;Yvelines;12;078-12
+28;Normandie;14;Calvados;1;014-01
+28;Normandie;14;Calvados;2;014-02
+28;Normandie;14;Calvados;3;014-03
+28;Normandie;14;Calvados;4;014-04
+28;Normandie;14;Calvados;5;014-05
+28;Normandie;14;Calvados;6;014-06
+28;Normandie;27;Eure;1;027-01
+28;Normandie;27;Eure;2;027-02
+28;Normandie;27;Eure;3;027-03
+28;Normandie;27;Eure;4;027-04
+28;Normandie;27;Eure;5;027-05
+28;Normandie;50;Manche;1;050-01
+28;Normandie;50;Manche;2;050-02
+28;Normandie;50;Manche;3;050-03
+28;Normandie;50;Manche;4;050-04
+28;Normandie;61;Orne;1;061-01
+28;Normandie;61;Orne;2;061-02
+28;Normandie;61;Orne;3;061-03
+28;Normandie;76;Seine-Maritime;1;076-01
+28;Normandie;76;Seine-Maritime;2;076-02
+28;Normandie;76;Seine-Maritime;3;076-03
+28;Normandie;76;Seine-Maritime;4;076-04
+28;Normandie;76;Seine-Maritime;5;076-05
+28;Normandie;76;Seine-Maritime;6;076-06
+28;Normandie;76;Seine-Maritime;7;076-07
+28;Normandie;76;Seine-Maritime;8;076-08
+28;Normandie;76;Seine-Maritime;9;076-09
+28;Normandie;76;Seine-Maritime;10;076-10
+75;Nouvelle-Aquitaine;16;Charente;1;016-01
+75;Nouvelle-Aquitaine;16;Charente;2;016-02
+75;Nouvelle-Aquitaine;16;Charente;3;016-03
+75;Nouvelle-Aquitaine;17;Charente-Maritime;1;017-01
+75;Nouvelle-Aquitaine;17;Charente-Maritime;2;017-02
+75;Nouvelle-Aquitaine;17;Charente-Maritime;3;017-03
+75;Nouvelle-Aquitaine;17;Charente-Maritime;4;017-04
+75;Nouvelle-Aquitaine;17;Charente-Maritime;5;017-05
+75;Nouvelle-Aquitaine;19;Corrèze;1;019-01
+75;Nouvelle-Aquitaine;19;Corrèze;2;019-02
+75;Nouvelle-Aquitaine;23;Creuse;1;023-01
+75;Nouvelle-Aquitaine;79;Deux-Sèvres;1;079-01
+75;Nouvelle-Aquitaine;79;Deux-Sèvres;2;079-02
+75;Nouvelle-Aquitaine;79;Deux-Sèvres;3;079-03
+75;Nouvelle-Aquitaine;24;Dordogne;1;024-01
+75;Nouvelle-Aquitaine;24;Dordogne;2;024-02
+75;Nouvelle-Aquitaine;24;Dordogne;3;024-03
+75;Nouvelle-Aquitaine;24;Dordogne;4;024-04
+75;Nouvelle-Aquitaine;33;Gironde;1;033-01
+75;Nouvelle-Aquitaine;33;Gironde;2;033-02
+75;Nouvelle-Aquitaine;33;Gironde;3;033-03
+75;Nouvelle-Aquitaine;33;Gironde;4;033-04
+75;Nouvelle-Aquitaine;33;Gironde;5;033-05
+75;Nouvelle-Aquitaine;33;Gironde;6;033-06
+75;Nouvelle-Aquitaine;33;Gironde;7;033-07
+75;Nouvelle-Aquitaine;33;Gironde;8;033-08
+75;Nouvelle-Aquitaine;33;Gironde;9;033-09
+75;Nouvelle-Aquitaine;33;Gironde;10;033-10
+75;Nouvelle-Aquitaine;33;Gironde;11;033-11
+75;Nouvelle-Aquitaine;33;Gironde;12;033-12
+75;Nouvelle-Aquitaine;87;Haute-Vienne;1;087-01
+75;Nouvelle-Aquitaine;87;Haute-Vienne;2;087-02
+75;Nouvelle-Aquitaine;87;Haute-Vienne;3;087-03
+75;Nouvelle-Aquitaine;40;Landes;1;040-01
+75;Nouvelle-Aquitaine;40;Landes;2;040-02
+75;Nouvelle-Aquitaine;40;Landes;3;040-03
+75;Nouvelle-Aquitaine;47;Lot-et-Garonne;1;047-01
+75;Nouvelle-Aquitaine;47;Lot-et-Garonne;2;047-02
+75;Nouvelle-Aquitaine;47;Lot-et-Garonne;3;047-03
+75;Nouvelle-Aquitaine;64;Pyrénées-Atlantiques;1;064-01
+75;Nouvelle-Aquitaine;64;Pyrénées-Atlantiques;2;064-02
+75;Nouvelle-Aquitaine;64;Pyrénées-Atlantiques;3;064-03
+75;Nouvelle-Aquitaine;64;Pyrénées-Atlantiques;4;064-04
+75;Nouvelle-Aquitaine;64;Pyrénées-Atlantiques;5;064-05
+75;Nouvelle-Aquitaine;64;Pyrénées-Atlantiques;6;064-06
+75;Nouvelle-Aquitaine;86;Vienne;1;086-01
+75;Nouvelle-Aquitaine;86;Vienne;2;086-02
+75;Nouvelle-Aquitaine;86;Vienne;3;086-03
+75;Nouvelle-Aquitaine;86;Vienne;4;086-04
+76;Occitanie;09;Ariège;1;009-01
+76;Occitanie;09;Ariège;2;009-02
+76;Occitanie;11;Aude;1;011-01
+76;Occitanie;11;Aude;2;011-02
+76;Occitanie;11;Aude;3;011-03
+76;Occitanie;12;Aveyron;1;012-01
+76;Occitanie;12;Aveyron;2;012-02
+76;Occitanie;12;Aveyron;3;012-03
+76;Occitanie;30;Gard;1;030-01
+76;Occitanie;30;Gard;2;030-02
+76;Occitanie;30;Gard;3;030-03
+76;Occitanie;30;Gard;4;030-04
+76;Occitanie;30;Gard;5;030-05
+76;Occitanie;30;Gard;6;030-06
+76;Occitanie;32;Gers;1;032-01
+76;Occitanie;32;Gers;2;032-02
+76;Occitanie;31;Haute-Garonne;1;031-01
+76;Occitanie;31;Haute-Garonne;2;031-02
+76;Occitanie;31;Haute-Garonne;3;031-03
+76;Occitanie;31;Haute-Garonne;4;031-04
+76;Occitanie;31;Haute-Garonne;5;031-05
+76;Occitanie;31;Haute-Garonne;6;031-06
+76;Occitanie;31;Haute-Garonne;7;031-07
+76;Occitanie;31;Haute-Garonne;8;031-08
+76;Occitanie;31;Haute-Garonne;9;031-09
+76;Occitanie;31;Haute-Garonne;10;031-10
+76;Occitanie;65;Hautes-Pyrénées;1;065-01
+76;Occitanie;65;Hautes-Pyrénées;2;065-02
+76;Occitanie;34;Hérault;1;034-01
+76;Occitanie;34;Hérault;2;034-02
+76;Occitanie;34;Hérault;3;034-03
+76;Occitanie;34;Hérault;4;034-04
+76;Occitanie;34;Hérault;5;034-05
+76;Occitanie;34;Hérault;6;034-06
+76;Occitanie;34;Hérault;7;034-07
+76;Occitanie;34;Hérault;8;034-08
+76;Occitanie;34;Hérault;9;034-09
+76;Occitanie;46;Lot;1;046-01
+76;Occitanie;46;Lot;2;046-02
+76;Occitanie;48;Lozère;1;048-01
+76;Occitanie;66;Pyrénées-Orientales;1;066-01
+76;Occitanie;66;Pyrénées-Orientales;2;066-02
+76;Occitanie;66;Pyrénées-Orientales;3;066-03
+76;Occitanie;66;Pyrénées-Orientales;4;066-04
+76;Occitanie;81;Tarn;1;081-01
+76;Occitanie;81;Tarn;2;081-02
+76;Occitanie;81;Tarn;3;081-03
+76;Occitanie;82;Tarn-et-Garonne;1;082-01
+76;Occitanie;82;Tarn-et-Garonne;2;082-02
+52;Pays de la Loire;44;Loire-Atlantique;1;044-01
+52;Pays de la Loire;44;Loire-Atlantique;2;044-02
+52;Pays de la Loire;44;Loire-Atlantique;3;044-03
+52;Pays de la Loire;44;Loire-Atlantique;4;044-04
+52;Pays de la Loire;44;Loire-Atlantique;5;044-05
+52;Pays de la Loire;44;Loire-Atlantique;6;044-06
+52;Pays de la Loire;44;Loire-Atlantique;7;044-07
+52;Pays de la Loire;44;Loire-Atlantique;8;044-08
+52;Pays de la Loire;44;Loire-Atlantique;9;044-09
+52;Pays de la Loire;44;Loire-Atlantique;10;044-10
+52;Pays de la Loire;49;Maine-et-Loire;1;049-01
+52;Pays de la Loire;49;Maine-et-Loire;2;049-02
+52;Pays de la Loire;49;Maine-et-Loire;3;049-03
+52;Pays de la Loire;49;Maine-et-Loire;4;049-04
+52;Pays de la Loire;49;Maine-et-Loire;5;049-05
+52;Pays de la Loire;49;Maine-et-Loire;6;049-06
+52;Pays de la Loire;49;Maine-et-Loire;7;049-07
+52;Pays de la Loire;53;Mayenne;1;053-01
+52;Pays de la Loire;53;Mayenne;2;053-02
+52;Pays de la Loire;53;Mayenne;3;053-03
+52;Pays de la Loire;72;Sarthe;1;072-01
+52;Pays de la Loire;72;Sarthe;2;072-02
+52;Pays de la Loire;72;Sarthe;3;072-03
+52;Pays de la Loire;72;Sarthe;4;072-04
+52;Pays de la Loire;72;Sarthe;5;072-05
+52;Pays de la Loire;85;Vendée;1;085-01
+52;Pays de la Loire;85;Vendée;2;085-02
+52;Pays de la Loire;85;Vendée;3;085-03
+52;Pays de la Loire;85;Vendée;4;085-04
+52;Pays de la Loire;85;Vendée;5;085-05
+93;Provence-Alpes-Côte d'Azur;04;Alpes-de-Haute-Provence;1;004-01
+93;Provence-Alpes-Côte d'Azur;04;Alpes-de-Haute-Provence;2;004-02
+93;Provence-Alpes-Côte d'Azur;06;Alpes-Maritimes;1;006-01
+93;Provence-Alpes-Côte d'Azur;06;Alpes-Maritimes;2;006-02
+93;Provence-Alpes-Côte d'Azur;06;Alpes-Maritimes;3;006-03
+93;Provence-Alpes-Côte d'Azur;06;Alpes-Maritimes;4;006-04
+93;Provence-Alpes-Côte d'Azur;06;Alpes-Maritimes;5;006-05
+93;Provence-Alpes-Côte d'Azur;06;Alpes-Maritimes;6;006-06
+93;Provence-Alpes-Côte d'Azur;06;Alpes-Maritimes;7;006-07
+93;Provence-Alpes-Côte d'Azur;06;Alpes-Maritimes;8;006-08
+93;Provence-Alpes-Côte d'Azur;06;Alpes-Maritimes;9;006-09
+93;Provence-Alpes-Côte d'Azur;13;Bouches-du-Rhône;1;013-01
+93;Provence-Alpes-Côte d'Azur;13;Bouches-du-Rhône;2;013-02
+93;Provence-Alpes-Côte d'Azur;13;Bouches-du-Rhône;3;013-03
+93;Provence-Alpes-Côte d'Azur;13;Bouches-du-Rhône;4;013-04
+93;Provence-Alpes-Côte d'Azur;13;Bouches-du-Rhône;5;013-05
+93;Provence-Alpes-Côte d'Azur;13;Bouches-du-Rhône;6;013-06
+93;Provence-Alpes-Côte d'Azur;13;Bouches-du-Rhône;7;013-07
+93;Provence-Alpes-Côte d'Azur;13;Bouches-du-Rhône;8;013-08
+93;Provence-Alpes-Côte d'Azur;13;Bouches-du-Rhône;9;013-09
+93;Provence-Alpes-Côte d'Azur;13;Bouches-du-Rhône;10;013-10
+93;Provence-Alpes-Côte d'Azur;13;Bouches-du-Rhône;11;013-11
+93;Provence-Alpes-Côte d'Azur;13;Bouches-du-Rhône;12;013-12
+93;Provence-Alpes-Côte d'Azur;13;Bouches-du-Rhône;13;013-13
+93;Provence-Alpes-Côte d'Azur;13;Bouches-du-Rhône;14;013-14
+93;Provence-Alpes-Côte d'Azur;13;Bouches-du-Rhône;15;013-15
+93;Provence-Alpes-Côte d'Azur;13;Bouches-du-Rhône;16;013-16
+93;Provence-Alpes-Côte d'Azur;05;Hautes-Alpes;1;005-01
+93;Provence-Alpes-Côte d'Azur;05;Hautes-Alpes;2;005-02
+93;Provence-Alpes-Côte d'Azur;83;Var;1;083-01
+93;Provence-Alpes-Côte d'Azur;83;Var;2;083-02
+93;Provence-Alpes-Côte d'Azur;83;Var;3;083-03
+93;Provence-Alpes-Côte d'Azur;83;Var;4;083-04
+93;Provence-Alpes-Côte d'Azur;83;Var;5;083-05
+93;Provence-Alpes-Côte d'Azur;83;Var;6;083-06
+93;Provence-Alpes-Côte d'Azur;83;Var;7;083-07
+93;Provence-Alpes-Côte d'Azur;83;Var;8;083-08
+93;Provence-Alpes-Côte d'Azur;84;Vaucluse;1;084-01
+93;Provence-Alpes-Côte d'Azur;84;Vaucluse;2;084-02
+93;Provence-Alpes-Côte d'Azur;84;Vaucluse;3;084-03
+93;Provence-Alpes-Côte d'Azur;84;Vaucluse;4;084-04
+93;Provence-Alpes-Côte d'Azur;84;Vaucluse;5;084-05
 0;Outremer;971;Guadeloupe;1;971-01
 0;Outremer;971;Guadeloupe;2;971-02
 0;Outremer;971;Guadeloupe;3;971-03
 0;Outremer;971;Guadeloupe;4;971-04
-0;Outremer;972;Martinique;1;972-01
-0;Outremer;972;Martinique;2;972-02
-0;Outremer;972;Martinique;3;972-03
-0;Outremer;972;Martinique;4;972-04
 0;Outremer;973;Guyane;1;973-01
 0;Outremer;973;Guyane;2;973-02
 0;Outremer;974;La Réunion;1;974-01
@@ -566,13 +551,28 @@ REG_ID;REG_NOM;DEP_ID;DEP_NOM;CIRCO_NOM;CIRCO_ID
 0;Outremer;974;La Réunion;5;974-05
 0;Outremer;974;La Réunion;6;974-06
 0;Outremer;974;La Réunion;7;974-07
-0;Outremer;975;Saint-Pierre-et-Miquelon;1;975-01
+0;Outremer;972;Martinique;1;972-01
+0;Outremer;972;Martinique;2;972-02
+0;Outremer;972;Martinique;3;972-03
+0;Outremer;972;Martinique;4;972-04
 0;Outremer;976;Mayotte;1;976-01
 0;Outremer;976;Mayotte;2;976-02
-0;Outremer;977;Saint-Barthélemy;1;977-01
-0;Outremer;986;Wallis-et-Futuna;1;986-01
+0;Outremer;988;Nouvelle-Calédonie;1;988-01
+0;Outremer;988;Nouvelle-Calédonie;2;988-02
 0;Outremer;987;Polynésie française;1;987-01
 0;Outremer;987;Polynésie française;2;987-02
 0;Outremer;987;Polynésie française;3;987-03
-0;Outremer;988;Nouvelle-Calédonie;1;988-01
-0;Outremer;988;Nouvelle-Calédonie;2;988-02
+0;Outremer;977;Saint-Barthélemy;1;977-01
+0;Outremer;975;Saint-Pierre-et-Miquelon;1;975-01
+0;Outremer;986;Wallis-et-Futuna;1;986-01
+99;Français de l'étranger;99;;1;099-01
+99;Français de l'étranger;99;;2;099-02
+99;Français de l'étranger;99;;3;099-03
+99;Français de l'étranger;99;;4;099-04
+99;Français de l'étranger;99;;5;099-05
+99;Français de l'étranger;99;;6;099-06
+99;Français de l'étranger;99;;7;099-07
+99;Français de l'étranger;99;;8;099-08
+99;Français de l'étranger;99;;9;099-09
+99;Français de l'étranger;99;;10;099-10
+99;Français de l'étranger;99;;11;099-11

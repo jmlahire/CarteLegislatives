@@ -7,8 +7,10 @@ g._mCust {
 g#depts{
   path {
     stroke:#fff;
+    stroke-opacity: .5;
     stroke-width:1;
     fill:none;
+    vector-effect:non-scaling-stroke;
   }
 }
 

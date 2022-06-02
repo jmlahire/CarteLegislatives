@@ -157,6 +157,12 @@ function mapFillingFunction (properties) {
     return { fill: fill } ;
 }
 
+
+function highlightCirco(id){
+    let elt=myMap.layer ('circos');
+    console.log(elt);
+}
+
 /**********************************************************************
  ***************************** CARTES *********************************
  **********************************************************************/
@@ -240,8 +246,23 @@ Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
                   { value:'CIRCO_ID',text:'CIRCO_NOM', label:'Circonscription', placeholder:'Circonscription'} ],
                 { root:'France entière'} )
         .on('select', (e) => {
-            if (e.level===2 && e.value<99 && e.value>0) myMap.layer('circos').zoom(e.value);
             console.log(e);
+            if (e.level===2){
+                e.value=parseInt(e.value);
+                if (e.root) {
+                    myMap.layer('circos').zoomOut();
+                }
+                else if (e.value<99 && e.value>0) {
+                    console.log('ZOOM',e);
+                    myMap.layer('circos').zoomTo('REG',e.value);
+                }
+            }
+            else if (e.level===1 && e.value.length<3 && e.value!=='99'){
+                e.value=e.value.toString().padStart(3,0);
+                myMap.layer('circos').zoomTo('DEP3',e.value);
+            }
+
+
         });
 
 

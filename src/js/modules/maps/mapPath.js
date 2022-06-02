@@ -195,8 +195,26 @@ class MapPath extends MapLayer {
             .raise();
     }
 
-    zoom(value){
-        console.log("ZOOM", value);
+    zoomTo(key,value, options={}){
+        const _options = { exclude:true };
+        options = { ...options, ..._options };
+        let selection=this.innerContainer
+            .selectAll('path.clickable')
+            .classed('hidden', d=>d.properties[key]!==value)
+        //    .each(d=>console.log(d.properties[key],value))
+            .filter(d=>d.properties[key]===value);
+           // .each(d=>console.log(d));
+        //console.log(selection);
+        this.parent.zoomTo(selection);
+        return this;
+    }
+
+    zoomOut(){
+        this.innerContainer
+            .selectAll('path.clickable')
+            .classed('hidden', false);
+        this.parent.zoomOut();
+        return this;
     }
 
 
