@@ -195,6 +195,10 @@ class MapPath extends MapLayer {
             .raise();
     }
 
+    zoom(value){
+        console.log("ZOOM", value);
+    }
+
 
 }
 

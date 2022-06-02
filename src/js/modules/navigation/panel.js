@@ -11,7 +11,7 @@ const d3=Object.assign({},d3Selection,d3Timer,d3Dispatch,d3Drag);
 class Panel extends Component{
 
     static _type='_Panel';
-    static defaultOptions = { anchor: 'right', width: '450px', height:'80%', minWidth:500, handleWidth:15, initialPosition: 'folded', duration: 1000, delay:0, timer:500000  };
+    static defaultOptions = { anchor: 'right', width: '450px', height:'80%', minWidth:500, handleWidth:'1.2rem', handleText:'Légende', initialPosition: 'folded', duration: 1000, delay:0, timer:500000  };
 
     /**
      * CONSTRUCTEUR
@@ -73,28 +73,17 @@ class Panel extends Component{
      * @returns {Panel}
      */
     resize(){
-        const applyPercent = (value,percent) => {
-            const p=parseFloat(percent);
-            return value*p/100;
-        }
-        const convertRemToPixels = (rem) => {
-            return parseInt(rem) * parseFloat(getComputedStyle(document.documentElement).fontSize);
-        }
+
+        this.size={ width:undefined, height:undefined, handle:undefined };
 
         //Calcul dimensions parent
         const parentSize = this._parent.container.node().getBoundingClientRect();
-        this.size={};
+
         ['width','height'].forEach( (k) => {
-            if (this._options[k].includes('%')){
-                this.size[k]=applyPercent(parentSize[k],this._options[k]);
-            }
-            else if (this._options[k].includes('rem')) {
-                this.size[k]=convertRemToPixels(this._options[k]);
-            }
-            else {
-                this.size[k]=parseInt(this._options[k]);
-            }
+            this.size[k]=Panel._convertLengthToPx(this._options[k],parentSize[k]);
         })
+        if (this._options.maxWidth) this.size.width=Math.min( this.size.width, Panel._convertLengthToPx(this._options.maxWidth) , parentSize.width );
+        if (this._options.minWidth) this.size.width=Math.max( this.size.width, Panel._convertLengthToPx(this._options.minWidth));
 
         //Dimensionnement du panel
         this.outerContainer
@@ -102,14 +91,19 @@ class Panel extends Component{
             .style('width',`${this.size.width}px`)
             .style('height',`${this.size.height}px`);
         //Dimensionnement et positionnement poignée
-        this.size.handle=parseInt(this._options.handleWidth);
+        this.size.handle=Panel._convertLengthToPx(this._options.handleWidth, this.size.width);
         this._handle
             .style('width',`${this.size.handle}px`)
             .style('height',`${this.size.height}px`);
         this._handle.append('span')
             .style('line-height',`${this.size.height}px`)
-            .style('font-size',`${this.size.handle*.7}px`)
-            .text('◀');
+            .style('font-size',`${this.size.handle*.8}px`)
+            .text('◀')
+            .classed('txt',()=>this._options.handleText)
+            .filter(()=>this._options.handleText)
+                .text(this._options.handleText)
+                .style('transform',`translateX(-${this.size.handle}px) rotate(-90deg)`);
+
         //Dimensionnement et positionnement contenu
         this.size.content=this.size.width-this.size.handle;
         this.innerContainer
@@ -127,6 +121,29 @@ class Panel extends Component{
                 .style('right',`-${this.size.content}px`);
         }
         return this;
+    }
+
+
+    /**
+     * Convertit une longueur (en pixels, rem ou % d'un element dont la dimension est passée en argument) en longueur en pixels
+     * @param {String|Number} value
+     * @param {Number} [reference]  dimension de l'element de réference si la longueur est exprimée en %
+     * @returns {number}
+     * @private
+     */
+    static _convertLengthToPx (value, reference) {
+        if (!isNaN(value)){
+            return value;
+        }
+        else if (value.includes('%') && reference!==undefined){
+            return reference*parseFloat(value)/100;
+        }
+        else if (value.includes('rem')) {
+            return parseFloat(value) * parseFloat(getComputedStyle(document.documentElement).fontSize);
+        }
+        else {
+            return parseInt(value);
+        }
     }
 
     /**

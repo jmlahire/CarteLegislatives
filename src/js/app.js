@@ -19,7 +19,11 @@ import {DataCollection} from "./modules/common/dataCollection";
 import {NestedSelection} from "./modules/navigation/nestedSelection";
 import {Synthese} from './modules/custom/synthese';
 import {Panel} from './modules/navigation/panel';
+import {getHostColor} from './modules/common/fnUrl';
 
+
+d3.select('#header span.keyword').style('background',getHostColor).style('color','#FFF');
+d3.selectAll('#header h1,#header h2').style('color',getHostColor);
 
 
 
@@ -95,7 +99,7 @@ resultats.statistics=function(nuancesPol){
     nuancesList=Array.from(nuancesList)
         .map(d=> Object.assign(d, { tete: nuancesCompteur.tete[d.id], qualif : nuancesCompteur.qualif[d.id]}))
         .sort((a,b)=> d3.descending(a.tete,b.tete));
-    console.log(nuancesList);
+
     return { nuances: { compteur: nuancesCompteur, list: nuancesList }, synthese: syntheseResultats };
 
 }
@@ -206,7 +210,7 @@ const   myFooter = new Synthese('Synthese').appendTo('#innerContainer');
 
 const   myPanel = new Panel('sidePanel').appendTo('#mapContainer');
 
-const   myLegend=new MapLegend().appendTo(myPanel);
+const   myLegend=new MapLegend(undefined,'Nuances politiques').appendTo(myPanel);
 
 /**********************************************************************
  ******************************* MAIN *********************************
@@ -236,6 +240,7 @@ Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
                   { value:'CIRCO_ID',text:'CIRCO_NOM', label:'Circonscription', placeholder:'Circonscription'} ],
                 { root:'France entière'} )
         .on('select', (e) => {
+            if (e.level===2 && e.value<99 && e.value>0) myMap.layer('circos').zoom(e.value);
             console.log(e);
         });
 

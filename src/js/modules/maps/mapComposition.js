@@ -35,7 +35,7 @@ class MapComposition extends Svg{
         super(id, size.width, size.height, size.margins);
         this._options = {...MapComposition.defaultOptions,...options};
        // this.outerContainer.classed(MapComposition._type,true);
-        console.log(this);
+
         this._layers = new Map();
         this._defs = this.outerContainer.append('defs').lower();
         this._dispatch = d3.dispatch('zoom');

@@ -11,8 +11,11 @@ const d3=Object.assign({},d3Selection,d3Dispatch);
 
 class DropdownList {
 
-    constructor(level=null){
+    static _options= { autoselect:true};
+
+    constructor(level=null, options= {}){
         this.level=level;
+        this._options = {...options, ...DropdownList._options };
         this._outerContainer=d3.create('li').classed(`select${level}`,level);
         this._innerContainer=this._outerContainer.append('select');
         this._dispatch=d3.dispatch('change');
@@ -39,8 +42,6 @@ class DropdownList {
     }
 
     update(data=null,structure= null){
-     //   console.log('UPDATE');
-        const autoSelect=true;
         this._structure = structure || this._structure;
         this.empty();
         if (data!==null){
@@ -53,7 +54,7 @@ class DropdownList {
                     .append('option')
                     .attr('value',d=>d[0])
                     .text(d=> this._accessor(d[1]) );
-                if (data.size===1 && autoSelect) {
+                if (data.size===1 && this._options.autoSelect) {
                     this._dispatch.call('change',this,{ level:this.level, value:data.keys().next().value , autoSelect:true } );
                     this.hide();
                 }
@@ -66,7 +67,7 @@ class DropdownList {
                     .attr('value',d=>d[this._structure.value])
                     .text(d=>d[this._structure.text] );
                 console.log(data,data.length);
-                if (data.length===1 && autoSelect) {
+                if (data.length===1 && this._options.autoSelect) {
                    // console.log(data, this.level, data[0][this._structure.value]);
                     //this._dispatch.call('change',this,{ level:this.level, value:data[0][this._structure.value], autoSelect:true } );
                 }
@@ -97,6 +98,7 @@ class DropdownList {
     }
 
     select(value){
+        console.log(value);
         this._innerContainer
             .selectAll('option')
             .property('selected',d=>console.log(d));
@@ -168,21 +170,19 @@ class NestedSelection extends Component{
                                     .appendTo(this)
                                     .update( (i===this.size-1)? this._data: null , this._structure[i])
                                     .on('change', (msg) => {
-                                        console.warn(i,msg);
                                         this._selected[i] =  msg.value;
                                         for (let j=i-1;j>=0;j--) {
                                                 this._selected[j] =  null;
-                                                this._sections[j].update(null)
+                                                this._sections[j].update(null);
                                         }
-                                        //console.log(this._selected);
-                                        let k=this.size-1,
-                                            data=this._data;
-                                        while (this._selected[k]!==null && data instanceof Map){
-                                            data=data.get(this._selected[k--]);
+                                        if (msg.level>0) {
+                                            let k=this.size-1,
+                                                data=this._data;
+                                            while (this._selected[k]!==null && data instanceof Map){
+                                                data=data.get(this._selected[k--]);
+                                            }
+                                            this._sections[msg.level-1].update(data);
                                         }
-
-                                        let next = (msg.level>1)? msg.level-1 : 0;
-                                        this._sections[next].update(data);
                                         this._dispatch.call('select',this,msg);
                                     });
         }

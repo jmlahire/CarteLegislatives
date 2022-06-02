@@ -638,11 +638,11 @@ g._mCust text {
 ._Panel.right div.handle {
   border-radius: 5px 0 0 5px;
 }
-._Panel.right.folded div.handle span {
+._Panel.right.folded div.handle span:not(.txt) {
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
 }
-._Panel.right.unfolded div.handle span {
+._Panel.right.unfolded div.handle span:not(.txt) {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
