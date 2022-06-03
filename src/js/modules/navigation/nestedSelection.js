@@ -11,12 +11,12 @@ const d3=Object.assign({},d3Selection,d3Dispatch);
 
 class DropdownList {
 
-    static _options= { autoselect:true};
 
-    constructor(level=null, options= {}){
-        this.level=level;
-        this._options = {...options, ...DropdownList._options };
-        this._outerContainer=d3.create('li').classed(`select${level}`,level);
+    constructor(level, metadata, autoselect=true){
+        this.level=level
+        this._metadata=metadata;
+        this._autoselect=autoselect;
+        this._outerContainer=d3.create('li').attr('class',`ddList${level}`);
         this._innerContainer=this._outerContainer.append('select');
         this._dispatch=d3.dispatch('change');
     }
@@ -31,65 +31,63 @@ class DropdownList {
         return this;
     }
 
-    hide(){
-        this._outerContainer.style('display','none');
+    visibility(bool){
+        this._outerContainer.style('visibility', (bool)? 'visible':'hidden');
         return this;
     }
 
-    show(){
-        this._outerContainer.style('display','list-item');
+    display(bool){
+        this._outerContainer.style('display', (bool)? 'list-item':'none');
         return this;
     }
 
-    update(data=null,structure= null){
-        this._structure = structure || this._structure;
+    update(data=null, selected=null) {
         this.empty();
-        if (data!==null){
-            this.show();
-            //Niveaux supérieurs (données dans une Map)
-            if (data instanceof Map){
-                this._innerContainer.selectAll('option')
-                    .data(data)
-                    .enter()
-                    .append('option')
-                    .attr('value',d=>d[0])
-                    .text(d=> this._accessor(d[1]) );
-                if (data.size===1 && this._options.autoselect) {
-                    console.log('autoselect',data);
-                    this._dispatch.call('change',this,{ level:this.level, value:data.keys().next().value , autoSelect:true } );
-                    this.hide();
-                }
-            }//Dernier niveau (données dans un array)
-            else if (Array.isArray(data)){
-                this._innerContainer.selectAll('option')
-                    .data(data)
-                    .enter()
-                    .append('option')
-                    .attr('value',d=>d[this._structure.value])
-                    .text(d=>d[this._structure.text] );
-                if (data.length===1 && this._options.autoselect) {
-                   // console.log(data, this.level, data[0][this._structure.value]);
-                    //this._dispatch.call('change',this,{ level:this.level, value:data[0][this._structure.value], autoSelect:true } );
-                }
-                    //this._dispatch.call('change',this,{level:this.level, value:'099' } );
-                    //this.hide();
+        const   traverseText = (datum) => {
+                    while (datum instanceof Map) {
+                        datum = datum.values().next().value;
+                    }
+                    return datum[0][this._metadata.text];
+        }
+        const   getValue = (d) => (data instanceof Map) ? d[0] : d[this._metadata.value],
+                getText  = (d) => (data instanceof Map) ? traverseText(d[1]) : d[this._metadata.text];
+
+        //Données vides -> on n'affiche rien
+        if (data === null) {
+            this.visibility(false);
+        }
+        //Un seul choix possible -> si autoselect, le sélectionne automatiquement
+        else if (this._autoselect && data instanceof Map && data.size===1){
+
+            let value=data.keys().next().value;
+            this.display(false);
+
+            if (!this._autoselected) {
+                this._autoselected=true;
+                this._dispatch.call('change',this, {level: this.level, value:value});
             }
 
-            if (this._structure.placeholder) this.addPlaceHolder(this._structure.placeholder);
+            console.warn('AUTOSELECT',this.level,this._autoselected);
+        }
+        //Plusieurs choix possibles
+        else {
+            this.visibility(true).display(true);
+            this._autoselected=false;
+            this._innerContainer
+                .selectAll('option')
+                .data(data)
+                .enter()
+                .append('option')
+                .property('selected', d=> getValue(d)===selected)
+                .attr('value', getValue)
+                .text(getText);
 
-
+            if (selected===null && this._metadata.placeholder) this.addPlaceHolder(this._metadata.placeholder);
             this._innerContainer.on('change',(e)=>{
-                const msg={ level:this.level, value: e.target.value};
-                if (e.target.value==="###") Object.assign(msg, { value:null, root:true });
+                const msg={ level: this.level, value:  e.target.value};
                 this._dispatch.call('change',this, msg);
-
             });
         }
-        else {
-            this.hide();
-        }
-
-        return this;
     }
 
     addPlaceHolder(text){
@@ -98,7 +96,8 @@ class DropdownList {
             .property('disabled',true)
             .property('selected',true)
             .property('hidden',true)
-            .text(text);
+            .text(text)
+            .lower();
         return this;
     }
 
@@ -109,13 +108,13 @@ class DropdownList {
      * @param {Boolean} first=true  si true, place l'option en tête de la liste
      * @returns {DropdownList}
      */
-    addOption(value,label, first=true ){
+    addOption(value,text, firstPosition=true ){
         if (this.findValue(value)===null){
             let option=this._innerContainer
                 .append('option')
                 .attr('value',value)
-                .text(label)
-            if (first) option.lower();
+                .text(text)
+            if (firstPosition) option.lower();
         }
         return this;
     }
@@ -158,6 +157,7 @@ class DropdownList {
      * @private
      */
     _accessor(datum){
+        console.log(datum);
         while (datum instanceof Map) {
             datum = datum.values().next().value;
         }
@@ -187,48 +187,46 @@ class NestedSelection extends Component{
      * @param {Array} structure
      * @returns {NestedSelection}
      */
-    data(data,metadata, options={} ){
+    data(data,metadata, options={} , selection){
 
-        this._sections = new Array();
-        this._selected = new Array();
-        options = {...options, ... { root: 'FRANCE ENTIERE'}}
+        this._data = data.toGroups(metadata.slice(0,-1).map(d=>d.value), 'map');
+        this._metadata = metadata;
+        this._sections = Array(metadata.length-1);
+        this._selected = selection || Array(metadata.length).fill(null);
 
-        const   size = metadata.length,
-                structure = metadata.reverse(),
-                dataset = data.toGroups(structure.map(d=>d.value).slice(1).reverse() , 'map');
-
-        for (let i=0; i<=size-1; i++){
-            this._selected[i]=null;
-            this._sections[i]=new DropdownList(i)
-                                    .appendTo(this)
-                                    .update( (i===size-1)? dataset: null , structure[i])
-                                    .on('change', (msg) => {
-                                        this._selected[i] =  msg.value;
-                                        for (let j=i-1;j>=0;j--) {
-                                                this._selected[j] = null;
-                                                this._sections[j].update(null);
-                                        }
-                                        if (msg.level>0) {
-                                            let k=size-1,
-                                                dataNode=dataset;
-                                            while (this._selected[k]!==null && dataNode instanceof Map){
-                                                dataNode=dataNode.get(this._selected[k--]);
-                                            }
-                                            this._sections[msg.level-1].update(dataNode);
-                                        }
-                                        this._dispatch.call('select',this,msg);
-                                        if (options.root) {
-                                            this._sections[size-1].addOption("###",options.root);
-                                            if (i===size-1 && msg.root) {
-                                                this._sections[size-2].update(null);
-                                                console.log("UPDATE NULL");
-                                            }
-                                        }
-
-                                    });
+        for (let i=0; i<this._metadata.length; i++){
+            this._sections[i]=new DropdownList( i , this._metadata[i])
+                .appendTo(this)
+                .on('change', e => {
+                    //Modification des valeurs sélectionnées
+                    this._selected[e.level]= (e.value==='null')? null: e.value;
+                    for (let i=e.level+1;i<this._metadata.length;i++) this._selected[i]=null;
+                    //MAJ des selects
+                    this.update();
+                    //Renvoi du dispatch
+                    let value = this._selected[e.level];
+                    if (value!==null && this._metadata[e.level].valueMapper) value=this._metadata[e.level].valueMapper(this._selected[e.level]);
+                    this._dispatch.call('select',this,{ level:e.level, value:value});
+                });
         }
-
+        this.update();
         return this;
+    }
+
+
+
+    update(){
+        let subdata=this._data;
+        for (let i=0; i<this._metadata.length; i++){
+            this._sections[i].update(subdata, this._selected[i]);
+            if (this._metadata[i].root) {
+                let test=this._selected.slice(i,this._metadata.length);
+                if (test.some(d=>d!==null)) {
+                    this._sections[i].addOption("null",this._metadata[i].root);
+                }
+            }
+            if (subdata!==null && subdata instanceof Map) subdata=subdata.get(this._selected[i]);
+        }
     }
 
 

@@ -1,7 +1,5 @@
 import {MapLayer} from './mapLayer.js'
 
-//import '../../../style/modules/maps/mapPath.scss'
-
 import * as d3Selection from 'd3-selection'
 import * as d3Transition from 'd3-transition'
 import * as d3Fetch from 'd3-fetch'
@@ -188,11 +186,16 @@ class MapPath extends MapLayer {
     }
 
     highlight(id){
-        this._container
-            .selectAll('path.clickable')
-            .classed('highlight', (d)=> d.properties[this._options.primary]===id )
-            .filter( (d)=> d.properties[this._options.primary]===id )
-            .raise();
+        if (id)
+            this._container
+                .selectAll('path.clickable')
+                .classed('highlight', (d)=> d.properties[this._options.primary]===id)
+                .filter( (d)=> d.properties[this._options.primary]===id )
+                .raise();
+        else this._container
+                .selectAll('path.clickable')
+            .classed('highlight',false);
+        return this;
     }
 
     zoomTo(key,value, options={}){
@@ -214,6 +217,10 @@ class MapPath extends MapLayer {
             .selectAll('path.clickable')
             .classed('hidden', false);
         this.parent.zoomOut();
+        return this;
+    }
+
+    select(id){
         return this;
     }
 

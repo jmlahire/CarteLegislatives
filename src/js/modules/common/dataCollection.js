@@ -25,6 +25,7 @@ function applyDtype(dataset,dtype){
 
 
 
+
 class DataCollection {
 
     static type='DataCollection';
@@ -337,6 +338,7 @@ class DataCollection {
      * @param key
      * @returns {any[]}
      */
+    /*
     unique(key){
         let values=this.col(key);
         if (values.some( d=> d instanceof Date)) {
@@ -347,7 +349,25 @@ class DataCollection {
             values=values.map(d=>JSON.stringify(d));
             return [...new Set(values)].map(d=>JSON.parse(d));
         }
-        else return [...new Set(values)];
+        else return [...new Set(values)];*/
+   // }
+
+    /**
+     * Renvoie un tableau contenant les valeurs uniques d'une colonne
+     * @param key
+     * @returns {any[]}
+     */
+    uniques(keys){
+        if (typeof keys==='string') keys=[keys];
+        let set=new Set();
+        this.dataset
+            .forEach ( d => {
+                   let reduced={};
+                   keys.forEach( k => reduced[k] = d[k] );
+                 //  console.log(reduced);
+                   set.add(JSON.stringify(reduced));
+                });
+        return Array.from(set).map(d=>JSON.parse(d));
     }
 
     /**

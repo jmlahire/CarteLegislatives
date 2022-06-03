@@ -19,11 +19,13 @@ import {DataCollection} from "./modules/common/dataCollection";
 import {NestedSelection} from "./modules/navigation/nestedSelection";
 import {Synthese} from './modules/custom/synthese';
 import {Panel} from './modules/navigation/panel';
-import {getHostColor} from './modules/common/fnUrl';
+import {getHostColor,getUrlParam as _getUrlParam} from './modules/common/fnUrl';
 
 
 d3.select('#header span.keyword').style('background',getHostColor).style('color','#FFF');
 d3.selectAll('#header h1,#header h2').style('color',getHostColor);
+
+
 
 
 
@@ -38,7 +40,7 @@ const   listeCircos = new DataCollection('listeCircos')
                         .load( "./assets/data/listecircos.csv",
                         {   delimiter:';',
                                     primary:'CIRCO_ID',
-                                    dtype: { CIRCO_ID:"string"}} );
+                                    dtype: { }} );      //REG_ID:'int'
 
 
 const   resultats = new DataCollection("resultats")
@@ -55,8 +57,21 @@ const   resultats = new DataCollection("resultats")
  ************************ FONCTIONS ET METHODES ***********************
  **********************************************************************/
 
+/**
+ * Récupére les paramètres reg et dep passés dans l'url
+ * @returns {{reg: number}|{value: number, key: string}|{value: string, key: (string|*), dep}|null}
+ */
+function getUrlParam () {
+    let urlParams = [ _getUrlParam('reg'), _getUrlParam('dep'), _getUrlParam('circo')];
+    if (urlParams[0]===null) urlParams[0]=parseInt(urlParams[1]);
+    if (urlParams[1]===null) urlParams[1]=urlParams[0].toString().padStart(3,'0');
+    urlParams=[11,null,null];
+    return urlParams;
+}
+
 
 /**
+ * Ajout de méthode dans l'instance resultats de DataCollection
  * Calcule et renvoie différentes stats à partir du fichier résultats et nuancesPol
  * @param {DataCollection} nuancesPol
  * @returns {{nuances: {compteur: {tete: any[], qualif: any[]}, list: Set<any>}, synthese: {quadrang: Map<any, any>, triang: Map<any, any>, elus: Map<any, any>, duels: Map<any, any>}}}
@@ -163,6 +178,9 @@ function highlightCirco(id){
     console.log(elt);
 }
 
+
+
+
 /**********************************************************************
  ***************************** CARTES *********************************
  **********************************************************************/
@@ -224,53 +242,59 @@ const   myLegend=new MapLegend(undefined,'Nuances politiques').appendTo(myPanel)
 
 Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
 
-    myMap.layer('circos')
-        .load()
-        .fit( )
-        .render()
-        .on('click', d=>console.log(d))
-        .join(resultats,"idcirco")
-        .fill(mapFillingFunction);
-    myMap.layer('depts')
-        .load()
-        .render();
-    myMap.layer('labels')
-        .render();
+    myMap.layer('circos').load().fit( ).render()
+                            .on('click', d => console.log(d))
+                            .join(resultats,"idcirco")
+                            .fill(mapFillingFunction);
+    myMap.layer('depts').load().render();
+    myMap.layer('labels').render();
 
 
 
     mySelector
         .data ( listeCircos,
-                [ { value:'REG_ID',text:'REG_NOM', label:'Région', placeholder:'Région ou territoire' },
-                  { value:'DEP_ID',text:'DEP_NOM', label:'Département', placeholder:'Département'},
-                  { value:'CIRCO_ID',text:'CIRCO_NOM', label:'Circonscription', placeholder:'Circonscription'} ],
-                { root:'France entière'} )
+                [ { value:'REG_ID',text:'REG_NOM', label:'Région', placeholder:'Région ou territoire', root:'FRANCE ENTIERE' , valueMapper:(d)=>parseInt(d) },
+                  { value:'DEP_ID',text:'DEP_NOM', label:'Département', placeholder:'Département', valueMapper:(d)=>d.toString().padStart(3,'0') },
+                  { value:'CIRCO_ID',text:'CIRCO_NOM', label:'Circonscription', placeholder:'Circonscription'} ] )
         .on('select', (e) => {
             console.log(e);
-            if (e.level===2){
-                e.value=parseInt(e.value);
-                if (e.root) {
+            if (e.level===0){
+                myMap.layer('circos').highlight(null);
+                if (e.value===null) {
                     myMap.layer('circos').zoomOut();
                 }
                 else if (e.value<99 && e.value>0) {
                     console.log('ZOOM',e);
                     myMap.layer('circos').zoomTo('REG',e.value);
+                    console.log(myMap.layer('labels'));
                 }
             }
-            else if (e.level===1 && e.value.length<3 && e.value!=='99'){
-                e.value=e.value.toString().padStart(3,0);
-                myMap.layer('circos').zoomTo('DEP3',e.value);
+            else if (e.level===1){
+                myMap.layer('circos').highlight(null);
+                if (e.value.charAt(0)==='0' && e.value!=='099'){
+                    myMap.layer('circos').zoomTo('DEP3',e.value);
+                }
+                else {
+                    myMap.layer('circos').zoomOut();
+                }
+            }
+            else if (e.level===2){
+                myMap.layer('circos').highlight(e.value);
             }
 
 
         });
 
 
+    const urlParam=getUrlParam();
+    console.log(urlParam);
 
 
+    //Ajout de la légende
     const stats=resultats.statistics(nuancesPol);
     myLegend.categories(stats.nuances.list, { color:'couleur', name:'nom', shortName:'code' });
 
+    //Ajout de la synthèse
     myFooter.update(stats);
 
 
