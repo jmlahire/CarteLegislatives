@@ -189,7 +189,8 @@ class NestedSelection extends Component{
      */
     data(data,metadata, options={} , selection){
 
-        this._data = data.toGroups(metadata.slice(0,-1).map(d=>d.value), 'map');
+        this._data=data.dataset;
+        this._nestedData = data.toGroups(metadata.slice(0,-1).map(d=>d.value), 'map');
         this._metadata = metadata;
         this._sections = Array(metadata.length-1);
         this._selected = selection || Array(metadata.length).fill(null);
@@ -216,7 +217,8 @@ class NestedSelection extends Component{
 
 
     update(){
-        let subdata=this._data;
+        console.log(this._selected);
+        let subdata=this._nestedData;
         for (let i=0; i<this._metadata.length; i++){
             this._sections[i].update(subdata, this._selected[i]);
             if (this._metadata[i].root) {
@@ -229,6 +231,30 @@ class NestedSelection extends Component{
         }
     }
 
+
+    /**
+     * Modifie les selects en choisissant les bonnes options
+     * @param {Array] } selection
+     */
+    select(selection){
+        let needle,
+            i = this._metadata.length-1;
+        while (!needle && i>=0){
+            if (selection[i]!==null)  needle= this._data.find( d => d[this._metadata[i].value]===selection[i]);
+            i--;
+        }
+        if (needle){
+            let level=i+1;
+            for (let j=level; j>=0; j--) {
+                this._selected[j]=needle[this._metadata[j].value];
+            }
+            let value = (this._metadata[level].valueMapper)? this._metadata[level].valueMapper(this._selected[level]): this._selected[level];
+            this.update();
+            this._dispatch.call('select',this,{ level:level, value:value});
+        }
+
+
+    }
 
 
 

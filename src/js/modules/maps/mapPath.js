@@ -35,8 +35,8 @@ class MapPath extends MapLayer {
      * Limite le zoom et le déplacement au contenu du calque. Nécessite un appel à render pour redessiner la carte.
      * @returns {MapPath}
      */
-    fit(filterFn=(d)=>true){
-        this.parent.enqueue( () => new Promise((resolve, reject) => {
+    fit(filterFn=()=>true){
+        this.parent.enqueue( () => new Promise((resolve) => {
             const focused = this.geodata.filter( filterFn );
             this.projection.fitExtent( [[0,0], [this.parent.size.effectiveWidth, this.parent.size.effectiveHeight]], {type:"FeatureCollection", features: focused }  );
             resolve(this);
@@ -52,7 +52,7 @@ class MapPath extends MapLayer {
      */
     load(arg){
         const source = (this._options.source instanceof Function) ? this._options.source(arguments[0]) : this._options.source;
-        this.parent.enqueue( () => new Promise((resolve, reject) => {
+        this.parent.enqueue( () => new Promise((resolve) => {
             d3.json(source)
                 .then( (topology) => {
                     this.geodata = topojson.feature(topology, Object.getOwnPropertyNames(topology.objects)[0]).features;
@@ -69,7 +69,7 @@ class MapPath extends MapLayer {
     render(){
         //if (this._options.autofit===true) this.fit();
        // console.log('render');
-        this.parent.enqueue( () => new Promise((resolve, reject) => {
+        this.parent.enqueue( () => new Promise((resolve) => {
             this.path.projection(this.projection);
             this._container
                     .selectAll("path")
@@ -101,7 +101,7 @@ class MapPath extends MapLayer {
     join(dataCollection, dataKey, geoKey){
         geoKey = geoKey || this._options.primary;
         dataKey = dataKey || dataCollection.primary;
-        this.parent.enqueue( () => new Promise((resolve, reject) => {
+        this.parent.enqueue( () => new Promise((resolve) => {
             dataCollection.ready.then( (data)=> {
                 data=data.exportToMap(dataKey);
                 this._container.selectAll("path")
@@ -120,7 +120,7 @@ class MapPath extends MapLayer {
     /**
      * Calcule les domaines (et les moyennes et médianes) des données contenues dans d.properties: ils seront disponibles dans this.metadata
      * @param {Array|String} keys - clés des données dont il faut calculer les statistiques
-     * @param {Array} [type]  - statistiques à calculer parmi les suivantes: domain, sum, count, median, deviation
+     * @param {Array} [types]  - statistiques à calculer parmi les suivantes: domain, sum, count, median, deviation
      */
     statistics(keys, types=['domain','mean']){
         const   calcRound = (v) => Math.round(v*10000)/10000;
@@ -132,7 +132,7 @@ class MapPath extends MapLayer {
             median: (v) => calcRound(d3.median(v)),
             deviation: (v) => calcRound(d3.deviation(v,.1))
         }
-        this.parent.enqueue( () => new Promise((resolve, reject) => {
+        this.parent.enqueue( () => new Promise((resolve) => {
             this.metadata = this.metadata || {};
             if (typeof keys === 'string') keys = [keys];
             types.forEach( prop => this.metadata[prop]= this.metadata[prop] || {} );
@@ -151,7 +151,7 @@ class MapPath extends MapLayer {
     }
 
     fill(stylingFunction){
-        this.parent.enqueue( () => new Promise((resolve, reject) => {
+        this.parent.enqueue( () => new Promise((resolve) => {
             this._container.selectAll("path")
                 .each( (d,i,n) => {
                     const   style=stylingFunction(d.properties),
@@ -168,10 +168,10 @@ class MapPath extends MapLayer {
                                 color = style.fill.select("line").attr('stroke');
                         let pattern=this.parent._defs.select(`pattern#${id}`);
                         if (pattern.empty()) {
-                            pattern =  this.parent._defs.append( () => style.fill.node()) ;
+                            this.parent._defs.append( () => style.fill.node()) ;
                         }
                         transition.style('fill',color)
-                            .on('end',function(d) {
+                            .on('end',function() {
                                         d3.select(this).style('fill',`url(#${id})`);
                         });
                     }
@@ -198,16 +198,11 @@ class MapPath extends MapLayer {
         return this;
     }
 
-    zoomTo(key,value, options={}){
-        const _options = { exclude:true };
-        options = { ...options, ..._options };
+    zoomTo(key,value){
         let selection=this.innerContainer
             .selectAll('path.clickable')
             .classed('hidden', d=>d.properties[key]!==value)
-        //    .each(d=>console.log(d.properties[key],value))
             .filter(d=>d.properties[key]===value);
-           // .each(d=>console.log(d));
-        //console.log(selection);
         this.parent.zoomTo(selection);
         return this;
     }
@@ -217,10 +212,6 @@ class MapPath extends MapLayer {
             .selectAll('path.clickable')
             .classed('hidden', false);
         this.parent.zoomOut();
-        return this;
-    }
-
-    select(id){
         return this;
     }
 

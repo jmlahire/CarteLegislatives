@@ -92,7 +92,7 @@ resultats.statistics=function(nuancesPol){
         nuancesList.add(nuancesPol.map.get(value[0].nuanceId)[0]);
         nuancesCompteur.tete[value[0].nuanceId]++;
         addColors(value);
-        value.forEach((v, i) => {
+        value.forEach((v) => {
             nuancesCompteur.qualif[v.nuanceId]++;
         });
         switch (value.length) {
@@ -127,8 +127,7 @@ resultats.statistics=function(nuancesPol){
  */
 function mapFillingFunction (properties) {
 
-    const blank='#ccc';
-    let fill = blank;
+    let fill = '#ccc';
 
     try{
         const   data=properties.JDATA.sort((a,b) => d3.descending(a.voix,b.voix)),
@@ -173,10 +172,6 @@ function mapFillingFunction (properties) {
 }
 
 
-function highlightCirco(id){
-    let elt=myMap.layer ('circos');
-    console.log(elt);
-}
 
 
 
@@ -262,11 +257,12 @@ Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
                 myMap.layer('circos').highlight(null);
                 if (e.value===null) {
                     myMap.layer('circos').zoomOut();
+                    myMap.layer('labels').fadeIn();
                 }
                 else if (e.value<99 && e.value>0) {
                     console.log('ZOOM',e);
                     myMap.layer('circos').zoomTo('REG',e.value);
-                    console.log(myMap.layer('labels'));
+                    myMap.layer('labels').fadeOut();
                 }
             }
             else if (e.level===1){
@@ -276,6 +272,7 @@ Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
                 }
                 else {
                     myMap.layer('circos').zoomOut();
+                    myMap.layer('labels').fadeIn();
                 }
             }
             else if (e.level===2){
@@ -296,6 +293,10 @@ Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
 
     //Ajout de la synthèse
     myFooter.update(stats);
+
+    setTimeout(()=>{
+        mySelector.select([null,null,'055-01']);
+    },1000);
 
 
 
