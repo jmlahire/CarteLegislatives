@@ -71,6 +71,7 @@ class Synthese extends Component {
     constructor(id ) {
         super(id);
         this._container = d3.create('div').attr('id',id);
+        this._dispatch = d3.dispatch('select');
         this._sectionElus = this._container.append('section').attr('class','elus');
         this._sectionElus.append('h3').text('Députés élus au premier tour');
         this._sectionElus.append('ul');
@@ -85,41 +86,43 @@ class Synthese extends Component {
         return this;
     }
     _renderElus(data){
-        let li = this._sectionElus
+        if (!data.size) this._sectionElus.style('display','none');
+        else this._sectionElus
             .select('ul')
             .selectAll('li')
             .data(data)
             .enter()
             .append('li')
-            .each( function(d) {
+            .each( (d,i,n)=> {
                 let circo=d[0],
                     color=d[1].nuanceCol,
                     figure=(d[1].civ==='M')?'man':'woman';
                 let svg=new FigureFactory().render(figure, color);
-                d3.select(this)
+                d3.select(n[i])
                     .attr('class',`_${circo}`)
                     .append(()=> svg.node())
-                    .on('click',d=>console.log(circo));
+                    .on('click',() => this._dispatch.call('select', this, {circo: circo} ));
             });
 
     }
 
     _renderTriangulaires(data){
-        let li = this._sectionTriang
+        if (!data.size) this._sectionTriang.style('display','none');
+        else this._sectionTriang
             .select('ul')
             .selectAll('li')
             .data(data)
             .enter()
             .append('li')
-            .each( function(d) {
+            .each( (d,i,n)=> {
                 let circo=d[0],
                     colors=d[1].map(d=>d.nuanceCol);
                 let figure=(d[1].length===3)?'triangulaire':'quadrangulaire';
                 let svg=new FigureFactory().render(figure, colors);
-                d3.select(this)
+                d3.select(n[i])
                     .attr('class',`_${circo}`)
                     .append(()=> svg.node())
-                    .on('click',d=>console.log(circo));
+                    .on('click',() => this._dispatch.call('select', this, {circo: circo} ));
             });
 
     }

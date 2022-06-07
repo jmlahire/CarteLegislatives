@@ -15,7 +15,7 @@ const d3=Object.assign({},d3Selection,d3Geo,d3Zoom,d3Transition,d3Ease,d3Dispatc
 class MapComposition extends Svg{
 
     static _type='_mComp';
-    static defaultOptions= { duration: 2000, delay:0, projection: d3.geoMercator(), freezoom: false};
+    static defaultOptions= { duration: 500, delay:0, projection: d3.geoMercator(), freezoom: false};
 
     /**
      * CONSTRUCTEUR
@@ -42,6 +42,7 @@ class MapComposition extends Svg{
         //this._zoomEvent={e:null,level:1,source:null};
         this._zoomSource=this.outerContainer;
         this._zoom = d3.zoom()
+                        .filter( (e) => !e.button && e.type != "dblclick" )
                         .scaleExtent([1, 15])
                         .translateExtent([[0, 0], [this.size.width, this.size.height]])
                         .on('zoom', (e) => this._handleZoom.call(this,e) );
@@ -131,35 +132,49 @@ class MapComposition extends Svg{
      */
     _handleZoom(e) {
 
-        //e.transform.k=1;
-/*
-        console.log('zoom level', e.transform.k,this._zoomEvent);
-        if ((e.sourceEvent && !this._zoomEvent.source) || (!e.sourceEvent && this._zoomEvent.source))  {
-            //if (this.state.zoomEvent.source!==e.sourceEvent.constructor.name)
-            console.warn('change!!!');
-          //  console.log(this.state.animationPending);
-        }*/
+            //e.transform.k=1;
+            /*
+                    console.log('zoom level', e.transform.k,this._zoomEvent);
+                    if ((e.sourceEvent && !this._zoomEvent.source) || (!e.sourceEvent && this._zoomEvent.source))  {
+                        //if (this.state.zoomEvent.source!==e.sourceEvent.constructor.name)
+                        console.warn('change!!!');
+                      //  console.log(this.state.animationPending);
+                    }*/
 
-       // console.log(e);
 
-        //Zoom programmatique
-        if (  e.sourceEvent===null) {
-            //Transformation
-            this.innerContainer.attr('transform', `translate(${this.size.margins.left+e.transform.x} ${this.size.margins.top+e.transform.y}) scale(${e.transform.k})`);
-            //Maintien de l'échelle et disparition des étiquettes
-            /*const labels=this.innerContainer.selectAll('text.label')
-            if (e.transform.k<4)  labels.classed('invisible',true)
-            else labels.classed('invisible',false);
-            labels.style('font-size',`${24/e.transform.k}px`);*/
-            //Dispatch
-            this._dispatch.call('zoom',this,{level:e.transform.k, source:e.sourceEvent});
-            this._zoomEvent= { e:e.sourceEvent, source: (e.sourceEvent)?e.sourceEvent.constructor.name:null ,level:e.transform.k };
-        }
-        //Zoom manuel
-        else {
-            this._zoomEvent= { e:e.sourceEvent, source: (e.sourceEvent)?e.sourceEvent.constructor.name:null ,level:e.transform.k };
-        }
-       // console.log(this._zoomEvent);
+
+            //Zoom programmatique
+            //e.stopPropagation();
+
+            //  console.log('zoom level', e.transform.k,this._zoomEvent);
+        this._zoomEvent = {
+            e: e.sourceEvent,
+            source: (e.sourceEvent) ? e.sourceEvent.constructor.name : null,
+            level: e.transform.k
+        };
+
+
+    //    console.log(e.transform);
+            if (e.sourceEvent === null) {
+
+                //Transformation
+                this.innerContainer.attr('transform', `translate(${this.size.margins.left + e.transform.x} ${this.size.margins.top + e.transform.y}) scale(${e.transform.k})`);
+                //Maintien de l'échelle et disparition des étiquettes
+                /*const labels=this.innerContainer.selectAll('text.label')
+                if (e.transform.k<4)  labels.classed('invisible',true)
+                else labels.classed('invisible',false);
+                labels.style('font-size',`${24/e.transform.k}px`);*/
+                //Dispatch
+                this._dispatch.call('zoom', this, {level: e.transform.k, source: e.sourceEvent});
+
+            }
+            //Zoom manuel
+            else if (e.sourceEvent instanceof MouseEvent) {
+
+                // this._zoomEvent= { e:e.sourceEvent, source: (e.sourceEvent)?e.sourceEvent.constructor.name:null ,level:e.transform.k };
+            }
+            // console.log(this._zoomEvent);
+
     }
 
     /**
@@ -168,7 +183,7 @@ class MapComposition extends Svg{
      * @param {Number} zoomMargin          fixe la proportion des marges autour de la sélection zoomée (1 cadré serré, 0.5 cadré sur la moitié de la zone, etx...)
      */
     zoomTo(selection, options={ }){
-        const _options = { zoomMargin:.95 }
+        const _options = { zoomMargin:.95 };
         this.enqueue( () => new Promise((resolve, reject) => {
             selection = selection.nodes();
             //Calcul du zoom
@@ -198,19 +213,11 @@ class MapComposition extends Svg{
                 .delay(this._options.delay)
                 .duration(this._options.duration)
                 .call(this._zoom.transform, finalTransform)
-                .on('start', ()=> {
-                    console.log(this);
-                    //this.container.selectAll('g._mPth path').style('pointer-events','none'); //Hack degueu
-                 //   this.freezoom(false);
-                })
                 .on('end', () => {
-//                    const newBounds = getBoundaries(selection);
+
                     this._zoom.scaleExtent([1, finalTransform.k * 4]);
-                 //   this.container.selectAll('g._mPth path').style('pointer-events','visible'); //Hack degueu
-                    this.outerContainer.call(this._zoom, finalTransform);
-                    console.log(finalTransform);
-                   // this.freezoom (this._options.freezoom);
-                    resolve(this);
+                    this.outerContainer.call(this._zoom.filter( (e) => !e.button && e.type != "dblclick" ), finalTransform);
+                         resolve(this);
                 })
         }));
 
@@ -221,19 +228,14 @@ class MapComposition extends Svg{
     zoomOut(){
 
         this.enqueue( () => new Promise((resolve, reject) => {
-           // this._freezoom = false;
             let finalTransform = d3.zoomIdentity
                 .translate(0, 0)
                 .scale(1);
-            this.outerContainer
+            this._zoomSource
                 .transition()
                 .delay(this._options.delay)
                 .duration(this._options.duration)
                 .call(this._zoom.transform, finalTransform)
-                .on('start', ()=> {
-             //       this.container.selectAll('g#departements path.area').style('pointer-events','none'); //Hack degueu
-                   // this.freezoom(false);
-                })
                 .on('end', () => {
                     this._zoom.scaleExtent([1, finalTransform.k * 4]);
                     this.outerContainer.call(this._zoom, finalTransform);

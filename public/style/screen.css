@@ -355,14 +355,19 @@ g#depts path {
 }
 
 #choixCirco li {
-  -ms-flex-preferred-size: 33.33%;
-      flex-basis: 33.33%;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
 }
 
 #mapContainer {
   padding-right: 2rem;
 }
 
+@media (max-width: 767px) {
+  header {
+    font-size: 80%;
+  }
+}
 header h1, header h2, header h3, header h4, header h5, header h6 {
   text-align: center;
 }
@@ -430,7 +435,7 @@ div {
 @-webkit-keyframes blinkingPath {
   0% {
     fill-opacity: 1;
-    stroke-width: 4;
+    stroke-width: 2;
   }
   50% {
     fill-opacity: 0.7;
@@ -438,14 +443,14 @@ div {
   }
   100% {
     fill-opacity: 1;
-    stroke-width: 4;
+    stroke-width: 2;
   }
 }
 
 @keyframes blinkingPath {
   0% {
     fill-opacity: 1;
-    stroke-width: 4;
+    stroke-width: 2;
   }
   50% {
     fill-opacity: 0.7;
@@ -453,20 +458,20 @@ div {
   }
   100% {
     fill-opacity: 1;
-    stroke-width: 4;
+    stroke-width: 2;
   }
 }
 g._mPth path {
-  -webkit-transition: opacity 3s ease-in-out 0.5s;
-  transition: opacity 3s ease-in-out 0.5s;
+  -webkit-transition: opacity 1s ease-in-out 0.2s;
+  transition: opacity 1s ease-in-out 0.2s;
   pointer-events: none;
   fill: none;
   stroke: none;
-  stroke-width: 0.2;
+  stroke-width: 1;
   vector-effect: non-scaling-stroke;
 }
 g._mPth path.clickable {
-  pointer-events: painted;
+  pointer-events: visiblePainted;
   cursor: pointer;
 }
 g._mPth path.clickable:hover {
@@ -479,6 +484,7 @@ g._mPth path.highlight {
 }
 g._mPth path.hidden {
   opacity: 0;
+  cursor: default !important;
 }
 
 g._mCust text {
@@ -574,11 +580,28 @@ g._mCust text {
   -webkit-padding-start: 0;
           padding-inline-start: 0;
 }
+@media (max-width: 650px) {
+  ._nNestSel ul {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+@media (min-width: 651px) {
+  ._nNestSel ul {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+}
 ._nNestSel ul li {
   list-style: none;
   text-align: center;
   font-family: "Nunito", sans-serif;
   font-size: 90%;
+}
+@media (max-width: 650px) {
+  ._nNestSel ul li {
+    margin-top: 0.2rem;
+  }
 }
 ._nNestSel ul li.disabled {
   opacity: 0.6;
@@ -645,6 +668,10 @@ g._mCust text {
 }
 ._Panel.right div.handle {
   border-radius: 5px 0 0 5px;
+}
+._Panel.right div.handle span.txt {
+  font-family: "Roboto", sans-serif;
+  pointer-events: none;
 }
 ._Panel.right.folded div.handle span:not(.txt) {
   -webkit-transform: rotate(0deg);

@@ -2,22 +2,22 @@
 
 
 @keyframes blinkingPath{
-  0% { fill-opacity:1; stroke-width:4; }
+  0% { fill-opacity:1; stroke-width:2; }
   50% { fill-opacity:.7; stroke-width:0;}
-  100% { fill-opacity:1; stroke-width:4; }
+  100% { fill-opacity:1; stroke-width:2; }
 }
 
 
 g._mPth {
   path {
-    transition: opacity 3s ease-in-out .5s;
+    transition: opacity 1s ease-in-out .2s;
     pointer-events:none;
     fill:none;
     stroke: none;
-    stroke-width:.2;
+    stroke-width:1;
     vector-effect: non-scaling-stroke;
     &.clickable{
-      pointer-events: painted;
+      pointer-events: visiblePainted;
       cursor: pointer;
       &:hover{
         fill:#ccc;
@@ -30,6 +30,7 @@ g._mPth {
     }
     &.hidden{
       opacity:0;
+      cursor: default!important;
     }
   }
 }

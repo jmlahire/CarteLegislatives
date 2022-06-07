@@ -161,17 +161,6 @@ class Component extends Queue {
         return this;
     }
 
-    test(){
-        this.outerContainer
-            .style('width','100%')
-            .style('display','block')
-            .style('opacity',0)
-            .transition(this._outerTransition)
-            .style('opacity',1)
-            .transition(this._outerTransition)
-            .style('outline-color','blue').style('width','50%');
-    }
-
     empty(){
         this.innerContainer.selectAll('*').remove();
         return this;

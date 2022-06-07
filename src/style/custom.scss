@@ -16,10 +16,17 @@ g#depts{
 
 #choixCirco{
   li {
-    flex-basis:33.33%;
+    flex-basis:100%;
   }
 }
 
 #mapContainer{
   padding-right:2rem;
+}
+
+@media (max-width : 767px){
+  header {
+    font-size:80%;
+  }
+
 }

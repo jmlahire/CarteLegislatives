@@ -63,9 +63,8 @@ const   resultats = new DataCollection("resultats")
  */
 function getUrlParam () {
     let urlParams = [ _getUrlParam('reg'), _getUrlParam('dep'), _getUrlParam('circo')];
-    if (urlParams[0]===null) urlParams[0]=parseInt(urlParams[1]);
-    if (urlParams[1]===null) urlParams[1]=urlParams[0].toString().padStart(3,'0');
-    urlParams=[11,null,null];
+    if (urlParams[0]!==null) urlParams[0]=parseInt(urlParams[1]).toString();
+    if (urlParams[1]!==null) urlParams[1]=urlParams[0].toString().padStart(3,'0');
     return urlParams;
 }
 
@@ -127,7 +126,35 @@ resultats.statistics=function(nuancesPol){
  */
 function mapFillingFunction (properties) {
 
-    let fill = '#ccc';
+    const blank = '#ccc',
+          styles= { };
+
+    const hatched=(color)=>{
+        let colorA=d3.hsl(color),
+            colorB=colorA.copy();
+        colorA.l*=.5;
+        colorB.l*=1.2;
+        let pattern=d3.create('svg:pattern')
+            .attr('id',`pat${first.nuanceId}`)
+            .attr('patternUnits','userSpaceOnUse')
+            .attr('width',10)
+            .attr('height',10)
+            .attr('patternTransform','rotate(45)');
+        pattern.append('rect')
+            .attr('x',0)
+            .attr('y',0)
+            .attr('width',10)
+            .attr('height',10)
+            .attr('fill',colorB.formatHex());
+        pattern.append('line')
+            .attr('x1',0)
+            .attr('y1',0)
+            .attr('x2',0)
+            .attr('y2',10)
+            .attr('stroke',color)
+            .attr('stroke-width',5);
+        return pattern;
+    }
 
     try{
         const   data=properties.JDATA.sort((a,b) => d3.descending(a.voix,b.voix)),
@@ -136,43 +163,53 @@ function mapFillingFunction (properties) {
             const color = nuancesPol.map.get(first.nuanceId)[0].couleur;
             //Election au premier tour
             if ( (first.pct_exprimes>50 && first.pct_inscrits>25)  ){
-                let colorA=d3.hsl(color),
-                    colorB=colorA.copy();
-                colorA.l*=.5;
-                colorB.l*=1.2;
-                fill=d3.create('svg:pattern')
-                    .attr('id',`pat${first.nuanceId}`)
-                    .attr('patternUnits','userSpaceOnUse')
-                    .attr('width',10)
-                    .attr('height',10)
-                    .attr('patternTransform','rotate(45)');
-                fill.append('rect')
-                    .attr('x',0)
-                    .attr('y',0)
-                    .attr('width',10)
-                    .attr('height',10)
-                    .attr('fill',colorB.formatHex());
-                fill.append('line')
-                    .attr('x1',0)
-                    .attr('y1',0)
-                    .attr('x2',0)
-                    .attr('y2',10)
-                    .attr('stroke',color)
-                    .attr('stroke-width',5);
+                styles.fill=color;
             }//Ballotage
             else {
-                fill=color;
+                styles.fill=color;
             }
         }
     }
     catch(error){
-        console.warn(error);
     }
-    return { fill: fill } ;
+    return styles;
 }
 
 
+function select(selection, origin){
 
+    //Selection par clic direct
+    if (origin instanceof PointerEvent) {
+        if (!myMap.zoomLevel || myMap.zoomLevel==='REG'){
+            mySelector.select(selection,false);
+            if (selection[2].substring(0, 3)!=='099' && selection[2].charAt(0)!=='9') {
+                myMap.layer('circos').zoomTo('DEP3',mySelector.selection[1]);
+            }
+        }
+
+    }
+    //Selection par clic sur un raccourci (élus, triangulaires)
+    else if  (origin==='figure'){
+        mySelector.select(selection,false);
+        myMap.layer('circos').highlight(selection[2]);
+        if (selection[2].substring(0, 3)!=='099' && selection[2].charAt(0)!=='9') {
+            myMap.layer('circos').zoomTo('DEP3',mySelector.selection[1]);
+        }
+        else{
+            myMap.layer('circos').zoomOut();
+        }
+    }
+    //Selection par paramètre get
+    else if (origin==='get'){
+        mySelector.select(selection,false);
+        if (mySelector.selection[1]!==null) myMap.layer('circos').zoomTo('DEP3',mySelector.selection[1]);
+        else if (mySelector.selection[0]!==null) myMap.layer('circos').zoomTo('REG',mySelector.selection[0]);
+    }
+
+
+
+
+}
 
 
 
@@ -231,6 +268,7 @@ const   myPanel = new Panel('sidePanel').appendTo('#mapContainer');
 
 const   myLegend=new MapLegend(undefined,'Nuances politiques').appendTo(myPanel);
 
+
 /**********************************************************************
  ******************************* MAIN *********************************
  **********************************************************************/
@@ -238,7 +276,7 @@ const   myLegend=new MapLegend(undefined,'Nuances politiques').appendTo(myPanel)
 Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
 
     myMap.layer('circos').load().fit( ).render()
-                            .on('click', d => console.log(d))
+                            .on('click', d => select([null,null,d.id], d.event))
                             .join(resultats,"idcirco")
                             .fill(mapFillingFunction);
     myMap.layer('depts').load().render();
@@ -252,19 +290,20 @@ Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
                   { value:'DEP_ID',text:'DEP_NOM', label:'Département', placeholder:'Département', valueMapper:(d)=>d.toString().padStart(3,'0') },
                   { value:'CIRCO_ID',text:'CIRCO_NOM', label:'Circonscription', placeholder:'Circonscription'} ] )
         .on('select', (e) => {
-            console.log(e);
+            //Choix région (niveau 0)
             if (e.level===0){
                 myMap.layer('circos').highlight(null);
-                if (e.value===null) {
+                if (e.value===null || e.value===0 || e.value===99) {
                     myMap.layer('circos').zoomOut();
                     myMap.layer('labels').fadeIn();
                 }
                 else if (e.value<99 && e.value>0) {
-                    console.log('ZOOM',e);
                     myMap.layer('circos').zoomTo('REG',e.value);
                     myMap.layer('labels').fadeOut();
                 }
             }
+
+            //Choix département (niveau 1)
             else if (e.level===1){
                 myMap.layer('circos').highlight(null);
                 if (e.value.charAt(0)==='0' && e.value!=='099'){
@@ -275,6 +314,7 @@ Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
                     myMap.layer('labels').fadeIn();
                 }
             }
+            //Choix circo (niveau 2)
             else if (e.level===2){
                 myMap.layer('circos').highlight(e.value);
             }
@@ -283,8 +323,7 @@ Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
         });
 
 
-    const urlParam=getUrlParam();
-    console.log(urlParam);
+
 
 
     //Ajout de la légende
@@ -293,9 +332,10 @@ Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
 
     //Ajout de la synthèse
     myFooter.update(stats);
+    myFooter.on('select', (e)=> select([null,null,e.circo],'figure'));
 
     setTimeout(()=>{
-        mySelector.select([null,null,'055-01']);
+        select(getUrlParam(), 'get');
     },1000);
 
 

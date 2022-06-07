@@ -11,7 +11,7 @@ const d3=Object.assign({},d3Selection,d3Timer,d3Dispatch,d3Drag);
 class Panel extends Component{
 
     static _type='_Panel';
-    static defaultOptions = { anchor: 'right', width: '450px', height:'80%', minWidth:500, handleWidth:'1.2rem', handleText:'Légende', initialPosition: 'folded', duration: 1000, delay:0, timer:500000  };
+    static defaultOptions = { anchor: 'right', width: '80%', height:'80%', minWidth:250, handleWidth:'1.3rem', handleText:'Légende', initialPosition: 'folded', duration: 1000, delay:0, timer:500000  };
 
     /**
      * CONSTRUCTEUR
@@ -42,21 +42,31 @@ class Panel extends Component{
 
         this._pos = { };
         this._outerContainer
-            .call(  d3.drag()
-                    .on("start", (e)=>{
-                        if (this._position==='folded') this.unfold();
-                        else {
-                            this._pos.x=e.x;
-                            this._pos.y=e.y;
-                        }
-                    })
-                    .on("end", (e)=>{
-                        if (this._position==='folded') this.unfold();
-                        else {
-                            if (this._options.anchor==='right' && e.x>this._pos.x+15) this.fold();
-                        }
-                    })
-                );
+            .on('click',(e)=>{
+                if (this._position==='unfolded') {
+                    this.fold();
+                    this._outerContainer.call(d3.drag().on('start',null).on('end',null));
+                }
+                else {
+                    this.unfold();
+                    this._outerContainer.call(  d3.drag()
+                        .on("start", (e)=>{
+                            if (this._position==='folded') this.unfold();
+                            else {
+                                this._pos.x=e.x;
+                                this._pos.y=e.y;
+                            }
+                        })
+                        .on("end", (e)=>{
+                            if (this._position==='folded') this.unfold();
+                            else {
+                                if (this._options.anchor==='right' && e.x>this._pos.x+5) this.fold();
+                            }
+                        })
+                    )
+                }
+            });
+
 
     }
 
@@ -97,12 +107,12 @@ class Panel extends Component{
             .style('height',`${this.size.height}px`);
         this._handle.append('span')
             .style('line-height',`${this.size.height}px`)
-            .style('font-size',`${this.size.handle*.8}px`)
+            .style('font-size',`${this.size.handle*.7}px`)
             .text('◀')
             .classed('txt',()=>this._options.handleText)
             .filter(()=>this._options.handleText)
                 .text(this._options.handleText)
-                .style('transform',`translateX(-${this.size.handle}px) rotate(-90deg)`);
+                .style('transform',`translateX(-${this.size.handle*1.05}px) rotate(-90deg)`);
 
         //Dimensionnement et positionnement contenu
         this.size.content=this.size.width-this.size.handle;

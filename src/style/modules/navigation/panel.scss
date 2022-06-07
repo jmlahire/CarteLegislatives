@@ -56,6 +56,10 @@ $panelBorder: 1px solid $tone3;
 
   div.handle {
     border-radius: 5px 0 0 5px;
+    span.txt{
+      font-family: $roboto;
+      pointer-events:none;
+    }
   }
 
   &.folded div.handle span:not(.txt) {

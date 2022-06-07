@@ -67,7 +67,7 @@ class DropdownList {
                 this._dispatch.call('change',this, {level: this.level, value:value});
             }
 
-            console.warn('AUTOSELECT',this.level,this._autoselected);
+           // console.warn('AUTOSELECT',this.level,this._autoselected);
         }
         //Plusieurs choix possibles
         else {
@@ -181,8 +181,21 @@ class NestedSelection extends Component{
             .append('ul');
     }
 
+    get selection(){
+        return this._selected.map((d,i) => {
+            let value=null;
+            try {
+                value= (d===null) ? null : this._metadata[i].valueMapper(d);
+            }
+            catch(error){
+                value=d;
+            }
+            return value;
+        }  );
+    }
+
     /**
-     *
+     *Injecte les données sous forme de DataCollection
      * @param {DataCollection} data
      * @param {Array} structure
      * @returns {NestedSelection}
@@ -217,7 +230,6 @@ class NestedSelection extends Component{
 
 
     update(){
-        console.log(this._selected);
         let subdata=this._nestedData;
         for (let i=0; i<this._metadata.length; i++){
             this._sections[i].update(subdata, this._selected[i]);
@@ -234,9 +246,10 @@ class NestedSelection extends Component{
 
     /**
      * Modifie les selects en choisissant les bonnes options
-     * @param {Array] } selection
+     * @param {Array} selection : selection sous forme de tableau [null, null, value, null] (remplace automatiquement les nulls par la premiere bonne valeur trouvée dans data)
+     * @param {Boolean} dispatch : si true, déclenche un évenement dispatch
      */
-    select(selection){
+    select(selection, dispatch=true){
         let needle,
             i = this._metadata.length-1;
         while (!needle && i>=0){
@@ -250,10 +263,10 @@ class NestedSelection extends Component{
             }
             let value = (this._metadata[level].valueMapper)? this._metadata[level].valueMapper(this._selected[level]): this._selected[level];
             this.update();
-            this._dispatch.call('select',this,{ level:level, value:value});
+            if (dispatch) this._dispatch.call('select',this,{ level:level, value:value});
         }
 
-
+        return this;
     }
 
 

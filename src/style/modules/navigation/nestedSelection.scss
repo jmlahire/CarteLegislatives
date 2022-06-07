@@ -14,11 +14,20 @@
     margin:1rem auto;
     justify-content: flex-start;
     padding-inline-start:0;
+    @media (max-width : 650px){
+      flex-wrap:wrap;
+    }
+    @media (min-width : 651px){
+      flex-wrap:nowrap;
+    }
     li {
       list-style: none;
       text-align:center;
       font-family: $fontB;
       font-size:90%;
+      @media (max-width : 650px){
+        margin-top:.2rem;
+      }
       &.disabled {
         @include disabled;
       }

@@ -80,8 +80,13 @@ class MapPath extends MapLayer {
                                         .classed('clickable',this._options.clickable)
                                         .attr('d', this.path)
                                         .on('click', (e,d) => {
-                                            if (this._options.clickable ) this._dispatch.call('click', this, { event:e, values: d.properties, id :d.properties[this._options.primary]} ) ;
-                                            this.highlight(d.properties[this._options.primary]);
+                                           // console.warn(e, e.detail);
+                                            e.stopPropagation();
+                                            if (this._options.clickable && !e.target.classList.contains('hidden')) { // && e.detail===1
+                                                this._dispatch.call('click', this, { event:e, values: d.properties, id :d.properties[this._options.primary]} ) ;
+                                                this.highlight(d.properties[this._options.primary]);
+                                            }
+
                                         } ),
                         update => update.call( update=>update.transition().duration(0).attr('d', this.path)),
                         exit => exit.remove()
@@ -176,8 +181,8 @@ class MapPath extends MapLayer {
                         });
                     }
                     //Styles additionnels
-                    if (style.stroke) u.style('stroke',style.stroke);
-                    if (style.strokeWidth) u.style('stroke-width',style.strokeWidth);
+                    if (style.stroke) transition.style('stroke',style.stroke);
+                    if (style.strokeWidth) transition.style('stroke-width',style.strokeWidth);
                 });
             //Résolution
             setTimeout(()=>resolve(this), this.parent._options.duration/2);
@@ -202,8 +207,9 @@ class MapPath extends MapLayer {
         let selection=this.innerContainer
             .selectAll('path.clickable')
             .classed('hidden', d=>d.properties[key]!==value)
-            .filter(d=>d.properties[key]===value);
+            .filter(d=>  d.properties[key]===value);
         this.parent.zoomTo(selection);
+        this.parent.zoomLevel=key;
         return this;
     }
 
@@ -212,6 +218,7 @@ class MapPath extends MapLayer {
             .selectAll('path.clickable')
             .classed('hidden', false);
         this.parent.zoomOut();
+        this.parent.zoomLevel=null;
         return this;
     }
 

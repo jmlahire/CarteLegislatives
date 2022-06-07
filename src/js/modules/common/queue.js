@@ -1,13 +1,13 @@
 class Queue {
 
     constructor(){
-        this.queue = [];
-        this.pendingPromise = false;
+        this._queue = [];
+        this._pendingPromise = false;
     }
 
     enqueue(promise) {
         return new Promise((resolve, reject) => {
-            this.queue.push({
+            this._queue.push({
                 promise,
                 resolve,
                 reject,
@@ -17,28 +17,28 @@ class Queue {
     }
 
     dequeue() {
-        if (this.workingOnPromise) {
+        if (this._workingOnPromise) {
             return false;
         }
-        const item = this.queue.shift();
+        const item = this._queue.shift();
         if (!item) {
             return false;
         }
         try {
-            this.workingOnPromise = true;
+            this._workingOnPromise = true;
             item.promise()
                 .then((value) => {
-                    this.workingOnPromise = false;
+                    this._workingOnPromise = false;
                     item.resolve(value);
                     this.dequeue();
                 })
                 .catch(err => {
-                    this.workingOnPromise = false;
+                    this._workingOnPromise = false;
                     item.reject(err);
                     this.dequeue();
                 })
         } catch (err) {
-            this.workingOnPromise = false;
+            this._workingOnPromise = false;
             item.reject(err);
             this.dequeue();
         }
