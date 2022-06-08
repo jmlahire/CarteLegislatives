@@ -18,13 +18,13 @@ import {MapLegend} from './modules/maps/mapLegend';
 import {DataCollection} from "./modules/common/dataCollection";
 import {NestedSelection} from "./modules/navigation/nestedSelection";
 import {Synthese} from './modules/custom/synthese';
+import {Results} from './modules/custom/results';
 import {Panel} from './modules/navigation/panel';
 import {getHostColor,getUrlParam as _getUrlParam} from './modules/common/fnUrl';
 
 
 d3.select('#header span.keyword').style('background',getHostColor).style('color','#FFF');
 d3.selectAll('#header h1,#header h2').style('color',getHostColor);
-
 
 
 
@@ -62,9 +62,10 @@ const   resultats = new DataCollection("resultats")
  * @returns {{reg: number}|{value: number, key: string}|{value: string, key: (string|*), dep}|null}
  */
 function getUrlParam () {
+
     let urlParams = [ _getUrlParam('reg'), _getUrlParam('dep'), _getUrlParam('circo')];
-    if (urlParams[0]!==null) urlParams[0]=parseInt(urlParams[1]).toString();
-    if (urlParams[1]!==null) urlParams[1]=urlParams[0].toString().padStart(3,'0');
+    if (urlParams[0]!==null) urlParams[0]=parseInt(urlParams[0]).toString();
+    if (urlParams[1]!==null) urlParams[1]=urlParams[1].toString().padStart(3,'0');
     return urlParams;
 }
 
@@ -125,35 +126,33 @@ resultats.statistics=function(nuancesPol){
  * @returns {{fill: string}}
  */
 function mapFillingFunction (properties) {
-
     const blank = '#ccc',
           styles= { };
-
     const hatched=(color)=>{
-        let colorA=d3.hsl(color),
-            colorB=colorA.copy();
-        colorA.l*=.5;
-        colorB.l*=1.2;
-        let pattern=d3.create('svg:pattern')
-            .attr('id',`pat${first.nuanceId}`)
-            .attr('patternUnits','userSpaceOnUse')
-            .attr('width',10)
-            .attr('height',10)
-            .attr('patternTransform','rotate(45)');
-        pattern.append('rect')
-            .attr('x',0)
-            .attr('y',0)
-            .attr('width',10)
-            .attr('height',10)
-            .attr('fill',colorB.formatHex());
-        pattern.append('line')
-            .attr('x1',0)
-            .attr('y1',0)
-            .attr('x2',0)
-            .attr('y2',10)
-            .attr('stroke',color)
-            .attr('stroke-width',5);
-        return pattern;
+                        let colorA=d3.hsl(color),
+                            colorB=colorA.copy();
+                        colorA.l*=.5;
+                        colorB.l*=1.2;
+                        let pattern=d3.create('svg:pattern')
+                            .attr('id',`pat${first.nuanceId}`)
+                            .attr('patternUnits','userSpaceOnUse')
+                            .attr('width',10)
+                            .attr('height',10)
+                            .attr('patternTransform','rotate(45)');
+                        pattern.append('rect')
+                            .attr('x',0)
+                            .attr('y',0)
+                            .attr('width',10)
+                            .attr('height',10)
+                            .attr('fill',colorB.formatHex());
+                        pattern.append('line')
+                            .attr('x1',0)
+                            .attr('y1',0)
+                            .attr('x2',0)
+                            .attr('y2',10)
+                            .attr('stroke',color)
+                            .attr('stroke-width',5);
+                        return pattern;
     }
 
     try{
@@ -176,39 +175,55 @@ function mapFillingFunction (properties) {
 }
 
 
-function select(selection, origin){
-
+function selectCirco(selection, origin){
     //Selection par clic direct
     if (origin instanceof PointerEvent) {
-        if (!myMap.zoomLevel || myMap.zoomLevel==='REG'){
-            mySelector.select(selection,false);
-            if (selection[2].substring(0, 3)!=='099' && selection[2].charAt(0)!=='9') {
+        mySelector.select(selection,false);
+        if (selection[2].substring(0, 3)!=='099' && selection[2].charAt(0)!=='9') {
+            if (!myMap.zoomLevel || myMap.zoomLevel==='REG') {
                 myMap.layer('circos').zoomTo('DEP3',mySelector.selection[1]);
             }
+            else{
+                showResults(selection[2],0);
+            }
         }
-
-    }
-    //Selection par clic sur un raccourci (élus, triangulaires)
-    else if  (origin==='figure'){
-        mySelector.select(selection,false);
-        myMap.layer('circos').highlight(selection[2]);
-        if (selection[2].substring(0, 3)!=='099' && selection[2].charAt(0)!=='9') {
-            myMap.layer('circos').zoomTo('DEP3',mySelector.selection[1]);
-        }
+        //Outremer et étranger -> affichage direct des résultats
         else{
-            myMap.layer('circos').zoomOut();
+            showResults(selection[2],0);
         }
+    }
+    //Selection par clic sur un icone (élus, triangulaires)
+    else if  (origin==='figure'){
+        contentBox.hide();
+        mySelector.select(selection,false);
+        setTimeout(()=>{
+            myMap.layer('circos').highlight(selection[2]);
+            //Metropole
+            if (selection[2].substring(0, 3)!=='099' && selection[2].charAt(0)!=='9') {
+                myMap.layer('circos').zoomTo('DEP3',mySelector.selection[1]);
+                showResults(selection[2],1000);
+            }
+            //Outremer et etranger
+            else{
+                myMap.layer('circos').zoomOut();
+                showResults(selection[2],500);
+            }
+        },500);
+
+
     }
     //Selection par paramètre get
     else if (origin==='get'){
+        console.log(selection);
         mySelector.select(selection,false);
         if (mySelector.selection[1]!==null) myMap.layer('circos').zoomTo('DEP3',mySelector.selection[1]);
         else if (mySelector.selection[0]!==null) myMap.layer('circos').zoomTo('REG',mySelector.selection[0]);
     }
+}
 
-
-
-
+function showResults(circo,delay=0){
+    contentBox.update(circo)
+              .render(delay);
 }
 
 
@@ -268,6 +283,7 @@ const   myPanel = new Panel('sidePanel').appendTo('#mapContainer');
 
 const   myLegend=new MapLegend(undefined,'Nuances politiques').appendTo(myPanel);
 
+const   contentBox = new Results().appendTo('#resultContainer');
 
 /**********************************************************************
  ******************************* MAIN *********************************
@@ -275,15 +291,22 @@ const   myLegend=new MapLegend(undefined,'Nuances politiques').appendTo(myPanel)
 
 Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
 
+    //Création des cartes
     myMap.layer('circos').load().fit( ).render()
-                            .on('click', d => select([null,null,d.id], d.event))
+                            .on('click', d => selectCirco([null,null,d.id], d.event))
                             .join(resultats,"idcirco")
                             .fill(mapFillingFunction);
     myMap.layer('depts').load().render();
     myMap.layer('labels').render();
 
+    //Ajout de la légende
+    const stats=resultats.statistics(nuancesPol);
+    myLegend.categories(stats.nuances.list, { color:'couleur', name:'nom', shortName:'code' });
 
+    //Injection des données de référence dans la boite de contenu
+    contentBox.data(listeCircos,nuancesPol);
 
+    //Création du selecteur (menu select)
     mySelector
         .data ( listeCircos,
                 [ { value:'REG_ID',text:'REG_NOM', label:'Région', placeholder:'Région ou territoire', root:'FRANCE ENTIERE' , valueMapper:(d)=>parseInt(d) },
@@ -301,8 +324,8 @@ Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
                     myMap.layer('circos').zoomTo('REG',e.value);
                     myMap.layer('labels').fadeOut();
                 }
+                contentBox.hide();
             }
-
             //Choix département (niveau 1)
             else if (e.level===1){
                 myMap.layer('circos').highlight(null);
@@ -313,33 +336,27 @@ Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
                     myMap.layer('circos').zoomOut();
                     myMap.layer('labels').fadeIn();
                 }
+                contentBox.hide();
             }
-            //Choix circo (niveau 2)
+            //Choix circo (niveau 2) : affichage resultats
             else if (e.level===2){
                 myMap.layer('circos').highlight(e.value);
+                showResults(e.value,1000);
             }
-
-
         });
 
-
-
-
-
-    //Ajout de la légende
-    const stats=resultats.statistics(nuancesPol);
-    myLegend.categories(stats.nuances.list, { color:'couleur', name:'nom', shortName:'code' });
-
-    //Ajout de la synthèse
-    myFooter.update(stats);
-    myFooter.on('select', (e)=> select([null,null,e.circo],'figure'));
-
-    setTimeout(()=>{
-        select(getUrlParam(), 'get');
-    },1000);
-
-
-
+    //Ajout de la synthèse (si aucun paramètre get passé)
+    const urlParam=getUrlParam();
+    if (urlParam.every(d=>d===null)){
+        myFooter.update(stats);
+        myFooter.on('select', (e)=> selectCirco([null,null,e.circo],'figure'));
+    }
+    //Zoom automatique si paramètre passé en get
+    else {
+        setTimeout(()=>{
+            selectCirco(urlParam,'get');
+        },1000);
+    }
 
 
 })

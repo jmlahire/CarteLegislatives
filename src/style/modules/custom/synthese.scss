@@ -15,8 +15,6 @@ div#Synthese {
     li {
       list-style:none;
       display:block;
-
-      height:3rem;
       svg {
         width:100%;
         cursor:pointer;
@@ -30,7 +28,7 @@ div#Synthese {
   }
   section.triang{
     li{
-      flex: 0 1 2rem;
+      flex: 0 1 1.5rem;
     }
   }
 

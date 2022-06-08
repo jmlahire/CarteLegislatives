@@ -1,15 +1,15 @@
 import {Component} from "./../common/component.js";
-
-//import '../../../style/modules/custom/synthese.scss'
-
 import * as d3Selection from 'd3-selection'
 import * as d3Dispatch from 'd3-dispatch'
-
 const d3=Object.assign({},d3Selection,d3Dispatch);
 
 
 class FigureFactory{
 
+    /**
+     *
+     * @returns {FigureFactory}
+     */
     constructor(){
         if (FigureFactory._instance) {
             return FigureFactory._instance;

@@ -180,6 +180,11 @@ class MapPath extends MapLayer {
                                         d3.select(this).style('fill',`url(#${id})`);
                         });
                     }
+                    //Blank
+                    else {
+                        transition.style('fill','#ccc');
+                        d3.select(n[i]).classed('clickable',false);
+                    }
                     //Styles additionnels
                     if (style.stroke) transition.style('stroke',style.stroke);
                     if (style.strokeWidth) transition.style('stroke-width',style.strokeWidth);

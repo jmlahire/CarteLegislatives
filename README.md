@@ -1,8 +1,6 @@
-# D3 Starter App
+# Carte des résultats des législatives
 
-Modèle d'application utilisant les modules les plus courants de d3 et scss
-Les autres modules (https://github.com/orgs/d3/repositories?type=all) peuvent être installés
-via node: `npm install d3-module --save`
+Carte interactive affichant les candidats arrivés en tête lors des législatives de juin 2022, et les résultats par circonscription.
 
 
 ## Utilisation
@@ -10,7 +8,7 @@ via node: `npm install d3-module --save`
 
 `npm install`pour installer l'application et ses dépendances
 
-`npm run dev` pour lancer un serveur local (http://localhost:3000 par défaut).
+`npm run dev` pour lancer un serveur local (http://localhost:5000 par défaut).
 
 `npm run build` pour compiler l'application avec ses dépendances dans le dossier `public/`
 

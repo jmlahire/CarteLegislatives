@@ -6,6 +6,7 @@ import copy from 'rollup-plugin-copy';
 import scss from 'rollup-plugin-scss'
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
+import postcssminify from 'postcss-minify';
 import simpleVars from "postcss-simple-vars";
 
 
@@ -42,7 +43,7 @@ const conf = {
         scss({
             output: 'public/style/screen.css',
             include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
-            processor: () => postcss([simpleVars,autoprefixer])
+            processor: () => postcss([simpleVars,autoprefixer,postcssminify])
         }),
         copy({
             targets: [
