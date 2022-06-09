@@ -65,7 +65,7 @@ function getUrlParam () {
 
     let urlParams = [ _getUrlParam('reg'), _getUrlParam('dep'), _getUrlParam('circo')];
     if (urlParams[0]!==null) urlParams[0]=parseInt(urlParams[0]).toString();
-    if (urlParams[1]!==null) urlParams[1]=urlParams[1].toString().padStart(3,'0');
+    if (urlParams[1]!==null) urlParams[1]=urlParams[1].toString().padStart(2,'0');
     return urlParams;
 }
 
@@ -201,12 +201,12 @@ function selectCirco(selection, origin){
             //Metropole
             if (selection[2].substring(0, 3)!=='099' && selection[2].charAt(0)!=='9') {
                 myMap.layer('circos').zoomTo('DEP3',mySelector.selection[1]);
-                showResults(selection[2],1000);
+                //showResults(selection[2],1000);
             }
             //Outremer et etranger
             else{
                 myMap.layer('circos').zoomOut();
-                showResults(selection[2],500);
+                //showResults(selection[2],1000);
             }
         },500);
 
@@ -277,7 +277,7 @@ const   myMap=new MapComposition( 'CarteFrance', { width:2000, height:2200, marg
 const   mySelector = new NestedSelection('choixCirco').appendTo('#header');
 
 
-const   myFooter = new Synthese('Synthese').appendTo('#innerContainer');
+const   myFooter = new Synthese('Synthese');
 
 const   myPanel = new Panel('sidePanel').appendTo('#mapContainer');
 
@@ -348,7 +348,7 @@ Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
     //Ajout de la synthèse (si aucun paramètre get passé)
     const urlParam=getUrlParam();
     if (urlParam.every(d=>d===null)){
-        myFooter.update(stats);
+        myFooter.appendTo('#innerContainer').update(stats);
         myFooter.on('select', (e)=> selectCirco([null,null,e.circo],'figure'));
     }
     //Zoom automatique si paramètre passé en get

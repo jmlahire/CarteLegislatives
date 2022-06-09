@@ -36,7 +36,7 @@ class MapCustom extends MapLayer {
     render(){
         this._render.call(this);
         this.parent.enqueue( () => new Promise((resolve, reject) => {
-
+            this.fadeIn({duration:1000});
             resolve(this);
         }))
         return this;

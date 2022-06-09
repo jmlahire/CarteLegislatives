@@ -90,7 +90,8 @@ class MapPath extends MapLayer {
                                         } ),
                         update => update.call( update=>update.transition().duration(0).attr('d', this.path)),
                         exit => exit.remove()
-                    )
+                    );
+            this.fadeIn({duration:1000});
             resolve(this);
         }))
         return this;

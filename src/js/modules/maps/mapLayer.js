@@ -24,6 +24,7 @@ class MapLayer extends Component {
         this._dispatch = d3.dispatch('click');
         this._container = d3.create('svg:g')
                                 .attr('id',this.id)
+                                .style('opacity',0)
                                 .classed(className,className);
         this.appendTo(parent);
     }
