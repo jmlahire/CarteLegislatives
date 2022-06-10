@@ -20,7 +20,7 @@ import {NestedSelection} from "./modules/navigation/nestedSelection";
 import {Synthese} from './modules/custom/synthese';
 import {Results} from './modules/custom/results';
 import {Panel} from './modules/navigation/panel';
-import {getHostColor,getUrlParam as _getUrlParam} from './modules/common/fnUrl';
+import {getHostColor,getUrlParam as _getUrlParam} from './modules/functions/fnUrl';
 
 
 d3.select('#header span.keyword').style('background',getHostColor).style('color','#FFF');
@@ -44,7 +44,7 @@ const   listeCircos = new DataCollection('listeCircos')
 
 
 const   resultats = new DataCollection("resultats")
-                        .load("./assets/data/sample.csv",
+                        .load("./assets/data/resultats.csv",
                         {   primary:"id",
                                     dtype: { circo:"int", pano:"int", nuanceId:"int", pct_exprimes:"float", pct_inscrits:"float", voix:"int"},
                                     mapper: d => { d.idcirco=`${d.id.substring(0,3)}-${d.id.substring(3,5)}`; return d; }}
@@ -126,7 +126,7 @@ resultats.statistics=function(nuancesPol){
  * @returns {{fill: string}}
  */
 function mapFillingFunction (properties) {
-    const blank = '#ccc',
+    const blank = '#eee',
           styles= { };
     const hatched=(color)=>{
                         let colorA=d3.hsl(color),
@@ -304,7 +304,8 @@ Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
     myLegend.categories(stats.nuances.list, { color:'couleur', name:'nom', shortName:'code' });
 
     //Injection des données de référence dans la boite de contenu
-    contentBox.data(listeCircos,nuancesPol);
+    contentBox.data('listeCircos',listeCircos)
+              .data('listeNuances',nuancesPol, d=>d3.group(d.dataset,p=>p.code));
 
     //Création du selecteur (menu select)
     mySelector
@@ -346,7 +347,7 @@ Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
         });
 
     //Ajout de la synthèse (si aucun paramètre get passé)
-    const urlParam=getUrlParam();
+    let urlParam=getUrlParam();
     if (urlParam.every(d=>d===null)){
         myFooter.appendTo('#innerContainer').update(stats);
         myFooter.on('select', (e)=> selectCirco([null,null,e.circo],'figure'));
@@ -355,7 +356,7 @@ Promise.all([nuancesPol.ready, resultats.ready, listeCircos.ready]).then(()=>{
     else {
         setTimeout(()=>{
             selectCirco(urlParam,'get');
-        },1000);
+        },500);
     }
 
 

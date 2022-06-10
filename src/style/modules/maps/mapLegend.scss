@@ -4,10 +4,10 @@ $barWidth:2rem;
 $barHeight:1.2rem;
 
 ._mLeg{
-  margin:1rem;
+  margin:1vh;
 
   h4 {
-    margin-bottom:1rem;
+    margin-bottom:1vh;
   }
 
   div.categories {
@@ -15,9 +15,9 @@ $barHeight:1.2rem;
     &.horizontal{
       flex-wrap: nowrap;
       justify-content: flex-start;
-      margin:.5rem 0 .5rem;
+      margin:.5vh 0 .5vh;
       figure{
-        flex: 0 1 5rem;
+        flex: 0 1 5vh;
         margin:0;
       }
     }
@@ -26,7 +26,7 @@ $barHeight:1.2rem;
       flex-direction:column;
       align-content:space-around;
       figure{
-        flex: 0 1 auto;
+        flex: 2 1 auto;
       }
 
     }
@@ -34,10 +34,9 @@ $barHeight:1.2rem;
 
 
       figure {
-        flex: 0 1 5rem;
         position:relative;
-        width:90%;
-        margin:.1rem;
+        width:95%;
+        margin:.1vh;
 
         span {
           display:inline-block;
@@ -46,7 +45,7 @@ $barHeight:1.2rem;
           &.color {
             width:$barWidth;
             height:$barHeight;
-            margin-right:.2rem;
+            margin-right:4px;
             border-radius:2px;
           }
 
@@ -55,8 +54,8 @@ $barHeight:1.2rem;
           display:inline-block;
           &>span {
             position:relative;
-            top:-.3rem;
-            margin-right:.5rem;
+            top:-.3vh;
+            margin-right:.5vh;
             user-select:none;
           }
         }

@@ -11,7 +11,7 @@ const d3=Object.assign({},d3Selection,d3Timer,d3Dispatch,d3Drag);
 class Panel extends Component{
 
     static _type='_Panel';
-    static defaultOptions = { anchor: 'right', width: '80%', height:'80%', minWidth:250, handleWidth:'1.3rem', handleText:'Légende', initialPosition: 'folded', duration: 1000, delay:0, timer:500000  };
+    static defaultOptions = { anchor: 'right', width: '90%', height:'80%', minWidth:250, maxWidth:'400', handleWidth:'1.3rem', handleText:'Légende', initialPosition: 'folded', duration: 1000, delay:0, timer:6000  };
 
     /**
      * CONSTRUCTEUR

@@ -19,14 +19,11 @@ g._mPth {
     &.clickable{
       pointer-events: visiblePainted;
       cursor: pointer;
-      &:hover{
-        fill:#ccc;
-      }
+
     }
     &.highlight{
       stroke:$back1;
       animation:blinkingPath 1s infinite;
-
     }
     &.hidden{
       opacity:0;

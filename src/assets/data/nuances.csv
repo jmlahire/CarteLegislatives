@@ -1,19 +1,19 @@
 ﻿id,code,nom,couleur
-1,DXG,Divers extrême gauche,#890202
-2,COM,Parti communiste français,#D4110D
-3,FI,La France Insoumise,#F6350F
-4,SOC,Parti socialiste,#EB47B2
-5,RDG,Parti radical de gauche,#D43A22
-6,DVG,Divers gauche,#F66F5D
-7,ECO,Ecologistes,#0BD42B
-8,DIV,Divers,#CDD6A1
-9,REG,Régionaliste,#25C0F6
-10,ENS,Ensemble!,#EB8609
-11,DVC,Divers centre,#F6BC02
-12,UDI,Union des Démocrates et des Indépendants,#0CD6B6
-13,LR,Les Républicains,#0800EB
-14,DVD,Divers droite,#687CEB
-15,DSV,Droite souverainiste,#151CD4
-16,REC,Reconquête!,#0D2860
-17,RN,Rassemblement National,#1545A5
-18,DXD,Divers extrême droite,#4E5A92
+1,DXG,Divers extrême gauche,#A8080D
+2,COM,Parti communiste français,#a11968
+3,FI,La France Insoumise,#a11968
+4,SOC,Parti socialiste,#a11968
+5,RDG,Parti radical de gauche,#e83266
+6,DVG,Divers gauche,#ee668c
+7,ECO,Ecologistes,#05903f
+8,DIV,Divers,#595959
+9,REG,Régionaliste,#b2b2b2
+10,ENS,Ensemble!,#f5c143
+11,DVC,Divers centre,#E1B000
+12,UDI,Union des Démocrates et des Indépendants,#00b9f1
+13,LR,Les Républicains,#68a7df
+14,DVD,Divers droite,#0094da
+15,DSV,Droite souverainiste,#127db3
+16,REC,Reconquête!,#000000
+17,RN,Rassemblement National,#2d456e
+18,DXD,Divers extrême droite,#2d2d63

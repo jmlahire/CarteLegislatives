@@ -183,7 +183,7 @@ class MapPath extends MapLayer {
                     }
                     //Blank
                     else {
-                        transition.style('fill','#ccc');
+                        transition.style('fill','#eee');
                         d3.select(n[i]).classed('clickable',false);
                     }
                     //Styles additionnels
@@ -211,7 +211,7 @@ class MapPath extends MapLayer {
 
     zoomTo(key,value){
         let selection=this.innerContainer
-            .selectAll('path.clickable')
+            .selectAll('path.path')
             .classed('hidden', d=>d.properties[key]!==value)
             .filter(d=>  d.properties[key]===value);
         this.parent.zoomTo(selection);
@@ -221,7 +221,7 @@ class MapPath extends MapLayer {
 
     zoomOut(){
         this.innerContainer
-            .selectAll('path.clickable')
+            .selectAll('path.path')
             .classed('hidden', false);
         this.parent.zoomOut();
         this.parent.zoomLevel=null;

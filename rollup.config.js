@@ -48,9 +48,10 @@ const conf = {
         copy({
             targets: [
                 { src: 'src/index.html', dest: 'public' },
-                { src: ['src/assets/**/*'], dest: 'public/assets' },
-                { src: ['style/img/**/*'], dest: 'public/style/img' },
-            ]
+                { src: ['src/assets/**/*'], dest: 'public' },
+                { src: ['src/style/img/**/*'], dest: 'public' },
+            ],
+            flatten: false
         })
     ]
 };
